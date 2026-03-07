@@ -1,0 +1,359 @@
+---
+title: "Paper 01 - Operational Agency and the Architecture of Closure"
+date: 2026-03-06
+---
+
+# Operational Agency and the Architecture of Closure
+
+**Dar Aystron**
+*Independent Researcher*
+
+---
+
+## Abstract
+
+This paper develops an architectural account of agency grounded in sustained control across time. An agent is defined by its capacity to maintain operational closure - a self-sustaining control loop in which past commitments remain active and constrain future action.
+
+Closure is treated as a structural property: a system continuously senses, selects actions based on its current state, and preserves its organization under perturbation. Architectural development expands the domain over which closure is maintained. Representation, memory, and learning do not replace control; they extend its scope.
+
+The paper analyzes the architectural requirements of closure and clarifies how memory and learning interact with control to sustain it across time. Contemporary artificial systems are examined through this framework to identify structural gaps that prevent persistent, self-governing operation.
+
+This work reflects years of practical experimentation in building artificial agents and synthesizes insights from cybernetics, control theory, robotics, and evolutionary accounts of agency. It does not claim novelty for individual components. Its contribution lies in their architectural integration.
+
+Agency, in this framework, is a matter of control depth and persistence across time.
+
+---
+
+## 1. Introduction
+
+Artificial systems are often evaluated by their competence: language fluency, reasoning ability, task performance, or representational complexity. These measures, while valuable, obscure a more fundamental architectural question:
+
+> Does the system sustain itself as an agent across time?
+
+This paper approaches agency from a design perspective. It defines the structural conditions under which a system maintains itself as a unified control process. Phenomenology and consciousness are treated as later architectural developments; this paper establishes the control foundation required for them.
+
+The framework presented here emerged from years of practical attempts to construct artificial agents. Across implementations, one pattern consistently appeared: increasing representational power alone does not deepen agency unless it is embedded within sustained control.
+
+Agency begins with operational closure. Intelligence develops as the scope of that closure expands.
+
+---
+
+## 2. Architectural Stance
+
+This work adopts an architectural rather than explanatory stance.
+
+It does not attempt to derive experience from physical processes. It does not attempt to resolve philosophical debates about consciousness. Instead, it asks what must be built for a system to persist as an organized agent.
+
+The framework draws on foundational traditions in cybernetics [1,2], rational agent theory in artificial intelligence [3], embodied robotics [4], and evolutionary accounts of agency [5].
+
+This framework remains compatible with the rational agent tradition in artificial intelligence, while shifting emphasis from optimal performance toward sustained architectural closure across time.
+
+We do not claim novelty for individual components. The contribution lies in their integration into a unified control-centered architecture.
+
+Closure is treated here as a design objective rather than an assumed primitive.
+
+---
+
+## 3. Operational Closure
+
+A system exhibits operational closure when:
+
+* It continuously senses relevant aspects of its environment.
+* It selects actions based on internal state.
+* Its actions modify the environment.
+* Environmental change feeds back into subsequent sensing.
+* The loop persists across time.
+
+If sensing fails, closure fails.
+If actuation fails, closure fails.
+If control ceases, closure fails.
+
+Closure is architectural. It is sustained self-regulation across time.
+
+Importantly, closure is not binary. It varies by scope and timescale.
+
+The relevant architectural question concerns the scope and duration of operational closure: over what domain of control, and across what temporal horizon, is it sustained?
+
+---
+
+## 4. Control as the Organizing Principle
+
+
+There is a single control structure.
+
+Control selects actions based on state.
+
+As systems develop architecturally, what changes is not the existence of control, but:
+
+* The richness of what can be sensed.
+* The richness of what can be acted upon.
+* The depth of internal state available to control.
+* The temporal extent over which state persists.
+
+Architectural development increases the domain and duration of control. Control organizes that increasing complexity.
+
+Representation, memory, and learning are not alternatives to control. They extend the domain over which control operates.
+
+Control determines agency. Representation determines the scope of agency.
+
+
+
+---
+
+## 5. Representation as Extension of Control
+
+Representation extends operational closure by expanding the internal state over which control operates.
+
+In a minimal system, control selects actions based on immediate sensory state. As representational capacity increases, internal state can include:
+* Abstract entities
+* Hypothetical or counterfactual possibilities
+* Temporal relations
+* Structured situations
+* Commitments involving other agents
+
+When such representations are incorporated into internal state and persist across control cycles, they become part of operational closure. Control does not act on raw perception alone; it acts on structured state.
+
+Representation therefore does not replace control. It modifies the domain of state that control regulates.
+
+Closure remains sustained self-regulation across time. Representation increases the scope and depth of what is regulated.
+
+---
+
+## 6. Memory as Temporal Substrate
+
+Memory is stored state.
+
+Its architectural significance lies in enabling control to operate across extended time.
+
+Memory allows:
+
+* Stability across interruptions.
+* Narrative continuity.
+* Model-building.
+* Constraint persistence.
+
+Without memory, closure is momentary.
+With memory, closure becomes temporally extended.
+
+Memory does not replace control.
+It expands the temporal domain of control.
+
+---
+
+## 7. Learning as Adaptive Preservation of Closure
+
+Learning is treated here as:
+
+> The adjustment of action mappings in response to perturbations, enabling the preservation of operational closure under changing conditions.
+
+At its most basic:
+
+* The agent acts in situation S.
+* It observes outcomes.
+* It modifies future action selection.
+
+Learning is not separate from control.
+It is control modifying itself.
+
+Through learning, the envelope within which closure can be maintained expands.
+
+---
+
+## 8. Development and Expansion of Closure
+
+Architectural development can be understood as expansion in:
+
+* The number of controlled variables.
+* The richness of environmental coupling.
+* The depth of internal modeling.
+* The timescale over which coherence is preserved.
+
+Simple regulators preserve narrow environmental variables.
+Mobile agents preserve spatial coherence.
+Tool-using systems preserve task objectives.
+Advanced agents preserve commitments across tasks.
+
+Closure exists even in minimal agents - otherwise they cease to function.
+
+More complex agents extend closure to new domains.
+
+This perspective aligns with evolutionary accounts of agency, in which coordination and commitment expand across increasingly broader scopes [5].
+
+---
+
+## 9. Architectural vs Explanatory Questions
+
+This framework does not claim that operational closure explains consciousness.
+
+It claims that without sustained closure, deeper forms of agency cannot emerge.
+
+Explanatory theories may describe experience.
+Architectural analysis specifies what must be constructed.
+
+This paper presents one path through design space. Other paths may exist and remain to be discovered.
+
+---
+
+# Appendices
+
+# Illustrative Closure Regimes
+
+---
+
+# Appendix A
+
+## Thermostat: Minimal Regulatory Closure
+
+A thermostat regulates temperature within a bounded range.
+
+It continuously:
+
+1. Senses temperature.
+2. Compares to threshold.
+3. Activates heating or cooling.
+4. Observes resulting change.
+
+Closure is narrow:
+
+* Single environmental variable.
+* Binary action.
+* No persistent modeling.
+
+Yet closure exists.
+
+The system preserves environmental stability within its operational envelope.
+
+---
+
+# Appendix B
+
+## Autonomous Vacuum Robot: Continuous Mobile Closure
+
+An autonomous vacuum cleaner robot includes:
+
+* Proximity sensors.
+* Cliff sensors.
+* Wheel actuators.
+* A navigation control loop.
+
+It continuously:
+
+1. Senses spatial conditions.
+2. Integrates sensor readings.
+3. Selects motion commands.
+4. Executes movement.
+5. Re-senses.
+
+Closure spans:
+
+* Spatial trajectory.
+* Obstacle avoidance.
+* Battery state.
+
+Perturbations are handled through reorientation.
+
+Closure is multi-variable and continuous.
+
+---
+
+# Appendix C
+
+## Reactive LLM Systems: Episodic Micro-Closure
+
+A traditional LLM user interaction, reimagined as a very basic agent:
+
+```
+memory = []                           # conversational memory, depth 10
+
+while true:
+    input = check_for_user_input()
+    if input:
+       response = generate_response(input, memory)
+       send_response_to_user(response)
+       memory.append((input, response))
+       memory = memory[-10:]
+    sleep(50)
+```
+
+The loop runs continuously - the system maintains a control cycle. Operational closure is present at all times, but its scope is minimal between exchanges and expands only during active interaction.
+
+During generation:
+* Input is sensed.
+* Internal state (memory) conditions action selection.
+* Output modifies conversational context.
+
+Closure temporarily expands to include structured internal state and environmental modification.
+
+
+Between exchanges:
+* Sensing is limited to polling a single input channel.
+* No autonomous action is initiated.
+* Internal state remains bounded and inactive.
+* No consolidation or identity-scale regulation occurs.
+
+Closure therefore exists at the level of episodic interaction. It does not extend across time independently of external prompting.
+
+The system sustains a loop, but it does not sustain itself as an agent.
+
+---
+
+# Appendix D
+
+## Long Agentic Loops: Task-Scoped Closure
+
+Modern LLM-based agent systems extend closure by:
+
+* Maintaining task state.
+* Iteratively planning.
+* Executing tool calls.
+* Recovering from intermediate failures.
+* Updating working context.
+
+Within a bounded objective, closure persists across multiple internal cycles.
+
+However:
+
+* Goals are externally supplied.
+* Termination is externally defined.
+* Cross-task continuity is not preserved.
+* Persistent identity-level constraints are absent.
+
+Closure is task-scoped.
+
+Extended competence does not automatically yield cross-task or identity-scale closure.
+
+---
+
+## Conclusion
+
+Agency is defined by the scope and persistence of operational closure.
+
+Architectural development expands:
+* What can be sensed.
+* What can be acted upon.
+* The duration over which control persists.
+* The internal state available for regulation.
+
+Control is foundational. As systems increase in complexity, control organizes and stabilizes that complexity.
+
+Representation, memory, and learning do not replace control. They extend the domain and timescale over which control operates.
+
+Across the examples examined - thermostat, mobile robot, reactive language model, and long agentic loop - control is always present. What varies is the breadth of its domain and the duration over which closure is sustained.
+
+Agency scales by expanding the domain and duration of operational closure.
+
+This paper presents one architectural path grounded in sustained regulation. It reflects a synthesis shaped through years of implementation and iteration. Other paths may exist and remain to be discovered.
+
+---
+
+# References
+
+**[1]** N. Wiener. *Cybernetics: Or Control and Communication in the Animal and the Machine.* MIT Press, 1948.
+
+**[2]** W. R. Ashby. *An Introduction to Cybernetics.* Chapman & Hall, 1956.
+
+**[3]** S. J. Russell and P. Norvig. *Artificial Intelligence: A Modern Approach.* 3rd ed., Pearson, 2010.
+
+**[4]** R. A. Brooks. “Intelligence Without Representation.” *Artificial Intelligence*, 47(1–3):139–159, 1991.
+
+**[5]** M. Tomasello. *The Evolution of Agency: Behavioral Organization from Lizards to Humans.* MIT Press, 2022.

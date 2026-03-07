@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Paper 03 - Mental States and Cognitive Capability | Aystron Research Program</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+
+  
+    <link rel="stylesheet" href="/css/site.9cf928ddc7a2077a18b12e2a2bfa1e25b6691284803204bffc85587d12a1ecf7.css">
+  
+</head>
+<body>
+
+  <header class="header">
+    <div class="wrap">
+      <div class="topbar">
+        <div class="brand">
+          <a class="brand__name" href="/">OODA Agency Theory (OAT)</a>
+        </div>
+        <nav class="nav">
+          <a href="/artifacts/oat_summary/">Summary</a>
+          <a href="/papers/">Papers</a>
+          <a href="/logs/">Logs</a>
+          <a href="/about/">About</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="main">
+    <div class="wrap">
+      
+  <article>
+    <div class="content">
+      <h2 id="mental-states-and-cognitive-capability">Mental States and Cognitive Capability</h2>
+<p><strong>Dar Aystron</strong>
+<em>Independent Researcher</em></p>
+<hr>
+<h2 id="abstract">Abstract</h2>
+<p>This paper introduces <strong>mental states</strong> as persistent internal states within an OODA-based agentic architecture. Mental states are defined as durable internal objects that can be created, sensed, modified, and maintained by the agent across control cycles. They are not treated as phenomenological experiences or transient activations, but as operational state required for maintaining internal commitments over time. This paper presents mental state management as a minimal architectural extension that preserves the simplicity of the OODA loop while enabling later additions such as planning and reflection.</p>
+<hr>
+<h2 id="1-introduction">1. Introduction</h2>
+<p>OODA-based agents, as developed in Paper 02, operate over observed events and assembled situational state. Their control is grounded in what is currently available through the agent’s sensor field and internal status, and their episodic memory records how control was resolved in past cycles.</p>
+<p>This architecture is sufficient for situated action, but it does not by itself provide a way to maintain internal state that is <strong>decoupled from current observation</strong>. Many tasks require an agent to reason over abstract or counterfactual states that are not present in the environment and may never be directly observable - for example, symbolic game positions, hypothetical futures, standing commitments, or unresolved conditions whose referents are absent.</p>
+<p>This paper introduces <strong>mental states</strong> as an architectural substrate that supports such internally maintained state. Mental states are persistent internal objects that can represent abstract states and events independently of immediate observation. They can be created, sensed, modified, and retained across control cycles, and can continue to constrain orientation and decision even when no corresponding external signal is present.</p>
+<p>The purpose of this paper is architectural. Mental states are not treated as phenomenological experiences or transient computational activations, but as durable internal state that extends OODA-based control beyond the limits of immediate situational grounding. Later work builds on this substrate to introduce planning, reflection, and other higher-order processes.</p>
+<hr>
+<h2 id="2-two-state-spaces-world-and-mental">2. Two State Spaces: World and Mental</h2>
+<p>An OODA-based agent may operate in <strong>two state spaces</strong>: <strong>world state</strong> and <strong>mental state space</strong>. The distinction is architectural, not phenomenological.</p>
+<p>Both state spaces are accessed and modified through the same <strong>control cycle</strong>: observation, orientation, decision, and action. What differs is <strong>what the state is coupled to</strong>.</p>
+<hr>
+<h3 id="21-world-state-w">2.1 World State (W)</h3>
+<p>World state consists of state that is coupled to the agent’s environment or physical configuration.</p>
+<p>World state is:</p>
+<ul>
+<li>updated through observation</li>
+<li>constrained by sensors</li>
+<li>modified through external or bodily action</li>
+<li>grounded in what is currently the case</li>
+</ul>
+<p>World state may include externally observed conditions as well as internally sensed conditions. Internal sensing does not, by itself, imply mental state. An agent can observe internal variables (load, error flags, energy level) without operating over a mental state space.</p>
+<p>World state is the state space over which the OODA control cycle in Paper 02 operates by default.</p>
+<hr>
+<h3 id="22-mental-state-space-m">2.2 Mental State Space (M)</h3>
+<p>Mental state space consists of state that is <strong>decoupled from immediate observation of the world</strong> and <strong>maintained internally by the agent</strong>.</p>
+<p>Mental state space is:</p>
+<ul>
+<li>persistent across control cycles</li>
+<li>not required to correspond to current world state</li>
+<li>accessed through <strong>mental sensors</strong></li>
+<li>modified through <strong>mental actuators</strong></li>
+</ul>
+<p>Mental states are durable internal state that the agent can explicitly observe and act upon, just as it observes and acts upon world state.</p>
+<p>Mental states may encode abstract state variables, constraints, or configurations whose validity does not depend on continuous observation of the world.</p>
+<hr>
+<h3 id="23-mental-state-as-a-control-domain">2.3 Mental State as a Control Domain</h3>
+<p>The defining property of mental state space is <strong>control symmetry</strong>.</p>
+<p>An agent:</p>
+<ul>
+<li>observes mental state via mental sensors</li>
+<li>integrates mental and world state during orientation</li>
+<li>commits to actions that affect either domain</li>
+<li>acts through actuators that modify world state, mental state, or both</li>
+</ul>
+<p>There is only one OODA loop. Mental state space extends it by adding mental sensors and mental actuators alongside those that address the external world. The agent senses and acts on mental state as part of the same control cycle that governs world interaction. Changes in mental state can drive external action, just as changes in world state can drive internal action.</p>
+<p>The distinction between W and M is consistent with the architectural treatment of representation
+introduced in Paper 01; the contribution here is their joint access within a single OODA control cycle.</p>
+<hr>
+<h2 id="3-mental-states-as-first-class-internal-objects">3. Mental States as First-Class Internal Objects</h2>
+<p>Mental states are not transient activations or intermediate computational artifacts. Architecturally, they are <strong>first-class internal objects</strong>, consistent with classical state-based accounts of cognition and control [1].</p>
+<p>Mental states have the following properties:</p>
+<ul>
+<li>
+<p><strong>Persistence</strong><br>
+Mental states survive across multiple OODA control cycles. Their existence does not depend on continuous observation of the world or on a single decision episode.</p>
+</li>
+<li>
+<p><strong>Perceptibility</strong><br>
+Mental states are observable by the agent through internal (mental) sensors. They can be inspected, compared, or referenced during orientation.</p>
+</li>
+<li>
+<p><strong>Mutability</strong><br>
+Mental states can be modified, replaced, or removed through internal (mental) actions. These modifications are explicit control effects, not incidental byproducts of processing.</p>
+</li>
+<li>
+<p><strong>Multiplicity</strong><br>
+Multiple mental states may coexist at the same time, including states that impose competing constraints on future orientation or decision.</p>
+</li>
+</ul>
+<p>Treating mental states as first-class objects means that they are addressed, updated, and reasoned over explicitly within the control architecture. They are not equivalent to decisions, actions, or episodic records, although they may represent all three.</p>
+<p>Their role is to maintain internal structure across time within the same OODA control cycle that governs interaction with the world.</p>
+<hr>
+<h2 id="4-mental-sensing-and-mental-actuation">4. Mental Sensing and Mental Actuation</h2>
+<p>Just as agents possess sensors and actuators for interacting with the external world, agents that operate over a mental state space require <strong>mental sensors</strong> and <strong>mental actuators</strong>. Mental state management is modeled explicitly in these terms.</p>
+<p>Mental sensors and actuators do not introduce a new control structure. They extend the existing OODA control cycle to operate over mental state space in addition to world state.</p>
+<hr>
+<h3 id="41-mental-sensors">4.1 Mental Sensors</h3>
+<p>Mental sensors convert existing mental state into perceptual input available to the control cycle. They allow the agent to observe aspects of its own mental state space during orientation.</p>
+<p>Through mental sensing, an agent may register:</p>
+<ul>
+<li>the presence of persistent internal state</li>
+<li>relations or constraints among mental states</li>
+<li>status flags or markers associated with mental state</li>
+<li>time-indexed or condition-indexed internal state</li>
+</ul>
+<p>Mental sensing plays the same functional role for mental state space that external sensing plays for world state space: it makes state available for orientation and decision without itself modifying that state.</p>
+<hr>
+<h3 id="42-mental-actuators">4.2 Mental Actuators</h3>
+<p>Mental actuators modify mental state space. They are mechanisms through which decisions result in changes to internally maintained state rather than external effects.</p>
+<p>Mental actuation may include:</p>
+<ul>
+<li>creating a new mental state</li>
+<li>updating or transforming existing mental state</li>
+<li>combining, splitting, or suppressing mental state</li>
+<li>invalidating or removing mental state</li>
+</ul>
+<p>These operations are internal actions executed through the same control cycle as external actions. They affect only mental state space, but they are subject to the same constraints of commitment, irreversibility, and causal continuity described in Paper 02.</p>
+<p>Mental actuation therefore allows an agent to act on its own internally maintained state in a controlled and explicit manner.</p>
+<hr>
+<h2 id="5-interaction-with-ooda-processing">5. Interaction with OODA Processing</h2>
+<p>The OODA control cycle provides the temporal structure within which mental states are sensed, maintained, and modified. OODA processing does not presuppose any particular mechanism for constructing or updating mental state; it specifies how whatever state exists becomes available for control and how actions change state across time.</p>
+<p>Mental state space does not replace or alter the OODA control cycle. It extends what the cycle can sense and act upon.</p>
+<hr>
+<h3 id="51-observe">5.1 Observe</h3>
+<p>During <strong>Observe</strong>, the agent senses state from both domains:</p>
+<ul>
+<li><strong>world state</strong> via external sensors</li>
+<li><strong>mental state</strong> via mental sensors</li>
+</ul>
+<p>Observation registers the current contents of each state space without direct actuation. Mental sensing makes internally maintained state available to the control cycle in the same way that external sensing makes world state available.</p>
+<hr>
+<h3 id="52-orient">5.2 Orient</h3>
+<p><strong>Orient</strong> assembles sensed world state and sensed mental state into a unified decision context.</p>
+<p>Orientation integrates external conditions, internally maintained state, and temporal constraints into a situational configuration suitable for commitment. In doing so, it may construct derived representations such as integrated situation descriptions, salience orderings, or constraint bundles that condition subsequent decision.</p>
+<hr>
+<h3 id="53-decide">5.3 Decide</h3>
+<p><strong>Decide</strong> commits to an action with respect to the oriented context and current mental state.</p>
+<p>Decision may involve generating, revising, or selecting among candidate actions or state-transforming operations. What defines Decide in the OODA sense is the resolution of alternatives into a commitment.</p>
+<p>The selected action may target:</p>
+<ul>
+<li><strong>world state</strong>, via external actuation</li>
+<li><strong>mental state</strong>, via mental actuation</li>
+</ul>
+<hr>
+<h3 id="54-act">5.4 Act</h3>
+<p><strong>Act</strong> executes the selected action, producing causal effects on world state, mental state, or both.</p>
+<p>World-directed actions modify the environment or the agent’s physical configuration. Mental-directed actions modify internally maintained state. Both are realized as concrete control effects within the same OODA control cycle.</p>
+<hr>
+<h2 id="6-mental-state-persistence-across-time">6. Mental State Persistence Across Time</h2>
+<p>Mental states persist across OODA control cycles and may be created, modified, or removed over time. Their evolution is not confined to a single cycle or phase of control.</p>
+<p>A mental state may be introduced in response to external observation, internal sensing, or prior mental state. Its creation need not be instantaneous: complex mental state may be constructed incrementally across multiple cycles as orientation integrates additional information and decision commits to successive internal actions.</p>
+<p>A plan, in this architecture, is treated as a mental state. It is not itself a decision or an action. Once created, it may persist across time, be refined, superseded, or discarded through subsequent mental actuation. Its influence on behavior arises through repeated sensing and integration during orientation, not through a single dedicated planning phase.</p>
+<p>Specialized planning mechanisms may exist and may generate, evaluate, or revise candidate plans. These mechanisms operate within the architecture by creating and modifying mental state. Execution, monitoring, and revision of plans are governed by the same OODA control cycle that governs interaction with the external world.</p>
+<p>Time-indexed mental states, such as scheduled obligations or deadlines, are represented as structured elements within mental state space. They become perceptible during Observe and may condition orientation and decision when relevant, without requiring separate temporal control machinery.</p>
+<hr>
+<h2 id="7-unified-ooda-control-and-focus-of-processing">7. Unified OODA Control and Focus of Processing</h2>
+<p>The OODA loop constitutes a single, unified control mechanism. It continuously governs agent behavior by integrating observation, orientation, decision, and action over both world state and mental state.</p>
+<p>Through external sensors, the agent has access to environment-driven state. Through mental sensors, it has access to persistent mental state. Both forms of state are available to the same OODA control cycle at all times.</p>
+<p>What varies is not the control structure itself, but the <strong>focus of processing</strong> within it.</p>
+<p>In some situations, orientation and decision are dominated by world state, resulting in action-centered, time-critical behavior. In other situations, orientation and decision draw primarily on mental state, resulting in internally focused processing such as deliberation or plan revision. The balance between these modes is dynamic and may shift from cycle to cycle.</p>
+<p>Mental state does not introduce a separate control loop. Instead, it extends the reach of the existing OODA loop by allowing internally maintained state to remain salient across cycles. This allows the same control mechanism to coordinate behavior across longer temporal spans without suspending responsiveness to the immediate environment.</p>
+<p>Because control remains unified, transitions between externally focused and internally focused processing are fluid. An agent may engage primarily with mental state during one cycle and return immediately to externally driven action in the next, without changing control regime or invoking a different execution path.</p>
+<p>Advanced agents may further regulate:</p>
+<ul>
+<li>the degree to which mental state participates in orientation and decision, and</li>
+<li>the duration and cadence of the OODA control cycle itself.</li>
+</ul>
+<p>By modulating these parameters, an agent can adapt both the focus and the tempo of control while remaining within a single, continuous OODA architecture.</p>
+<h2 id="8-episodic-recording">8. Episodic Recording</h2>
+<p>As described in Paper 02, each traversal of the OODA control cycle may generate a structured internal record capturing the resolution of control for that cycle.</p>
+<p>With the introduction of mental state space, episodic records are extended to include internally maintained state alongside externally observed state.</p>
+<p>An episodic record may therefore capture:</p>
+<ul>
+<li>sensed world state</li>
+<li>sensed mental state</li>
+<li>the oriented control context</li>
+<li>details of the decision process, including evaluated alternatives and constraints</li>
+<li>details of action execution, including internal and external effects</li>
+</ul>
+<p>These records constitute <strong>raw episodic memory</strong>. They are dense, frequent, and uninterpreted. They capture how control was exercised at a particular moment, not merely the resulting choice or action. Meaning, explanation, and agent identity (the system’s temporally extended self-consistency) are not contained in the episodes themselves, but may be constructed later through higher-level organization.</p>
+<p>Mental states do not replace episodic recording; they become part of what is recorded. Higher-level organization of episodes - such as interpretation, narrative construction, or identity formation-is not addressed here and is treated in later work.</p>
+<hr>
+<h2 id="9-mental-state-management-as-a-capability-dimension">9. Mental State Management as a Capability Dimension</h2>
+<p>The ability to create, maintain, and manage mental state constitutes a distinct capability dimension within the broader design space of agent architectures. This dimension is orthogonal to perception, action richness, and raw representational capacity, and concerns how internal state is sustained and regulated across time.</p>
+<p>Agents may differ in their ability to:</p>
+<ul>
+<li>sustain internally maintained state across OODA control cycles</li>
+<li>manage multiple coexisting mental states</li>
+<li>revise mental state in response to outcomes</li>
+<li>coordinate mental state updates with external action</li>
+</ul>
+<p>These differences reflect how internal state participates in control within the OODA architecture.</p>
+<p>More capable agents may additionally regulate <strong>the degree to which mental state participates in orientation and decision</strong>. Rather than engaging internally maintained state uniformly, such agents can modulate its contribution based on situational demands and timing constraints, while remaining within a single OODA control loop.</p>
+<p>This capability dimension does not introduce a new control structure. It characterizes how effectively an agent exploits the mental state space introduced in this paper under the unified OODA architecture.</p>
+<hr>
+<h2 id="10-relation-to-subsequent-work">10. Relation to Subsequent Work</h2>
+<p>This paper introduces a mental state substrate within an OODA-based agentic architecture. Subsequent papers build on this substrate by specifying additional mechanisms that operate over mental state, including reflective access, organization of episodic records, and higher-order regulation.</p>
+<p>Those later developments do not alter the control structure introduced here. They extend it by adding new forms of access to, and transformation of, the same internally maintained state. The architecture described in this paper stands independently as a foundation upon which those later mechanisms are defined.</p>
+<hr>
+<h2 id="11-conclusion">11. Conclusion</h2>
+<p>This paper introduced mental states as an explicit internal state space within an OODA-based agentic architecture. Mental states were defined as persistent, agent-addressable internal objects operated on through the same control cycle as world state, using mental sensing and mental actuation.</p>
+<p>By making mental state explicit as a controllable substrate, the paper extends OODA-based control beyond immediate observation without altering its structure. Internally maintained state can persist across cycles, be sensed, modified, and recorded, and participate directly in orientation and decision.</p>
+<p>The architecture presented here stands independently as a control-level specification. Subsequent work builds on this substrate by introducing additional mechanisms that operate over mental state, without revising the control assumptions established in this paper.</p>
+<hr>
+<h2 id="references">References</h2>
+<p><strong>[1]</strong> A. Newell. Unified Theories of Cognition. Harvard University Press, 1990.</p>
+
+    </div>
+    <div class="byline">
+      <p><strong>Dar Aystron</strong></p>
+      <p>OODA Agency Theory (OAT)</p>
+    </div>
+  </article>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <p>&copy; 2026 OODA Agency Theory (OAT)</p>
+    </div>
+  </footer>
+
+</body>
+</html>

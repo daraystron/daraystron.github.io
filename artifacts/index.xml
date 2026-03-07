@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Artifacts on Aystron Research Program</title>
+    <link>http://localhost:1313/artifacts/</link>
+    <description>Recent content in Artifacts on Aystron Research Program</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 07 Mar 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/artifacts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>OAT Summary</title>
+      <link>http://localhost:1313/artifacts/oat_summary/</link>
+      <pubDate>Sat, 07 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/artifacts/oat_summary/</guid>
+      <description>&lt;h1 id=&#34;ooda-agency-theory-oat&#34;&gt;OODA Agency Theory (OAT)&lt;/h1&gt;&#xA;&lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;&#xA;&lt;p&gt;&lt;strong&gt;OODA Agency Theory (OAT)&lt;/strong&gt; asks a fundamental question: what architecture allows an artificial system to become an agent - one that persists over time, makes decisions, acts in the world, and can ultimately develop inner experience?&lt;/p&gt;&#xA;&lt;p&gt;By &amp;ldquo;inner experience&amp;rdquo; we mean the existence of agent-relative internal states that the system can perceive and integrate into its control loop. Over time these states accumulate into a subjective stream.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Papers on Aystron Research Program</title>
+    <link>http://localhost:1313/papers/</link>
+    <description>Recent content in Papers on Aystron Research Program</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 07 Mar 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/papers/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Paper 01 - Operational Agency and the Architecture of Closure</title>
+      <link>http://localhost:1313/papers/paper01/</link>
+      <pubDate>Sat, 07 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/papers/paper01/</guid>
+      <description>&lt;h1 id=&#34;operational-agency-and-the-architecture-of-closure&#34;&gt;Operational Agency and the Architecture of Closure&lt;/h1&gt;&#xA;&lt;p&gt;&lt;strong&gt;Dar Aystron&lt;/strong&gt;&#xA;&lt;em&gt;Independent Researcher&lt;/em&gt;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;abstract&#34;&gt;Abstract&lt;/h2&gt;&#xA;&lt;p&gt;This paper develops an architectural account of agency grounded in sustained control across time. An agent is defined by its capacity to maintain operational closure - a self-sustaining control loop in which past commitments remain active and constrain future action.&lt;/p&gt;&#xA;&lt;p&gt;Closure is treated as a structural property: a system continuously senses, selects actions based on its current state, and preserves its organization under perturbation. Architectural development expands the domain over which closure is maintained. Representation, memory, and learning do not replace control; they extend its scope.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Paper 02 - OODA as Agentic Control</title>
+      <link>http://localhost:1313/papers/paper02/</link>
+      <pubDate>Sat, 07 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/papers/paper02/</guid>
+      <description>&lt;h2 id=&#34;ooda-as-agentic-control&#34;&gt;OODA as Agentic Control&lt;/h2&gt;&#xA;&lt;p&gt;&lt;strong&gt;Dar Aystron&lt;/strong&gt;&#xA;&lt;em&gt;Independent Researcher&lt;/em&gt;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;abstract&#34;&gt;Abstract&lt;/h2&gt;&#xA;&lt;p&gt;This paper develops the Observe-Orient-Decide-Act [1] (OODA) loop as a minimal control architecture for embedded agents. OODA is treated not as a metaphor for cognition or decision-making, but as a continuously operating control structure through which a system remains responsive to events, selects actions, and maintains control over time within an environment,&lt;/p&gt;&#xA;&lt;p&gt;Observation is defined as sensitivity to events and state; orientation as the assembly of situational state across internal and external inputs; decision as action selection within that state; and action as a causal intervention in the world. An agent’s actions modify the environment through causal processes, and the agent subsequently observes the resulting state as part of the next control cycle.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Paper 03 - Mental States and Cognitive Capability</title>
+      <link>http://localhost:1313/papers/paper03/</link>
+      <pubDate>Sat, 07 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/papers/paper03/</guid>
+      <description>&lt;h2 id=&#34;mental-states-and-cognitive-capability&#34;&gt;Mental States and Cognitive Capability&lt;/h2&gt;&#xA;&lt;p&gt;&lt;strong&gt;Dar Aystron&lt;/strong&gt;&#xA;&lt;em&gt;Independent Researcher&lt;/em&gt;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;abstract&#34;&gt;Abstract&lt;/h2&gt;&#xA;&lt;p&gt;This paper introduces &lt;strong&gt;mental states&lt;/strong&gt; as persistent internal states within an OODA-based agentic architecture. Mental states are defined as durable internal objects that can be created, sensed, modified, and maintained by the agent across control cycles. They are not treated as phenomenological experiences or transient activations, but as operational state required for maintaining internal commitments over time. This paper presents mental state management as a minimal architectural extension that preserves the simplicity of the OODA loop while enabling later additions such as planning and reflection.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Paper 04 - Action Realization in Agentic Systems</title>
+      <link>http://localhost:1313/papers/paper04/</link>
+      <pubDate>Sat, 07 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/papers/paper04/</guid>
+      <description>&lt;h1 id=&#34;action-realization-in-agentic-systems&#34;&gt;Action Realization in Agentic Systems&lt;/h1&gt;&#xA;&lt;h2 id=&#34;control-commitment-and-execution&#34;&gt;Control, Commitment, and Execution&lt;/h2&gt;&#xA;&lt;p&gt;&lt;strong&gt;Dar Aystron&lt;/strong&gt;&#xA;&lt;em&gt;Independent Researcher&lt;/em&gt;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;abstract&#34;&gt;Abstract&lt;/h2&gt;&#xA;&lt;p&gt;Prior work in this series analyzed artificial agents in terms of operational closure (Paper 01), continuous OODA-based control (Paper 02), and persistent mental state (Paper 03). These foundations specify how an agent observes, orients, decides, and acts over time, and how internally maintained state can persist across control cycles. What remains underspecified is the transition from evaluated possibility to causal commitment.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

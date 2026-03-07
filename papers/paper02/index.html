@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Paper 02 - OODA as Agentic Control | Aystron Research Program</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+
+  
+    <link rel="stylesheet" href="/css/site.9cf928ddc7a2077a18b12e2a2bfa1e25b6691284803204bffc85587d12a1ecf7.css">
+  
+</head>
+<body>
+
+  <header class="header">
+    <div class="wrap">
+      <div class="topbar">
+        <div class="brand">
+          <a class="brand__name" href="/">OODA Agency Theory (OAT)</a>
+        </div>
+        <nav class="nav">
+          <a href="/artifacts/oat_summary/">Summary</a>
+          <a href="/papers/">Papers</a>
+          <a href="/logs/">Logs</a>
+          <a href="/about/">About</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="main">
+    <div class="wrap">
+      
+  <article>
+    <div class="content">
+      <h2 id="ooda-as-agentic-control">OODA as Agentic Control</h2>
+<p><strong>Dar Aystron</strong>
+<em>Independent Researcher</em></p>
+<hr>
+<h2 id="abstract">Abstract</h2>
+<p>This paper develops the Observe-Orient-Decide-Act [1] (OODA) loop as a minimal control architecture for embedded agents. OODA is treated not as a metaphor for cognition or decision-making, but as a continuously operating control structure through which a system remains responsive to events, selects actions, and maintains control over time within an environment,</p>
+<p>Observation is defined as sensitivity to events and state; orientation as the assembly of situational state across internal and external inputs; decision as action selection within that state; and action as a causal intervention in the world. An agent’s actions modify the environment through causal processes, and the agent subsequently observes the resulting state as part of the next control cycle.</p>
+<p>On this basis, OODA is presented as a reusable architectural foundation for constructing artificial agents that maintain continuity of control across time while operating in dynamic environments.</p>
+<hr>
+<h2 id="1-introduction">1. Introduction</h2>
+<p>Many contemporary discussions of artificial agents describe systems in terms of sensing, acting, goals, or decision making. In practice, however, these terms often function as metaphor or convenience rather than as descriptions of implemented control structures. What is typically deployed are input–output pipelines - such as chat interfaces that accept user input, trigger internal processing, and stream responses - rather than systems with explicit, recurrent control loops grounded in sensors, actuators, and stateful interaction with an environment.</p>
+<p>This paper takes a different approach.</p>
+<p>We propose a concrete architectural path for building artificial agents, focused on how a system can operate coherently over time while embedded in an environment where events occur and actions have consequences.</p>
+<p>The Observe-Orient-Decide-Act (OODA) loop provides a compact structure for this purpose. Treated as an operational control loop, OODA serves here as a constructive framework for agent design, capturing a minimal pattern by which a system can remain situated, responsive, and historically continuous.</p>
+<hr>
+<h2 id="2-background-ooda">2. Background: OODA</h2>
+<p>The OODA loop originates in the work of <strong>John Boyd</strong>, who introduced it as a way to understand adaptive behavior in rapidly changing environments. OODA was not proposed as a psychological theory, nor as a model of deliberative reasoning. It was intended as a description of how systems operate under uncertainty and time pressure.</p>
+<p>A central feature of Boyd’s formulation is that OODA is <strong>continuous</strong>. The loop does not pause between phases, nor does it require explicit triggering. Observation, orientation, decision, and action are interdependent and ongoing.</p>
+<p>Since its introduction, OODA-like structures have appeared across many technical domains, often implicitly. Event-driven systems, feedback controllers, autonomous agents, and supervisory control architectures all exhibit variants of the same basic pattern: sensing, state conditioning, action selection, and execution over time.</p>
+<p>This paper adopts OODA as an explicit operational control loop and develops its phases as concrete components of an embedded agent architecture.</p>
+<h2 id="3-ooda-as-a-continuous-control-loop">3. OODA as a Continuous Control Loop</h2>
+<p>In this paper, OODA is treated as a <strong>continuously running control loop</strong>, not as a sequence triggered by external requests.</p>
+<p>The loop operates regardless of whether explicit events occur or actions are taken. Time advances, internal and external state evolves, and the system remains poised to respond. Periods of apparent inactivity are not pauses in operation, but intervals in which observation, orientation, and readiness are still maintained.</p>
+<p>This stands in contrast to many contemporary agent-like systems, which operate primarily in a request–response mode, suspending control between inputs and reconstituting state only at invocation time. Such systems may generate actions, but they do not maintain continuous control.</p>
+<p>Continuity is essential to agency. Agency is not defined by isolated actions, but by <strong>persistence</strong>: the ability of a system to remain operational over time while retaining the capacity to respond as conditions change. Treating OODA as continuously active establishes this persistence as a structural property of the control loop itself. This treatment aligns with classical accounts of continuous control and feedback in embedded systems.</p>
+<p>This emphasis on continuous, situated control aligns with embodied agent architectures.</p>
+<p>Treated in this way, OODA instantiates operational closure: a continuously running loop in which sensing, state integration, commitment, and action sustain self-regulation across time.</p>
+<hr>
+<h2 id="4-observe--event-sensitivity-and-sensor-fields">4. Observe : Event Sensitivity and Sensor Fields</h2>
+<p>Observation establishes <strong>causal contact</strong> with the environment and the agent’s own state; orientation is where observed information is assembled into a situation.</p>
+<p>An observation establishes that <em>something is the case</em> or that <em>something has changed</em>: a signal is present, a condition holds, a message arrived, a value shifted. Observations may be typed, prioritized, or timestamped. At this foundational level, however, they do not yet constitute interpretation or understanding.</p>
+<p>This paper proposes to structure observation through two complementary forms of sensing:</p>
+<ul>
+<li><strong>Event-based sensors</strong>, which detect discrete changes or occurrences.</li>
+<li><strong>State-based sensors</strong>, which expose aspects of the current environment or internal configuration.</li>
+</ul>
+<p>Both forms establish causal contact. Event sensors make change visible; state sensors make conditions visible. Neither implies meaning, explanation, or evaluation at the level of observation.</p>
+<p>Observation presupposes a <strong>sensor field</strong>: the set of channels through which events or state are made available to the control loop. The sensor field defines the boundary of causal contact between the agent and its environment, determining what can be observed at all. Sensor fields may be focused or scoped, so that only fragments of the environment or internal state are perceptible to the control loop at any given moment.</p>
+<p>Different agents may implement very different sensor fields:</p>
+<ul>
+<li>A <strong>thermostat</strong> has a minimal sensor field, typically limited to a single temperature signal.</li>
+<li>A <strong>dog</strong> has a richer sensor field, including olfactory, auditory, visual, and proprioceptive channels.</li>
+</ul>
+<p>These differences reflect differences in <strong>availability</strong>, not interpretation. A richer sensor field increases what can be detected, but does not by itself introduce meaning, understanding, or explanation.</p>
+<p>At this level, the role of observation is strictly enabling. It makes events and state available to the control loop. How those inputs are combined, evaluated, or acted upon is determined by later phases.</p>
+<hr>
+<h2 id="5-orient-assembly-of-situational-state">5. Orient: Assembly of Situational State</h2>
+<p>Orientation assembles the information currently available to the control loop into a coherent <strong>situational state</strong> suitable for decision.</p>
+<p>An agent may receive input from multiple sensors, each exposing different kinds of information and each carrying its own timing, scope, and salience. Orientation integrates these heterogeneous inputs - events, state snapshots, internal status, recent history - into a unified operational picture of the current situation.</p>
+<p>This assembly may involve re-ranking observations by salience, suppressing irrelevant inputs, resolving conflicts, or adjusting sensor focus to expose different fragments of the environment or internal state. Orientation does not explain or interpret observations; it organizes them so they can jointly constrain action.</p>
+<p>Although orientation integrates heterogeneous inputs through intermediate, provisional assemblies, it culminates in a <strong>single coherent situational view optimized for decision under time and uncertainty</strong>.</p>
+<p>The situational state produced by orientation is not required to be complete, exhaustive, or uniquely correct. It is required to be <em>operationally sufficient</em>: consistent enough to support timely decision and action given the information currently available.</p>
+<p>This framework does not require a privileged internal model of the world. It requires only that decisions be conditioned on the integrated situational state produced by orientation at that moment.</p>
+<p>Orientation constructs a perspectival situation for the agent, rather than a globally authoritative model of the environment. The situational view available for decision is shaped by the agent’s sensor field, its current sensor focus, and the integration pathways through which observations are assembled.</p>
+<p>As a result, different agents - equipped with different sensor fields, internal status, or orientation mechanisms - may construct systematically different situational views of the same environment. These differences arise from architectural variation in what information is available and how it is assembled. Later learning mechanisms may modify sensor availability or orientation pathways over time, but even at this foundational level, situation construction is inherently agent-relative.</p>
+<hr>
+<h2 id="6-decide-commitment">6. Decide: Commitment</h2>
+<p>Decision is the point at which alternatives are resolved.</p>
+<p>Prior to decision, multiple actions may be possible. Decision selects one course of action (including the possibility of inaction), thereby excluding others. This selection creates <strong>commitment</strong>: future behavior is constrained by what has been decided.</p>
+<p>Decision operates over an agent’s <strong>action field</strong>: the set of actions available to the agent given its capabilities, internal state, and current situation. The action field is agent-specific and may vary over time as conditions change. Rich agents may have large and diverse action fields, while simpler agents may be limited to only a few possible actions.</p>
+<p>Decision is not defined in this paper as conscious reasoning or deliberation. The evaluation, comparison, or ranking of alternatives may occur through a variety of processes - reactive, learned, heuristic, or otherwise - without explicit awareness or reflection. What defines decision in the OODA sense is the moment at which one alternative becomes binding and others are foreclosed.</p>
+<p>Decision is realized through physical processes that bind the agent to a specific course of action. It is realized by concrete processes in a real system, subject to timing, noise, indeterminacy, and the material properties of the agent’s implementation. Decision is not an abstract computation detached from execution, but a resolution that places the agent on a specific causal trajectory.</p>
+<p>Even with a well-defined action field, structured situational state, and established policies, agents operate under conditions of irreducible uncertainty. Sensor fields are partial, environments evolve, and the consequences of action cannot be fully known in advance. As a result, decision remains necessary: policies may guide choice, but they do not eliminate the need for commitment under uncertainty.</p>
+<p>A decision may result in action, deferral, or explicit non-action. All are decisions insofar as they constrain subsequent behavior and shape the conditions under which future observations and decisions will occur.</p>
+<hr>
+<h2 id="7-act-irreversible-effect">7. Act: Irreversible Effect</h2>
+<p>Action is the execution of a decision through effect on the world <strong>and the agent itself</strong>.</p>
+<p>Once an action is taken, time has passed and consequences follow. Resources may be consumed, internal or external state may change, and effects may propagate beyond the system. These effects are not reversible: the world, the agent, or both are now different than before the action occurred.</p>
+<p>Action closes the loop. It is the point at which the agent’s control becomes causally effective beyond internal selection and commitment.</p>
+<h3 id="actuators-and-action-execution">Actuators and Action Execution</h3>
+<p>In practice, actions are realized through <strong>actuators</strong>: the mechanisms by which an agent produces effects in its environment or modifies its own internal configuration. Actuators define how decisions are translated into concrete changes, such as emitting signals, sending messages, updating internal state, allocating resources, or interacting with external systems.</p>
+<p>An action may involve a single actuator invocation or a coordinated bundle of actuator operations executed as part of a single decision. From the perspective of the control loop, these bundled operations constitute one action insofar as they realize a single commitment and produce a coherent effect on the agent–environment system.</p>
+<p>Actuators therefore ground the agent’s <strong>action field</strong>. What an agent can do in principle is determined by the set of actuators it possesses and the ways in which they can be combined under current conditions.</p>
+<h3 id="action-and-causal-continuity">Action and Causal Continuity</h3>
+<p>Actions participate in causal processes that shape the conditions of subsequent observation. The effects of action propagate through the environment and the agent’s own state and may later be encountered by the agent as part of the next control cycle. Through this mechanism, action links decision to future observation and maintains causal continuity across time.</p>
+<p>At this level, action is not evaluated in terms of success, intention, or outcome quality. It is defined solely by its causal role: realizing a commitment and advancing the joint agent–environment trajectory.</p>
+<hr>
+<h2 id="8-episodes-and-episodic-memory">8. Episodes and Episodic Memory</h2>
+<p>Each completed traversal of the OODA loop constitutes an <strong>episode</strong>, recording the observations, situational state, decision, and action associated with that control cycle.</p>
+<p>At this level, an episode is simply a data record. It captures what was observed, how the situation was assembled, what action was selected, and the resulting effects. It does not yet imply interpretation, experience, or narrative.</p>
+<p>Episodes accumulate into <strong>episodic memory</strong> [2]. Episodic memory consists of stored records of past control cycles that can influence future orientation and decision. These records extend the temporal context available to future control cycles.</p>
+<p>These records may be consulted, replayed, or tagged with coarse outcome signals, enabling the agent to bias subsequent action ranking or suppress ineffective choices without requiring interpretation or understanding.</p>
+<p>More advanced agents may introduce additional mechanisms that operate over episodic memory, such as linking episodes into extended sequences, identifying cross-episode causal chains, or organizing episodes into higher-level structures. These mechanisms build on episodic memory but are not required for the minimal agent architecture described here.</p>
+<hr>
+<h2 id="9-discussion">9. Discussion</h2>
+<p>Taken together, observation, orientation, decision, action, and episodic accumulation define a minimal agentic control architecture. These components specify how a system operates and persists over time under uncertainty, without presupposing richer cognitive or reflective mechanisms.</p>
+<p>This perspective clarifies the boundary between foundational control and later extensions. More complex internal organization - such as learning, prediction, reflection, or conscious deliberation - may be layered on top of this architecture, but the control loop itself does not depend on them.</p>
+<hr>
+<h2 id="10-conclusion">10. Conclusion</h2>
+<p>This paper has presented OODA as an agentic control loop: a continuously running operational structure that enables a system to remain responsive, commit to decisions, act irreversibly, and accumulate history over time.</p>
+<p>Rather than offering a complete theory of agency, the paper articulates a particular region of the design space: agents built around continuous control, situated action, and episodic accumulation. By developing OODA at this operational level, the paper establishes a stable foundation for constructing and analyzing agentic systems without presupposing richer internal organization.</p>
+<hr>
+<h2 id="references">References</h2>
+<p><strong>[1]</strong> J. R. Boyd. The Essence of Winning and Losing. Unpublished briefing, 1996.</p>
+<p><strong>[2]</strong> E. Tulving. &ldquo;Memory and Consciousness.&rdquo; Canadian Psychology, 26(1), 1–12, 1985.</p>
+
+    </div>
+    <div class="byline">
+      <p><strong>Dar Aystron</strong></p>
+      <p>OODA Agency Theory (OAT)</p>
+    </div>
+  </article>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <p>&copy; 2026 OODA Agency Theory (OAT)</p>
+    </div>
+  </footer>
+
+</body>
+</html>

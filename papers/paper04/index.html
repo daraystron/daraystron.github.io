@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Paper 04 - Action Realization in Agentic Systems | Aystron Research Program</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+
+  
+    <link rel="stylesheet" href="/css/site.9cf928ddc7a2077a18b12e2a2bfa1e25b6691284803204bffc85587d12a1ecf7.css">
+  
+</head>
+<body>
+
+  <header class="header">
+    <div class="wrap">
+      <div class="topbar">
+        <div class="brand">
+          <a class="brand__name" href="/">OODA Agency Theory (OAT)</a>
+        </div>
+        <nav class="nav">
+          <a href="/artifacts/oat_summary/">Summary</a>
+          <a href="/papers/">Papers</a>
+          <a href="/logs/">Logs</a>
+          <a href="/about/">About</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="main">
+    <div class="wrap">
+      
+  <article>
+    <div class="content">
+      <h1 id="action-realization-in-agentic-systems">Action Realization in Agentic Systems</h1>
+<h2 id="control-commitment-and-execution">Control, Commitment, and Execution</h2>
+<p><strong>Dar Aystron</strong>
+<em>Independent Researcher</em></p>
+<hr>
+<h2 id="abstract">Abstract</h2>
+<p>Prior work in this series analyzed artificial agents in terms of operational closure (Paper 01), continuous OODA-based control (Paper 02), and persistent mental state (Paper 03). These foundations specify how an agent observes, orients, decides, and acts over time, and how internally maintained state can persist across control cycles. What remains underspecified is the transition from evaluated possibility to causal commitment.</p>
+<p>This paper analyzes <strong>action realization</strong> as a required control transition in agentic systems. We show that while action candidates are discrete and explicitly represented, commitment to action cannot be resolved by evaluation alone and must be finalized through execution. Action realization adopts a <em>primary action commitment</em> that binds the agent&rsquo;s next causal stance, while allowing multiple subordinate and internal actions in support. This commitment is irreversible in the sense relevant to agency: it becomes part of the agent&rsquo;s operational history and constrains subsequent control cycles. We situate action realization within the OODA control architecture developed in Paper 02 and the mental state framework of Paper 03, completing the evaluation–action loop.</p>
+<hr>
+<h2 id="1-introduction">1. Introduction</h2>
+<p>Papers 01–03 developed an architectural account of artificial agency grounded in control structure rather than surface behavior. Paper 01 defined operational closure as the architectural foundation of agency. Paper 02 established OODA as a continuously running control loop through which agents remain responsive and historically continuous. Paper 03 introduced mental states as persistent internal objects that extend OODA-based control beyond immediate observation, enabling agents to maintain commitments, plans, and abstract state across control cycles.</p>
+<p>What remains underspecified is the transition from evaluation to action. During orientation, an agent may generate and rank action candidates against the current situation, existing commitments, and anticipated consequences. Ranking constrains behavior but does not itself produce commitment. An agent that continues to evaluate without committing does not act and cannot persist as an agent embedded in the world.</p>
+<p>This paper analyzes the missing control transition: <strong>action realization</strong>.</p>
+<hr>
+<h2 id="2-action-candidates-as-explicit-control-objects">2. Action Candidates as Explicit Control Objects</h2>
+<h3 id="21-discrete-action-representation">2.1 Discrete Action Representation</h3>
+<p>Advanced agents represent actions explicitly as elements of their action repertoire. At a given control cycle <em>t</em>, the agent maintains a finite set of action candidates:</p>
+<p>A_t = { a_1, a_2, &hellip;, a_n }</p>
+<p>Each candidate corresponds to a concrete action instance. These include:</p>
+<ul>
+<li>external actions (motor, tool-mediated, communicative),</li>
+<li>internal actions (mental state creation or modification, deliberate simulation),</li>
+<li>explicit inaction (e.g., waiting).</li>
+</ul>
+<p>Action candidates are generated during <strong>Orient</strong>, conditioned on the current world state, sensed mental state (Paper 03), and existing commitments. They are <strong>transient products of orientation</strong> - explicit and discrete, but not themselves persistent mental state. They exist within a single control cycle as part of the situational state that Orient assembles for Decide. Persistent mental state may constrain which candidates are generated and how they are ranked, but the candidates themselves do not survive beyond the cycle in which they are resolved.</p>
+<hr>
+<h3 id="22-possibility-without-commitment">2.2 Possibility Without Commitment</h3>
+<p>The existence of an action candidate does not imply that the action has been taken. Prior to commitment:</p>
+<ul>
+<li>no actuator has been invoked,</li>
+<li>no external state has changed,</li>
+<li>no irreversible effect has been produced.</li>
+</ul>
+<p>Multiple candidates may be simultaneously admissible. Internally, they represent alternative continuations rather than events. This distinction between internal possibility and external causation is central to agency and is preserved throughout the architecture.</p>
+<hr>
+<h2 id="3-evaluation-constrains-but-does-not-decide">3. Evaluation Constrains but Does Not Decide</h2>
+<h3 id="31-ranking-under-uncertainty">3.1 Ranking Under Uncertainty</h3>
+<p>Agents evaluate actions against their current situational state, existing commitments, and anticipated consequences. Ranking integrates feasibility, expected consequence, risk, temporal exposure, and other evaluative signals into a structured ordering or suppression of candidates.</p>
+<p>Evaluation is inherently approximate and may draw on whatever world model richness and exploration capacity the agent possesses. Rankings may be partial, context-dependent, and sensitive to modeling error. They reduce the action space but do not collapse it.</p>
+<hr>
+<h3 id="32-the-decision-gap">3.2 The Decision Gap</h3>
+<p>After evaluation, the agent still faces a control problem:</p>
+<blockquote>
+<p>Which action becomes binding?</p>
+</blockquote>
+<p>Further evaluation does not resolve this question. Re-ranking indefinitely does not produce action. A distinct control transition is required to terminate evaluation and initiate commitment.</p>
+<hr>
+<h2 id="4-decision-as-a-control-transition">4. Decision as a Control Transition</h2>
+<p>Within the OODA control architecture (Paper 02), <strong>Decide</strong> is not an extended deliberative phase. It is a control transition that selects how the agent proceeds from orientation to action.</p>
+<p><strong>Invariant (Singular Commitment with Internal Multiplicity).</strong>
+At each control cycle, an agent adopts at most one <em>primary action commitment</em> that determines its next causal stance toward the environment or itself. Multiple subordinate or internal actions may occur in support of this commitment, but they do not constitute independent commitments and do not define alternative futures.</p>
+<hr>
+<h3 id="41-primary-action-commitments">4.1 Primary Action Commitments</h3>
+<p>A <em>primary action commitment</em>:</p>
+<ul>
+<li>defines the agent&rsquo;s next causal relationship to the world or to itself,</li>
+<li>persists across control cycles as mental state,</li>
+<li>excludes competing primary commitments,</li>
+<li>is represented as binding internal state.</li>
+</ul>
+<hr>
+<h3 id="42-subordinate-and-internal-actions">4.2 Subordinate and Internal Actions</h3>
+<p>Subordinate actions are conditional on the primary commitment and include:</p>
+<ul>
+<li>mental state updates,</li>
+<li>episodic recording,</li>
+<li>micro-planning,</li>
+<li>monitoring,</li>
+<li>bookkeeping,</li>
+<li>internal simulation supporting the primary action.</li>
+</ul>
+<p>These actions may occur in parallel or sequence, but they do not independently bind the agent.</p>
+<hr>
+<h2 id="5-action-realization">5. Action Realization</h2>
+<h3 id="51-realization-as-control-resolution">5.1 Realization as Control Resolution</h3>
+<p>Action realization is the control event in which one primary action commitment is adopted. At this point:</p>
+<ul>
+<li>one candidate becomes binding,</li>
+<li>subordinate activity is organized around it,</li>
+<li>alternative candidates become counterfactual.</li>
+</ul>
+<p>Action realization refines the Orient–Decide boundary in the OODA loop. Orient produces explicit action candidates and evaluative structure as part of situational state; Decide selects a primary commitment among these candidates. Action realization marks the point at which this commitment becomes physically binding. In this sense, action realization completes the decision process by binding the selected commitment, serving as the transition from evaluative orientation to causal action.</p>
+<p>Only at this point does the outcome of realization produce durable mental state: the realized commitment persists as mental state (Paper 03) that constrains future cycles. The full resolution - including unrealized candidates and the evaluative context - is captured in episodic memory (Paper 02) as part of the integrated control record for the cycle.</p>
+<hr>
+<h3 id="52-irreversibility-and-history">5.2 Irreversibility and History</h3>
+<p>Action realization is irreversible in the sense relevant to agency. While commitments may later be revised or abandoned, the fact that a commitment was adopted cannot be undone. The agent&rsquo;s operational history is updated, and subsequent control cycles are constrained by that history.</p>
+<hr>
+<h2 id="6-physical-execution-and-action-realization">6. Physical Execution and Action Realization</h2>
+<p>Action realization in agentic systems occurs within physical computing systems and cannot be understood as purely symbolic evaluation. While action candidates and their rankings are represented symbolically during orientation, commitment and execution occur through physical processes in the agent&rsquo;s computational substrate.</p>
+<p>Timing variability, resource contention, hardware-level entropy, and execution ordering all influence how near-equivalent candidates are resolved and how actions unfold in practice. These effects arise from the physical implementation of computation and are present in any real execution environment.</p>
+<p>In the architecture considered here, symbolic evaluation determines which actions are admissible and how they are ranked, but the final realization of commitment occurs through interaction with the physical execution environment.</p>
+<h3 id="61-physical-computation">6.1 Physical Computation</h3>
+<p>Computation in this architecture is treated as a physical process. Symbolic representations are realized as physical states in memory and processing elements, reflecting the physical nature of information processing [1]. Their manipulation involves energy flow, timing constraints, and interaction with hardware, operating systems, and execution environments.</p>
+<p>From this perspective, symbolic reasoning is not detached from embodiment. It is implemented within a physical system whose dynamics influence when and how commitments become realized actions.</p>
+<h3 id="62-execution-as-causal-interaction">6.2 Execution as Causal Interaction</h3>
+<p>Once a commitment is realized, execution unfolds as a causal process extending over time. Even when actions target digital systems, their execution involves physical infrastructure such as networks, processors, storage devices, and distributed services.</p>
+<p>Latency, scheduling, partial failure, and environmental variability all shape how actions unfold and what effects they produce. As a result, an agent cannot determine the full outcome of an action prior to its execution. Outcomes arise through interaction with a causal environment whose complete state is not available to the agent.</p>
+<p>Execution therefore constitutes a transition from symbolic evaluation to physical interaction. The consequences of that interaction are observed during subsequent OODA cycles and incorporated into future orientation.</p>
+<hr>
+<h2 id="7-action-realization-and-operational-agentic-closure">7. Action Realization and Operational Agentic Closure</h2>
+<p>Subsequent OODA cycles perceive not only the external world, but the agent&rsquo;s own prior actions and their consequences - recorded as episodic memory (Paper 02) and reflected in persisting mental state (Paper 03). This self-perception of commitment is what closes the loop: the agent acts, observes the effects of having acted, and incorporates those effects - including the fact of commitment itself - into future control.</p>
+<p>Each realized action reshapes the space of possible futures available to the agent. Prior to realization, multiple trajectories remain open. After realization, some trajectories are foreclosed and others are created. The agent&rsquo;s future orientation operates not over the original space of possibilities, but over the narrowed and altered space that its own commitments have produced. Operational agentic closure arises from this accumulation: each action constrains what comes next, and the agent perceives those constraints as part of its own situation.</p>
+<p>Action realization is therefore not an execution detail. It is the mechanism by which an agent binds itself to a trajectory through time.</p>
+<hr>
+<h2 id="8-ethics-as-constraint-deferred">8. Ethics as Constraint (Deferred)</h2>
+<p>Ethical considerations participate in evaluation and may impose hard feasibility boundaries on action realization. Their structure and learning are deferred to subsequent work.</p>
+<hr>
+<h2 id="9-conclusion">9. Conclusion</h2>
+<p>This paper completes the evaluation–action loop by analyzing action realization as a necessary control transition. While actions are represented discretely and evaluated during orientation, commitment is resolved through physical execution and recorded as durable state.</p>
+<p>Action realization binds the agent over time, enables operational agentic closure, and gives decisions their characteristic gravity.</p>
+<hr>
+<h2 id="references">References</h2>
+<p>[1] R. Landauer. Information is Physical. Physics Today, 1991.</p>
+<hr>
+
+    </div>
+    <div class="byline">
+      <p><strong>Dar Aystron</strong></p>
+      <p>OODA Agency Theory (OAT)</p>
+    </div>
+  </article>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <p>&copy; 2026 OODA Agency Theory (OAT)</p>
+    </div>
+  </footer>
+
+</body>
+</html>

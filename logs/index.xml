@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Logs on Aystron Research Program</title>
+    <link>http://localhost:1313/logs/</link>
+    <description>Recent content in Logs on Aystron Research Program</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 07 Mar 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/logs/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Building the Subject: Foundations of OODA Agency Theory</title>
+      <link>http://localhost:1313/logs/first_publication/</link>
+      <pubDate>Sat, 07 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/logs/first_publication/</guid>
+      <description>&lt;h1 id=&#34;building-the-subject-first-papers-in-the-ooda-agency-theory-series&#34;&gt;Building the Subject: First Papers in the OODA Agency Theory Series&lt;/h1&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;Consciousness requires a subject.&lt;br&gt;&#xA;Agency creates the subject.&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;I started this work by trying to understand consciousness. I read the theories, studied the frameworks. What I found was abstract - far from anything I could model or build.&lt;/p&gt;&#xA;&lt;p&gt;The turning point was a shift in question. Instead of asking &lt;em&gt;what is consciousness?&lt;/em&gt; I asked: &lt;strong&gt;what would it take to build a system that has a subject?&lt;/strong&gt; Something that persists over time, maintains commitments, and remains itself while learning and changing.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

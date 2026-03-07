@@ -1,0 +1,388 @@
+:root {
+  --black: #0a0a0a;
+  --white: #fafafa;
+  --grey-dark: #2a2a2a;
+  --grey-mid: #6a6a6a;
+  --grey-light: #d0d0d0;
+  --max: 900px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  background: var(--white);
+  color: var(--black);
+  font-family: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrap {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+/* ============================================
+   HEADER - Bold, minimal
+   ============================================ */
+
+.header {
+  padding: 48px 0 40px;
+  border-bottom: 3px solid var(--black);
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 32px;
+}
+
+.brand__name {
+  font-family: "Montserrat", "Helvetica Neue", sans-serif;
+  font-weight: 800;
+  font-size: 28px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--black);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.brand__name:hover {
+  color: var(--grey-mid);
+}
+
+/* ============================================
+   NAV - Stark, geometric
+   ============================================ */
+
+.nav {
+  display: flex;
+  gap: 32px;
+}
+
+.nav a {
+  font-family: "Montserrat", "Helvetica Neue", sans-serif;
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--grey-mid);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.nav a:hover {
+  color: var(--black);
+}
+
+/* ============================================
+   MAIN CONTENT
+   ============================================ */
+
+.main {
+  padding: 64px 0;
+}
+
+/* ============================================
+   TYPOGRAPHY - Bold, geometric
+   ============================================ */
+
+h1 {
+  font-family: "Inter", "Helvetica Neue", sans-serif;
+  font-weight: 400;
+  font-size: 26px;
+  line-height: 1.3;
+  color: var(--grey-dark);
+  margin-bottom: 16px;
+}
+
+h2 {
+  font-family: "Inter", "Helvetica Neue", sans-serif;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 1.3;
+  color: var(--grey-dark);
+  margin-top: 48px;
+  margin-bottom: 16px;
+}
+
+h3 {
+  font-family: "Inter", "Helvetica Neue", sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  color: var(--black);
+  margin-top: 32px;
+  margin-bottom: 12px;
+}
+
+.meta {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  color: var(--grey-mid);
+  text-transform: uppercase;
+}
+
+.tagline {
+  text-align: right;
+  margin: 0 0 56px 0;
+}
+
+.tagline p {
+  font-size: 15px;
+  font-style: italic;
+  line-height: 1.6;
+  color: var(--grey-mid);
+  margin: 0;
+}
+
+/* ============================================
+   CONTENT BLOCKS
+   ============================================ */
+
+.content {
+  max-width: 65ch;
+}
+
+.content p {
+  margin-bottom: 20px;
+  color: var(--grey-dark);
+}
+
+.content strong {
+  font-weight: 600;
+  color: var(--black);
+}
+
+.content a {
+  color: var(--black);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.content a:hover {
+  color: var(--grey-mid);
+}
+
+.content ul,
+.content ol {
+  margin: 20px 0;
+  padding-left: 24px;
+}
+
+.content li {
+  margin-bottom: 8px;
+  color: var(--grey-dark);
+}
+
+.content blockquote {
+  margin: 32px 0;
+  padding-left: 24px;
+  border-left: 4px solid var(--black);
+  font-style: italic;
+  color: var(--grey-mid);
+}
+
+.content code {
+  font-family: "SF Mono", "Monaco", "Consolas", monospace;
+  font-size: 14px;
+  background: var(--grey-light);
+  padding: 2px 6px;
+}
+
+.content pre {
+  background: #f0f0f0;
+  color: var(--grey-dark);
+  padding: 24px;
+  margin: 24px 0;
+  overflow-x: auto;
+}
+
+.content pre code {
+  background: none;
+  padding: 0;
+  color: inherit;
+}
+
+/* ============================================
+   TABLES
+   ============================================ */
+
+.content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 24px 0;
+}
+
+.content th,
+.content td {
+  text-align: left;
+  padding: 10px 12px;
+  vertical-align: top;
+  color: var(--grey-dark);
+  border-bottom: 1px solid var(--grey-light);
+}
+
+.content th {
+  font-weight: 600;
+}
+
+/* Pre blocks inside table cells */
+.content td pre {
+  background: transparent !important;
+  color: var(--grey-dark) !important;
+  padding: 4px 0 !important;
+  margin: 0 !important;
+  font-size: 13px;
+  white-space: pre;
+}
+
+.content td pre code {
+  background: transparent !important;
+  color: var(--grey-dark) !important;
+  padding: 0 !important;
+}
+
+/* Key-value tables (2-column, no header) */
+.kv-table table {
+  table-layout: fixed;
+}
+
+.kv-table thead {
+  display: none;
+}
+
+.kv-table td:first-child {
+  width: 30%;
+}
+
+/* ============================================
+   LIST - Grid-like, structured
+   ============================================ */
+
+.list {
+  list-style: none;
+  margin-top: 0;
+}
+
+.list__item {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 24px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--grey-light);
+}
+
+.list__item:first-child {
+  border-top: 1px solid var(--grey-light);
+}
+
+.list__item--child {
+  padding-left: 32px;
+  border-top: none;
+}
+
+.list__item--child a {
+  font-size: 14px;
+  color: var(--grey-mid);
+}
+
+.list__item a {
+  font-weight: 500;
+  color: var(--black);
+  text-decoration: none;
+}
+
+.list__item a:hover {
+  color: var(--grey-mid);
+}
+
+.list__item .meta {
+  flex-shrink: 0;
+}
+
+/* ============================================
+   BYLINE
+   ============================================ */
+
+.byline {
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 1px solid var(--grey-light);
+  font-size: 14px;
+  color: var(--grey-mid);
+}
+
+.byline p {
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* ============================================
+   FOOTER - Minimal
+   ============================================ */
+
+.footer {
+  padding: 40px 0;
+  border-top: 3px solid var(--black);
+  margin-top: 64px;
+}
+
+.footer p {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--grey-mid);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 680px) {
+  .wrap {
+    padding: 0 24px;
+  }
+
+  .header {
+    padding: 32px 0;
+  }
+
+  .topbar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .nav {
+    gap: 20px;
+  }
+
+  .main {
+    padding: 40px 0;
+  }
+
+  h1 {
+    font-size: 32px;
+  }
+
+  h2 {
+    margin-top: 40px;
+  }
+
+  .list__item {
+    flex-direction: column;
+    gap: 4px;
+  }
+}
