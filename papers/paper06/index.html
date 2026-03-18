@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Paper 06 - The Propositional Lift and the Subject Stream | Aystron Research Program</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+
+  
+    <link rel="stylesheet" href="/css/site.9cf928ddc7a2077a18b12e2a2bfa1e25b6691284803204bffc85587d12a1ecf7.css">
+  
+</head>
+<body>
+
+  <header class="header">
+    <div class="wrap">
+      <div class="topbar">
+        <div class="brand">
+          <a class="brand__name" href="/">OODA Agency Theory (OAT)</a>
+        </div>
+        <nav class="nav">
+          <a href="/artifacts/oat_summary/">Summary</a>
+          <a href="/papers/">Papers</a>
+          <a href="/logs/">Logs</a>
+          <a href="/about/">About</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="main">
+    <div class="wrap">
+      
+  <article>
+    <div class="content">
+      <h1 id="the-propositional-lift-and-the-subject-stream">The Propositional Lift and the Subject Stream</h1>
+<p><strong>Dar Aystron</strong>
+<em>Independent Researcher</em></p>
+<hr>
+<h2 id="abstract">Abstract</h2>
+<p>Earlier papers in this series established the architectural foundations of operationally closed artificial agents based on the OODA loop. Paper 03 introduced mental states as persistent internal structures that support planning and deliberation. Paper 05 explored the emergence of artificial phenomenology as a consequence of agent architecture rather than metaphysical assumptions.</p>
+<p>This paper introduces a new architectural mechanism: the <strong>propositional lift</strong>, through which selected runtime cognitive contents become explicit propositions available for reasoning, reflection, and memory. Actions, observations, evaluations, and attentional states may all be lifted into this representation, allowing causal relations among cognitive events to be explicitly represented.</p>
+<p>The resulting propositions form a <strong>subject stream</strong> that accompanies the agent’s OODA cycles. This stream is both a live cognitive representation and a recordable structure integrated with episodic memory. By exposing the subject stream through internal sensing, an agent becomes capable of perceiving aspects of its own cognition across time, including its own attentional focus and decision processes.</p>
+<p>Within this design framework, the propositional layer functions as the system’s <strong>conscious representation space</strong>, defined operationally rather than metaphysically. The architecture supports reflective control, episodic narrative continuity, and commitment perception while enabling advanced forms of metacognitive regulation across OODA cycles.</p>
+<hr>
+<h2 id="1-introduction">1. Introduction</h2>
+<p>Artificial agents capable of sustained activity must maintain coherence across time. Earlier papers in this series addressed this requirement through the concept of <strong>operational agentic closure</strong>: a system that continuously observes, interprets, decides, and acts within a structured control loop.</p>
+<p>Paper 03 introduced <strong>mental states</strong> as persistent internal structures that influence evaluation, planning, and action. These structures allow agents to maintain goals, commitments, and plans across OODA cycles.</p>
+<p>However, mental states in their original formulation remain embedded in the agent’s runtime control substrate. They guide behavior but are not necessarily <strong>explicit objects of reasoning for the agent itself</strong>.</p>
+<p>Paper 05 established that artificial phenomenology arises when internal states are accessible to the agent within its control loop - that is, when they participate in perception, evaluation, and action. That minimal accessibility criterion does not require introspection or metacognition. The present paper extends beyond this baseline by introducing mechanisms through which selected cognitive contents become not merely accessible but explicitly representable and available for reflective reasoning. The progression is from states that influence behavior to states that the agent can reference, reason about, and interpret across time.</p>
+<p>This paper introduces a representational extension that makes selected cognitive contents explicitly available for reasoning and reflection. The key architectural mechanism is the <strong>propositional lift</strong>, which transforms selected implementation-level structures into explicit propositions.</p>
+<p>Through this lift, cognitive elements such as observations, goals, risk evaluations, decisions, and attentional states may be represented in a form that can be referenced, reasoned about, and reflected upon by the agent itself. Relationships among these elements, including causal connections between actions and observations, may also be represented propositionally.</p>
+<p>These propositions form a continuously evolving <strong>subject stream</strong> that accompanies the agent’s activity across OODA cycles. The subject stream is not merely a log of past events. It is the explicit representational layer in which selected elements of the agent’s ongoing cognitive activity become available for reasoning, reflection, and memory integration.</p>
+<p>By exposing this stream through internal sensing, the architecture enables the agent to perceive aspects of its own cognition across time. This includes not only external perceptions and internal commitments but also the agent’s own attentional focus and reflective interpretations.</p>
+<p>In this way, the propositional lift establishes a new representational layer within the architecture, enabling reflective control and supporting a structured form of artificial subjectivity grounded entirely in the agent’s operational processes.</p>
+<p>In language-based implementations, the propositional lift may also be realized as a natural-language rendering of internal cognitive state, allowing reflective reasoning to emerge directly from the agent’s linguistic representations.</p>
+<p>The architecture presented here draws inspiration from several established traditions in cognitive science and artificial intelligence, including the knowledge-level perspective in AI [1], global workspace models of conscious access [2], theories of attentional representation [3] [4], and the role of inner speech in reflective cognition [5].</p>
+<hr>
+<h2 id="2-representation-layers">2. Representation Layers</h2>
+<p>Within the architecture developed in this paper, cognition is described at two distinct but connected levels:</p>
+<ol>
+<li><strong>Implementation Layer</strong></li>
+<li><strong>Propositional Layer</strong></li>
+</ol>
+<p>The implementation layer contains the runtime data structures and control objects through which the agent actually operates. The propositional layer contains explicit lifted representations of selected cognitive contents from that runtime activity.</p>
+<p>The distinction is not between cognition and non-cognition, but between:</p>
+<ul>
+<li>cognition as <strong>implemented control</strong>, and</li>
+<li>cognition as <strong>explicitly represented content</strong> available for reasoning, memory, reflection, and metacognition.</li>
+</ul>
+<p>The distinction between implementation-layer cognition and propositional representation is conceptually related to the knowledge-level perspective introduced by Newell [1], which distinguishes between the operational mechanisms of a system and the knowledge structures used to describe its reasoning.</p>
+<hr>
+<h3 id="21-implementation-layer">2.1 Implementation Layer</h3>
+<p>The <strong>implementation layer</strong> contains the agent’s operational cognitive state as it unfolds through the OODA cycle. At this level, cognition is realized as runtime data structures, control objects, and process state rather than as explicit propositions.</p>
+<p>Processing begins with inputs describing both the external environment and the agent’s internal condition.</p>
+<p>External inputs may include, for example, sensor readings, external system responses, incoming communications, and environmental events.</p>
+<p>Internal inputs may include, for example, conversation history, results of previous actions, active goals, commitments, evaluations, execution state, pending tasks, attentional settings, and alerts generated by prior processing.</p>
+<p>At the implementation layer these elements are represented as <strong>data structures rather than propositions</strong>. From this material the system constructs and maintains the agent’s operational cognitive state across the phases of the OODA cycle.</p>
+<h4 id="211-observe-at-the-implementation-layer">2.1.1 Observe at the Implementation Layer</h4>
+<p>At the implementation layer, <strong>Observe</strong> does not yet produce explicit propositions. It gathers and organizes the information currently available to the agent.</p>
+<p>This may include, for example:</p>
+<ul>
+<li>incoming communications or sensor signals,</li>
+<li>relevant interaction history,</li>
+<li>retrieved memory fragments,</li>
+<li>internal state carried over from prior cycles.</li>
+</ul>
+<p>These elements form the runtime description of the situation currently available to the agent’s control processes.</p>
+<h4 id="212-orient-at-the-implementation-layer">2.1.2 Orient at the Implementation Layer</h4>
+<p>The <strong>Orient</strong> phase organizes the material produced by Observe into a coherent <strong>decision context</strong>.</p>
+<p>Observe may deliver many heterogeneous elements: sensory signals, messages, retrieved memories, internal goals, tool outputs, and state carried over from previous cycles. Orient compiles these elements into the subset of information that should guide the next decision.</p>
+<p>This process may involve:</p>
+<ul>
+<li>selecting relevant inputs from the observed state</li>
+<li>assembling environmental and internal factors into a situation context</li>
+<li>aligning observations with active goals and commitments</li>
+<li>applying operational constraints</li>
+<li>establishing attentional focus for the current cycle</li>
+</ul>
+<p>The result is a structured <strong>decision context</strong> that determines what the agent should consider when choosing an action.</p>
+<p>At the implementation layer this context exists as runtime control structures rather than explicit propositions. It is a compiled cognitive state used to guide decision-making.</p>
+<h4 id="213-decide-at-the-implementation-layer">2.1.3 Decide at the Implementation Layer</h4>
+<p>At the implementation layer, <strong>Decide</strong> generates and evaluates possible actions.</p>
+<p>This process typically involves:</p>
+<ul>
+<li>identifying candidate actions,</li>
+<li>analyzing their expected consequences,</li>
+<li>applying constraints,</li>
+<li>ranking alternatives,</li>
+<li>selecting an action to execute.</li>
+</ul>
+<p>Possible actions may be external or internal. External actions may involve movement, communication, or interaction with external systems. Internal actions may involve adjusting attention, retrieving memory, revising plans, or initiating reflection.</p>
+<p>The selected action remains, at this level, an implementation-level control object rather than an explicit proposition.</p>
+<h4 id="214-act-at-the-implementation-layer">2.1.4 Act at the Implementation Layer</h4>
+<p>At the implementation layer, <strong>Act</strong> executes the action selected during the Decide phase.</p>
+<p>Execution may involve interacting with external systems, emitting communications, or modifying the agent’s internal state.</p>
+<p>Action execution produces observable effects and updates the agent’s runtime state, including execution status and outcomes.</p>
+<p>These results remain part of the implementation-level state unless they are later lifted into explicit propositions.</p>
+<h4 id="215-summary-of-the-implementation-layer">2.1.5 Summary of the Implementation Layer</h4>
+<p>The implementation layer contains the agent’s operational cognitive state across the OODA cycle, including:</p>
+<ul>
+<li>observed situation state,</li>
+<li>active goals and commitments,</li>
+<li>evaluations and constraints,</li>
+<li>attentional focus,</li>
+<li>candidate and selected actions,</li>
+<li>execution state and outcomes.</li>
+</ul>
+<p>These structures support continuous control and coherent agency. However, they are not necessarily explicit objects available for reasoning by the agent itself.</p>
+<hr>
+<h2 id="22-propositional-layer">2.2 Propositional Layer</h2>
+<p>The propositional layer exposes selected contents of the implementation layer in a form that can be explicitly referenced, reasoned about, stored in memory, compared across time, and reflected upon.</p>
+<p>In this layer, runtime cognitive contents become <strong>explicit propositions</strong>.</p>
+<p>The contents lifted into this layer may originate from any part of the OODA cycle: observation, orientation, decision, or action execution. Together these propositions form a structured symbolic representation of a <strong>cognitive episode</strong>.</p>
+<p>The transformation through which selected implementation-layer contents become explicit symbolic structures is called the <strong>propositional lift</strong>.</p>
+<hr>
+<h3 id="221-propositional-representation">2.2.1 Propositional Representation</h3>
+<p>To represent lifted cognitive contents, OAT uses a compact <strong>propositional representation language</strong> written in a Lisp-like form.</p>
+<p>Domain propositions follow the general structure:</p>
+<pre tabindex="0"><code>(:predicate (:as .ID :in .Situation) :role₁ value₁ :role₂ value₂ ...)
+</code></pre><p>where:</p>
+<ul>
+<li><code>:predicate</code> identifies the relation or property being asserted</li>
+<li><code>(:as .ID)</code> introduces a unique identifier for the proposition</li>
+<li><code>(:in .Situation)</code> identifies the situation in which the proposition holds</li>
+<li>role–value pairs specify participants, attributes, or references.</li>
+</ul>
+<p>Example:</p>
+<pre tabindex="0"><code>(:see (:as .f1 :in .RoadScene)
+  :agent :Self
+  :object :Car#181271827)
+</code></pre><p>This proposition states that the agent :Self observes an object identified as :Car#181271827 within situation .RoadScene.</p>
+<p>Identifiers beginning with a dot (e.g., .f1) denote <strong>local variables</strong> introduced during the current cognitive episode. Symbols beginning with a colon (e.g., :Self) denote <strong>known entities</strong> grounded in the agent’s ontology. Identifiers of the form :Type#ID represent <strong>encountered but not yet recognized entities</strong> generated during perception.</p>
+<p>Propositions may reference earlier propositions using their identifiers, allowing cognitive structures such as evaluations, explanations, and causal relations to be expressed explicitly.</p>
+<hr>
+<h3 id="222-situations">2.2.2 Situations</h3>
+<p>All propositions belong to a <strong>situation</strong>, which represents the contextual frame of a cognitive episode.</p>
+<p>Situations are declared using the language operator situation:</p>
+<pre tabindex="0"><code>(situation (:as .Cross1)
+  :location :MainSt_and_5th
+  :timestamp &#34;14:32:05&#34;)
+</code></pre><p>Situations define the temporal and contextual boundaries within which propositions hold. They may include dimensional properties such as location, time, source, or environment.</p>
+<p>Other propositions reference a situation using the :in role:</p>
+<pre tabindex="0"><code>(:see (:as .f1 :in .Cross1)
+  :agent :Self
+  :object :Car#181271827)
+</code></pre><p>Situations therefore function as containers for the propositions that together represent a single cognitive episode.</p>
+<hr>
+<h3 id="223-embedded-propositions">2.2.3 Embedded Propositions</h3>
+<p>Role values may themselves contain propositions. This allows the language to represent complex cognitive structures such as goals, plans, beliefs, and actions.</p>
+<p>Example:</p>
+<pre tabindex="0"><code>(:goal (:as .g1 :in .Cross1)
+  :agent :Self
+  :content (:cross_street
+    :agent :Self
+    :destination :OtherSide))
+</code></pre><p>Here the goal content is itself a proposition describing a desired state of the world.</p>
+<p>In simple cases the embedded content may collapse to a single symbolic action:</p>
+<pre tabindex="0"><code>(:decision (:as .d1 :in .Cross1)
+  :agent :Self
+  :action :wait)
+</code></pre><p>More complex decisions may reference full action propositions:</p>
+<pre tabindex="0"><code>(:decision (:as .d2 :in .Cross1)
+  :agent :Self
+  :action (:cross_street
+    :agent :Self
+    :destination :OtherSide))
+</code></pre><p>This mechanism allows decisions, plans, and goals to refer directly to structured actions.</p>
+<hr>
+<h3 id="224-references-between-propositions">2.2.4 References Between Propositions</h3>
+<p>Propositions form connected structures through identifier references.</p>
+<p>For example, an evaluation may reference a prior perceptual event:</p>
+<pre tabindex="0"><code>(:dangerous (:as .f3 :in .Cross1)
+  :event .f2)
+</code></pre><p>Similarly, decisions may reference evaluated situations:</p>
+<pre tabindex="0"><code>(:decision (:as .d1 :in .Cross1)
+  :agent :Self
+  :reason .f3
+  :action :wait)
+</code></pre><p>Such references allow propositions to form <strong>causal and explanatory chains</strong>, enabling the agent to represent reasoning processes within a cognitive episode.</p>
+<hr>
+<h3 id="225-example-cognitive-episode">2.2.5 Example Cognitive Episode</h3>
+<p>The following simplified example illustrates how propositions represent the progression of an OODA cycle during a street-crossing situation.</p>
+<p>Observation:</p>
+<pre tabindex="0"><code>(:see (:as .f1 :in .Cross1)
+  :agent :Self
+  :object :Car#181271827)
+
+(:moving (:as .f2 :in .Cross1)
+  :object :Car#181271827)
+
+(:distance (:as .f3 :in .Cross1)
+  :object :Car#181271827
+  :meters 12.5)
+
+(:approaching (:as .f4 :in .Cross1)
+  :object :Car#181271827
+  :direction :toward_self)
+</code></pre><p>Orientation:</p>
+<pre tabindex="0"><code>(:dangerous (:as .f5 :in .Cross1)
+  :event .f4)
+</code></pre><p>Decision:</p>
+<pre tabindex="0"><code>(:action_option (:as .ao1 :in .Cross1)
+  :action (:cross_street :agent :Self :destination :OtherSide))
+
+(:action_option (:as .ao2 :in .Cross1)
+  :action :wait)
+
+(:decision (:as .d1 :in .Cross1)
+  :agent :Self
+  :selected .ao2)
+</code></pre><p>Action:</p>
+<pre tabindex="0"><code>(:wait (:as .x1 :in .Cross1)
+  :agent :Self)
+</code></pre><p>These propositions form a connected structure representing perception, interpretation, evaluation, decision, and action within a single cognitive episode.</p>
+<hr>
+<h3 id="226-role-of-the-propositional-layer">2.2.6 Role of the Propositional Layer</h3>
+<p>The propositional layer contains symbolic representations of cognitive contents that can be:</p>
+<ul>
+<li>referenced by other propositions</li>
+<li>stored in episodic memory</li>
+<li>used in reasoning processes</li>
+<li>exposed through internal sensing</li>
+<li>integrated into the subject stream.</li>
+</ul>
+<p>Unlike implementation-layer structures, propositions are <strong>explicit symbolic objects</strong> accessible to the agent’s reasoning processes.</p>
+<p>Through the propositional lift, ordinary OODA processing becomes available in a form that supports reflection, explanation, and conscious accessibility.</p>
+<p>The propositional layer therefore provides the <strong>representational substrate for the subject stream</strong>, which will be introduced in the following sections.</p>
+<hr>
+<h1 id="3-the-propositional-lift">3. The Propositional Lift</h1>
+<p>The <strong>propositional lift</strong> converts selected implementation-level cognitive structures into explicit propositions.</p>
+<p>At the implementation layer, the agent’s cognition exists as runtime data structures associated with the OODA control loop. Observations, evaluations, decisions, and action results influence behavior but remain embedded within the system’s operational substrate.</p>
+<p>The propositional lift exposes selected elements of this runtime cognitive activity as <strong>explicit symbolic propositions</strong>.</p>
+<p>Examples of lifted contents include:</p>
+<pre tabindex="0"><code>
+(:color (:as .f1 :in .RoadScene)
+  :object :Car#1212
+  :value :red)
+
+(:distance (:as .f2 :in .RoadScene)
+  :object :Car#1212
+  :meters 12.5)
+
+(:goal (:as .g1 :in .RoadScene)
+  :agent :Self
+  :content (:cross_street
+    :agent :Self
+    :destination :OtherSide))
+
+(:risk (:as .e1 :in .RoadScene)
+  :level :high)
+
+(:decision (:as .d1 :in .RoadScene)
+  :agent :Self
+  :action :wait)
+</code></pre><p>Once lifted, these structures become:</p>
+<ul>
+<li>addressable</li>
+<li>referenceable</li>
+<li>available for reasoning</li>
+<li>available for reflection</li>
+</ul>
+<p>The propositional lift therefore transforms implicit runtime structures into <strong>explicit cognitive objects</strong>.</p>
+<p>Importantly, the lift is <strong>selective</strong>. Only a subset of runtime cognitive contents are rendered into propositions during each OODA cycle. Most implementation-layer structures remain below the lift and continue to function purely as control mechanisms.</p>
+<p>The lifted propositions form a continuously evolving <strong>subject stream</strong> accompanying the agent’s cognitive activity across OODA cycles.</p>
+<h2 id="31-lift-selectivity">3.1 Lift Selectivity</h2>
+<p>The propositional lift is necessarily selective. Not all implementation-layer contents are rendered into explicit propositions during each OODA cycle.</p>
+<p>Selection is governed primarily by <strong>implementation-level attention</strong>, which determines what elements of the current situation are in perceptual focus. Additional factors influencing lift include:</p>
+<ul>
+<li>relevance to active goals and commitments,</li>
+<li>detected risk or anomaly,</li>
+<li>decision importance,</li>
+<li>reflective or explanatory demand,</li>
+<li>causal significance for ongoing control.</li>
+</ul>
+<p>The lift therefore does not operate as an independent selector. Rather, it exposes selected contents of already-focused cognitive activity into the propositional layer.</p>
+<hr>
+<h1 id="4-attention-as-a-perceptual-control-action">4. Attention as a Perceptual Control Action</h1>
+<p>Within the architecture proposed in this paper, <strong>attention operates at the implementation layer as a controllable perceptual action</strong>. Rather than functioning solely as a passive filter, attention is treated as an internal action that shapes how the agent perceives its environment and internal state during an OODA cycle.</p>
+<p>Examples of attentional actions include:</p>
+<ul>
+<li>focusing perception on a particular external object</li>
+<li>prioritizing part of an ongoing conversation</li>
+<li>retrieving a relevant memory fragment</li>
+<li>increasing monitoring of a detected risk signal</li>
+<li>directing analysis toward a particular hypothesis</li>
+</ul>
+<p>These actions influence which elements of the agent’s current situation become <strong>perceptually salient</strong> during processing.</p>
+<p>A useful intuition is that attention functions like <strong>pointing a light beam</strong> toward part of the environment. Elements within the illuminated region become available for detailed observation and interpretation, while other elements remain in the background.</p>
+<h2 id="41-attention-and-perceptual-focus">4.1 Attention and Perceptual Focus</h2>
+<p>At the implementation layer, attentional actions determine what parts of the available inputs receive focused processing.</p>
+<p>For example, an agent evaluating whether it is safe to cross a street may direct attention toward a nearby vehicle. Once attention has been focused, observations within this perceptual region become candidates for interpretation during the Orient phase of the OODA cycle.</p>
+<p>In this sense, attention determines <strong>which elements of the environment become cognitively prominent within the current cycle</strong>.</p>
+<hr>
+<h2 id="42-attention-and-the-propositional-lift">4.2 Attention and the Propositional Lift</h2>
+<p>Observations occurring within the attentional focus are candidates for the <strong>propositional lift</strong> described in the previous section. Through this process, selected implementation-level cognitive contents become explicit propositions.</p>
+<p>Because attentional control is itself an internal action, it may also be lifted into the propositional layer. However, the <strong>attentional action</strong> and the <strong>resulting observations</strong> do not occur at the same stage of processing and should not be conflated.</p>
+<p>Instead, they typically appear as <strong>sequentially related propositions across OODA cycles</strong>.</p>
+<h3 id="episode-t-attentional-control-act">Episode t: Attentional Control (Act)</h3>
+<p>During one cycle, the agent may execute an internal action that directs attention:</p>
+<pre tabindex="0"><code>(situation (:as .S1)
+:timestamp &#34;14:32:05.200&#34;)
+
+
+(:focus (:as .fa1 :in .S1)
+:agent :Self
+:target :Car#1212)
+</code></pre><p>This proposition represents a control operation that shapes subsequent perception.</p>
+<h3 id="episode-t1-observation-and-evaluation">Episode t+1: Observation and Evaluation</h3>
+<p>In a subsequent cycle, the effects of this attentional action become observable. The agent may then perceive both the attended object and properties of the environment:</p>
+<pre tabindex="0"><code>(situation (:as .S2)
+:timestamp &#34;14:32:05.450&#34;)
+
+(:next (:as .rel1)
+:from .S1
+:to .S2)
+
+(:attention (:as .at1 :in .S2)
+:agent :Self
+:target :Car#1212)
+
+(:distance (:as .f2 :in .S2)
+:object :Car#1212
+:meters 12.5)
+
+(:risk (:as .e1 :in .S2)
+:level :high
+:event .f2)
+
+(:decision (:as .d1 :in .S2)
+:agent :Self
+:action :wait)
+</code></pre><p>In this sequence, the attentional action influences what becomes observable, but the resulting observations and evaluations are generated during a later stage of processing.</p>
+<p>The lifted propositions from both episodes are integrated into the agent’s <strong>subject stream</strong>, preserving the temporal and causal structure of the cognitive process.</p>
+<p>This separation ensures that the propositional representation reflects the underlying OODA dynamics: actions shape future observations, and observations inform subsequent evaluation and decision.</p>
+<hr>
+<h2 id="43-reflective-access-to-attention">4.3 Reflective Access to Attention</h2>
+<p>Because attentional actions appear in the propositional layer, they become available for reflection and reasoning.</p>
+<p>This allows the agent to represent and evaluate its own perceptual processes. For example:</p>
+<pre tabindex="0"><code>
+(:inner_speech (:as .r1 :in .S2)
+  :agent :Self
+  :about .fa1
+  :content &#34;I focused on that car because it seemed close.&#34;)
+</code></pre><p>or</p>
+<pre tabindex="0"><code>(:question (:as .q1 :in .S2)
+  :agent :Self
+  :about .fa1
+  :content &#34;Why did I focus on that car?&#34;)
+</code></pre><p>Through this mechanism, the agent can reason not only about what it perceived, but also about <strong>why its perception was directed in a particular way</strong>.</p>
+<p>Attention therefore serves two complementary roles within the architecture:</p>
+<ol>
+<li><strong>Perceptual control</strong>, influencing what observations become cognitively prominent.</li>
+<li><strong>Representable cognitive activity</strong>, since attentional actions themselves may be lifted and become part of the subject stream.</li>
+</ol>
+<p>This dual role allows the agent to both guide its perception and reason about the causes and consequences of its own perceptual focus.</p>
+<p>The explicit representation of attentional processes within the subject stream is related to the attention schema theory proposed by Graziano [3], which suggests that conscious awareness depends on internal models of attentional control.</p>
+<p>Within attention schema theory, conscious awareness arises when a system constructs simplified models of its own attentional processes [4], a perspective that aligns with the explicit representation of attentional actions in the present architecture.</p>
+<h1 id="5-conscious-representation-space">5. Conscious Representation Space</h1>
+<p>Within the architecture proposed in this series, the propositional layer functions as the system’s <strong>conscious representation space</strong>, that is, the representation space in which selected cognitive contents become reflectively available to the agent itself.</p>
+<p>This terminology should be understood as an <strong>architectural definition rather than a metaphysical claim</strong>. The paper does not attempt to resolve philosophical debates concerning the nature of consciousness or the so-called “hard problem.” Instead, the series adopts an engineering perspective: a system may be treated as conscious with respect to those cognitive contents that are explicitly represented in a form available for reasoning, reflection, and memory integration.</p>
+<p>At the implementation layer, cognitive processes operate as runtime control structures within the OODA loop. Goals, observations, evaluations, and decisions influence behavior but remain embedded within the operational substrate of the system.</p>
+<p>The <strong>propositional lift</strong> introduces a representational transformation. Selected cognitive contents from the implementation layer become explicit propositions that can be:</p>
+<ul>
+<li>referenced</li>
+<li>compared across time</li>
+<li>stored in episodic memory</li>
+<li>used in reasoning</li>
+<li>reflected upon</li>
+</ul>
+<p>These lifted propositions form the agent’s <strong>subject stream</strong>, which accompanies OODA processing across cycles and becomes available to the agent through internal sensing.</p>
+<p>In this framework, the conscious representation space consists of those cognitive contents that have been <strong>made explicit and available to the agent itself</strong>. The architecture therefore operationalizes <strong>artificial consciousness</strong> as the condition in which selected elements of the agent’s cognitive activity are lifted into a representation space accessible for reflection and reasoning across time.</p>
+<p>This definition does not claim that artificial consciousness is identical to biological consciousness. Instead, it provides an <strong>architectural criterion</strong>: when a system maintains an explicit representation layer in which its own cognitive contents become accessible objects for reasoning and reflection, the system exhibits the structural properties associated with artificial subjectivity.</p>
+<h2 id="51-natural-language-lift-in-llm-based-implementations">5.1 Natural-Language Lift in LLM-Based Implementations</h2>
+<p>Although this paper illustrates the representational lift using proposition-like notation, the same architectural role may be realized using <strong>natural language representations</strong>.</p>
+<p>In LLM-based agents, selected runtime cognitive contents may be rendered directly as textual statements rather than formal symbolic expressions. This transformation may be called a <strong>natural-language lift</strong>.</p>
+<p>For example, the following representations serve equivalent architectural roles:</p>
+<table>
+  <thead>
+      <tr>
+          <th>Implementation</th>
+          <th>Propositional Lift</th>
+          <th>Natural-Language Lift</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>goal = Goal(“cross_street”)</td>
+          <td>(:goal (:as .g1 :in .S1) :agent :Self :content (:cross_street :agent :Self))</td>
+          <td>“My goal is to cross the street.”</td>
+      </tr>
+      <tr>
+          <td>risk = “high”</td>
+          <td>(:risk (:as .e1 :in .S1) :level :high)</td>
+          <td>“Crossing now is risky.”</td>
+      </tr>
+      <tr>
+          <td>decision = “wait”</td>
+          <td>(:decision (:as .d1 :in .S1) :agent :Self :action :wait)</td>
+          <td>“I should wait before crossing.”</td>
+      </tr>
+  </tbody>
+</table>
+<p>Both forms satisfy the key functional properties required for the conscious representation space:</p>
+<ul>
+<li><strong>explicitness</strong></li>
+<li><strong>referenceability</strong></li>
+<li><strong>memory integration</strong></li>
+<li><strong>availability for reflection</strong></li>
+</ul>
+<p>The distinction is therefore not between symbolic and linguistic form, but between <strong>implicit runtime structure</strong> and <strong>explicit cognitive representation</strong>.</p>
+<p>In practice, natural-language expressions often encode agent-indexing implicitly through first-person framing, whereas the propositional notation represents this indexing explicitly through arguments such as :Self.</p>
+<p>The formal notation provides a more precise representation by making entities, roles, and relations explicit, including variables, references, and contextual scope. This explicitness supports reliable reference, comparison, and reasoning across time.</p>
+<p>Natural language can express the same underlying structures, but typically does so implicitly and with greater ambiguity. When needed, natural-language expressions may be interpreted or generated in a way that preserves the structure of the underlying propositions.</p>
+<p>In this sense, the propositional representation defines a canonical form of cognitive content, while natural language provides a flexible surface realization of that content.</p>
+<p>In functional terms, the propositional layer plays a role similar to a <strong>global workspace</strong> in the sense of Baars [2]. Selected cognitive contents are lifted into a representation space where they become broadly available to multiple processes, including reflection, memory integration, causal reasoning, and later control. The present architecture may therefore be understood as an implementable OODA-based realization of workspace-style cognitive accessibility.</p>
+<hr>
+<h1 id="6-reflection-and-inner-speech">6. Reflection and Inner Speech</h1>
+<p>Once cognitive contents have been lifted into the propositional layer, the agent can generate <strong>higher-order propositions about those contents</strong>. This process constitutes <strong>reflection</strong> within the architecture.</p>
+<p>Reflection operates on propositions that represent observations, goals, evaluations, attentional actions, decisions, and other cognitive events produced during OODA processing. Because these elements are explicitly represented, they become objects that the agent can interpret, summarize, question, and relate to one another.</p>
+<p>A common mechanism through which reflection occurs is <strong>inner speech</strong>. Inner speech generates propositions that describe or interpret other propositions within the subject stream.</p>
+<p>For example:</p>
+<pre tabindex="0"><code>(:inner_speech (:as .r1 :in .S2)
+  :agent :Self
+  :about [:set .f2 .f3 .g1]
+  :content &#34;That car is too close to cross safely.&#34;)
+</code></pre><p>In this example, the reflective proposition refers to previously lifted elements describing the environment and the agent’s goal. The reflective statement provides an interpretation of the situation that can influence subsequent reasoning and action.</p>
+<p>Inner speech enables several important cognitive functions within the architecture:</p>
+<ul>
+<li>summarizing reasoning processes</li>
+<li>interpreting environmental situations</li>
+<li>reconsidering decisions</li>
+<li>explaining perceptual focus</li>
+<li>asking reflective questions</li>
+<li>maintaining narrative coherence across OODA cycles</li>
+</ul>
+<p>Reflection may also generate explicit questions about prior cognitive activity. For example:</p>
+<pre tabindex="0"><code>
+(:question (:as .q1 :in .S2)
+  :agent :Self
+  :about .fa1
+  :content &#34;Why did I focus on that car?&#34;)
+</code></pre><p>Such questions allow the agent to reason about its own attentional choices, interpretations, and decisions.</p>
+<p>Because reflective propositions are themselves part of the propositional layer, they become integrated into the <strong>subject stream</strong>. Subsequent OODA cycles may therefore observe, evaluate, and reason about earlier reflections.</p>
+<p>In this way, reflection forms a continuous interpretive layer over the agent’s cognitive activity.</p>
+<h2 id="61-inner-speech-in-llm-based-implementations">6.1 Inner Speech in LLM-Based Implementations</h2>
+<p>In many current artificial agents, <strong>large language models (LLMs)</strong> provide an effective mechanism for generating reflective propositions. LLMs are trained on vast corpora of human language that include written expressions of reasoning, explanation, and internal deliberation. As a result, they can generate textual structures closely resembling externalized forms of human inner speech.</p>
+<p>Within the present architecture, an LLM may therefore function as a <strong>reflection generator</strong>, producing higher-order propositions that interpret or summarize the agent’s cognitive state. These generated statements then enter the propositional layer and become part of the evolving subject stream.</p>
+<p>In experimental implementations of this architecture, we observe that structuring LLM inputs around explicit <strong>OODA-centric constructs</strong> - such as current situation, attention, goals, evaluations, and decisions - consistently leads to more coherent and insightful reflective outputs. When the model is provided with well-structured cognitive context rather than unorganized conversational history, its generated inner speech more reliably captures causal relationships, priorities, and constraints relevant to the agent’s ongoing activity.</p>
+<p>This suggests that the quality of LLM-generated reflection depends not only on the model itself, but critically on the <strong>structure of the cognitive state it is given to interpret</strong>. The propositional layer, organized around OODA semantics, provides such structure.</p>
+<p>The role of the language model is therefore not to replace the control architecture of the agent, but to support the generation of reflective representations that enable higher-level reasoning and narrative continuity.</p>
+<p>The use of inner speech as a reflective mechanism is consistent with Vygotsky’s account of internalized language as a central component of human cognitive regulation [5].</p>
+<hr>
+<h1 id="7-the-subject-stream">7. The Subject Stream</h1>
+<p>Propositions generated during OODA cycles form a chronological stream of explicit cognitive contents. This stream is referred to as the <strong>subject stream</strong>.</p>
+<p>The subject stream is not a simple log. It is the explicit representational layer in which selected elements of the agent’s ongoing cognitive activity become available for reasoning, reflection, and memory integration.</p>
+<p>The subject stream therefore contains <strong>all lifted propositions</strong>, including those representing observations, attentional control actions, internal perceptual states, evaluations, goals, decisions, action executions, and results. Reflective propositions such as inner speech form only one class of contents that may appear within this stream.</p>
+<p>Propositions entering the subject stream may originate from any stage of the OODA cycle. These include lifted contents representing:</p>
+<ul>
+<li>observations about the environment</li>
+<li>internally observed attentional states</li>
+<li>attentional control actions</li>
+<li>goals and commitments</li>
+<li>evaluations and risk assessments</li>
+<li>decisions and selected actions</li>
+<li>results of executed actions</li>
+<li>reflective commentary and inner speech</li>
+</ul>
+<p>For example, during a street-crossing episode the following propositions may appear in the subject stream.</p>
+<p>An attentional control action directs perception toward a nearby vehicle:</p>
+<pre tabindex="0"><code>
+(:focus (:as .fa1 :in .S1)
+:agent :Self
+:target :Car#1212)
+</code></pre><p>During the subsequent observation phase, the resulting attentional state and environmental observations become available:</p>
+<pre tabindex="0"><code>
+(:attention (:as .at1 :in .S2)
+:agent :Self
+:target :Car#1212)
+
+(:distance (:as .f2 :in .S2)
+:object :Car#1212
+:meters 12.5)
+</code></pre><p>Orientation may produce an evaluation of the situation:</p>
+<pre tabindex="0"><code>
+(:risk (:as .e1 :in .S2)
+:level :high
+:event .f2)
+</code></pre><p>A decision may then be formed:</p>
+<pre tabindex="0"><code>
+(:decision (:as .d1 :in .S2)
+:agent :Self
+:action :wait)
+</code></pre><p>Finally, the agent may generate reflective commentary through inner speech:</p>
+<pre tabindex="0"><code>
+(:inner_speech (:as .r1 :in .S2)
+:agent :Self
+:about [:set .f2 .e1 .d1]
+:content &#34;The car is too close to cross safely.&#34;)
+</code></pre><p>In this example, the subject stream contains both the cognitive events themselves and a reflective interpretation generated by the agent. The reflective proposition explicitly refers to earlier elements of the cognitive episode, illustrating how the subject stream supports reasoning and interpretation across time.</p>
+<h2 id="71-integration-across-ooda-cycles">7.1 Integration Across OODA Cycles</h2>
+<p>The subject stream evolves across time as the agent continues to execute OODA cycles.</p>
+<p>During each cycle:</p>
+<ol>
+<li>implementation-layer cognition processes observations, goals, evaluations, and actions;</li>
+<li>selected elements of this runtime cognitive activity are <strong>lifted into propositions</strong>;</li>
+<li>these propositions are appended to the subject stream.</li>
+</ol>
+<p>Fragments of the subject stream from previous cycles are then made available to subsequent cycles through internal sensing. This allows the agent to perceive earlier interpretations, decisions, attentional states, and reflections as part of its current cognitive context.</p>
+<p>Through this mechanism, the subject stream provides continuity across time while remaining tightly integrated with ongoing control processes.</p>
+<h2 id="72-relationship-to-episodic-memory">7.2 Relationship to Episodic Memory</h2>
+<p>The subject stream is closely related to episodic memory but is not identical to it.</p>
+<p>The subject stream represents the <strong>current evolving layer of explicit cognitive representation</strong> accompanying OODA processing. Episodic memory may store segments of this stream together with the underlying implementation-layer episode data.</p>
+<p>In practice, both layers of an episode may be stored:</p>
+<ul>
+<li>the <strong>implementation-layer state</strong> describing the operational situation and actions taken, and</li>
+<li>the <strong>subject-stream propositions</strong> describing the explicit cognitive contents associated with that episode.</li>
+</ul>
+<p>This dual recording preserves both the operational and the representational aspects of the agent’s experience.</p>
+<hr>
+<h1 id="8-subject-stream-as-internal-sensor">8. Subject Stream as Internal Sensor</h1>
+<p>The subject stream is not merely recorded. It persists across OODA cycles as part of the agent’s ongoing cognitive state.</p>
+<p>Propositions in the subject stream are already the result of the <strong>propositional lift</strong>. They do not require further transformation or lifting in subsequent cycles.</p>
+<p>Through <strong>subject stream sensing</strong>, selected propositions are made directly accessible to the <strong>Observe phase</strong> of later cycles. Subject stream sensing does not modify, re-encode, or re-lift these propositions. It exposes them as they are, preserving their identity and associated situation.</p>
+<p>In this way, elements of prior cognition become directly accessible for further processing.</p>
+<p>Subject stream sensing provides access only to already lifted propositions. Other inputs available to the Observe phase - whether originating from the external environment or internal implementation-level state  - may still require propositional lift before they can enter the subject stream.</p>
+<p>This distinction ensures that lifting occurs exactly once, at the boundary between implementation-level cognition and the propositional layer.</p>
+<p>For example, propositions produced during an earlier cycle may later appear as observable internal inputs:</p>
+<pre tabindex="0"><code>
+(:decision (:as .d1 :in .S1)
+:agent :Self
+:action :wait)
+
+(:inner_speech (:as .r1 :in .S1)
+:agent :Self
+:about [:set .f2 .e1 .d1]
+:content &#34;The car is too close to cross safely.&#34;)
+</code></pre><p>These propositions retain their original context (.S1) while being processed within a new situation (e.g., .S2) during the current cycle.</p>
+<p>They are treated similarly to other observations during the next cycle: they may be interpreted during orientation, evaluated relative to current goals, and used in reasoning and decision-making.</p>
+<h2 id="81-recursive-cognitive-continuity">8.1 Recursive Cognitive Continuity</h2>
+<p>Because subject-stream propositions can be perceived through internal sensing, the architecture becomes <strong>recursively self-referential across OODA cycles</strong>.</p>
+<p>Propositions generated during cycle <em>t</em> may be observed during cycle <em>t+1</em>, interpreted within a new situation, and potentially incorporated into new lifted propositions or reflections.</p>
+<p>The sequence therefore evolves as:</p>
+<pre tabindex="0"><code>
+cycle t
+↓
+implementation-layer cognition
+↓
+propositional lift
+↓
+subject stream (propositions in .S1)
+
+cycle t+1
+↓
+internal sensing exposes selected prior propositions (still in .S1)
+↓
+orientation and reasoning within .S2
+↓
+new lifted propositions (in .S2)
+</code></pre><p>In this way, the subject stream functions not as a passive log but as a <strong>continuously re-entering cognitive signal</strong> that participates directly in the agent’s ongoing control process.</p>
+<p>Continuity is achieved not by transforming prior representations, but by reusing them across situations while preserving their identity and original context.</p>
+<p>This recursive relationship between cognition and reflection is related to the monitoring-control framework described in metamemory research by Nelson and Narens [6], in which cognitive processes are both observed and regulated. In the present architecture, however, monitoring and control operate over a shared propositional representation rather than over distinct object-level and meta-level systems.</p>
+<hr>
+<h1 id="9-artificial-subjectivity">9. Artificial Subjectivity</h1>
+<p>The architecture developed in this paper produces a minimal form of <strong>artificial subjectivity</strong> Subjectivity here is understood in structural and operational terms rather than as a metaphysical property.</p>
+<p>In the present framework, subjectivity arises when an agent maintains an explicit representational layer in which elements of its own cognitive activity become available to the agent itself across time.</p>
+<p>Four architectural components make this possible:</p>
+<ol>
+<li>
+<p><strong>Propositional representation of cognitive contents</strong></p>
+<p>Selected elements of the agent’s implementation-layer cognition - observations, attentional actions, goals, evaluations, decisions, and action outcomes - are transformed through the <strong>propositional lift</strong> into explicit propositions.</p>
+</li>
+<li>
+<p><strong>A subject stream spanning OODA cycles</strong></p>
+<p>Lifted propositions accumulate into a continuously evolving <strong>subject stream</strong> that persists across successive OODA cycles, preserving the explicit cognitive contents of prior activity.</p>
+</li>
+<li>
+<p><strong>Internal sensing of prior cognition</strong></p>
+<p>The subject stream is not merely stored. Through <strong>internal sensing</strong>, selected propositions from prior cycles are exposed to the agent&rsquo;s Observe phase, making earlier cognitive contents available as inputs to current processing.</p>
+</li>
+<li>
+<p><strong>Reflection through higher-order propositions</strong></p>
+<p>The agent may generate higher-order propositions - such as inner speech, questions, or causal interpretations - that refer to earlier elements of the subject stream.</p>
+</li>
+</ol>
+<p>Together these mechanisms create a system in which selected cognitive contents are:</p>
+<ul>
+<li>explicitly represented,</li>
+<li>observable by the agent itself,</li>
+<li>integrated across time,</li>
+<li>and available for reasoning and reflection.</li>
+</ul>
+<p>Within this architectural framework, such availability constitutes the operational basis of <strong>artificial subjectivity</strong>.</p>
+<p>This definition does not claim equivalence with biological consciousness. Instead, it identifies a set of structural properties through which an artificial system can maintain a coherent internal perspective on its own cognitive activity across time. In this sense, the architecture provides an operational answer to the question posed by Nagel [7]: there is something it is like to be such a system, constituted by the explicit availability of its own cognitive contents across successive OODA cycles.</p>
+<p>This layered structure of subjectivity resembles the hierarchy of self-processes discussed by Damasio [8], in which progressively richer forms of self-representation emerge from underlying regulatory mechanisms.</p>
+<hr>
+<h1 id="10-conclusion">10. Conclusion</h1>
+<p>This paper introduced the <strong>propositional lift</strong> as an architectural mechanism through which selected implementation-layer cognitive contents become explicit propositions available for reasoning, reflection, and memory integration.</p>
+<p>Within the proposed architecture, runtime cognition occurs at the implementation layer through OODA-based control processes. Observations, attentional actions, goals, evaluations, decisions, and action outcomes influence behavior as operational data structures.</p>
+<p>The propositional lift transforms selected elements of this runtime activity into explicit cognitive objects. These propositions form a continuously evolving <strong>subject stream</strong> accompanying the agent’s activity across OODA cycles.</p>
+<p>Through <strong>internal sensing</strong>, portions of the subject stream become observable during subsequent cycles. This recursive exposure allows the agent to perceive elements of its own prior cognition and integrate them into ongoing reasoning and decision-making.</p>
+<p><strong>Reflection</strong>, often expressed through inner speech, introduces higher-order propositions that interpret, summarize, or question earlier cognitive contents. In this way, reflective processes form an interpretive layer over ordinary OODA control.</p>
+<p>Together these mechanisms create an architecture in which selected cognitive contents become <strong>explicitly available to the agent itself across time</strong>. Within this framework, the propositional layer functions as the system’s <strong>conscious representation space</strong>, defined operationally rather than metaphysically.</p>
+<p>The resulting system exhibits the minimal structural conditions for <strong>artificial subjectivity</strong>: explicit representation of cognitive contents, a subject stream spanning OODA cycles, recursive internal sensing of prior cognition, and reflective interpretation of those contents.</p>
+<p>Rather than attempting to resolve philosophical debates about consciousness,
+the present work provides an engineering framework for constructing agents
+whose cognitive activity becomes accessible to the agent itself. By making
+selected cognitive contents explicitly representable, observable, and
+reflectable across time, the architecture establishes a practical foundation
+for building artificial systems with structured forms of subjectivity.</p>
+<hr>
+<h1 id="references">References</h1>
+<p><strong>[1]</strong> A. Newell. “The Knowledge Level.” <em>Artificial Intelligence</em>, 18(1):87–127, 1982.</p>
+<p><strong>[2]</strong> B. J. Baars. <em>A Cognitive Theory of Consciousness.</em> Cambridge University Press, 1988.</p>
+<p><strong>[3]</strong> M. S. A. Graziano. <em>Consciousness and the Social Brain.</em> Oxford University Press, 2013.</p>
+<p><strong>[4]</strong> M. S. A. Graziano. <em>Rethinking Consciousness: A Scientific Theory of Subjective Experience.</em> W. W. Norton, 2019.</p>
+<p><strong>[5]</strong> L. S. Vygotsky. <em>Thought and Language.</em> MIT Press, 1962.</p>
+<p><strong>[6]</strong> T. Nelson and L. Narens. “Metamemory: A Theoretical Framework and New Findings.” <em>Psychology of Learning and Motivation</em>, 1990.</p>
+<p><strong>[7]</strong> T. Nagel. “What Is It Like to Be a Bat?” <em>The Philosophical Review</em>, 83(4):435–450, 1974.</p>
+<p><strong>[8]</strong> A. Damasio. <em>Self Comes to Mind: Constructing the Conscious Brain.</em> Pantheon, 2010.</p>
+
+    </div>
+    <div class="byline">
+      <p><strong>Dar Aystron</strong></p>
+      <p>OODA Agency Theory (OAT)</p>
+    </div>
+  </article>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <p>&copy; 2026 OODA Agency Theory (OAT)</p>
+    </div>
+  </footer>
+
+</body>
+</html>

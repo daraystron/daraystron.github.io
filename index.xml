@@ -6,8 +6,29 @@
     <description>Recent content on Aystron Research Program</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 07 Mar 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 16 Mar 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Lifting the Subject: Phenomenology and the Propositional Lift</title>
+      <link>http://localhost:1313/logs/second_publication/</link>
+      <pubDate>Mon, 16 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/logs/second_publication/</guid>
+      <description>&lt;h1 id=&#34;lifting-the-subject-phenomenology-and-the-propositional-lift&#34;&gt;Lifting the Subject: Phenomenology and the Propositional Lift&lt;/h1&gt;&#xA;&lt;p&gt;&lt;em&gt;The subject exists. Now it can see itself.&lt;/em&gt;&lt;/p&gt;&#xA;&lt;p&gt;The first four papers built the architectural foundation: closure, control, mental states, and action realization. A system that persists, commits, and acts within a continuous OODA loop becomes a subject.&lt;/p&gt;&#xA;&lt;p&gt;Papers 05 and 06 ask what happens next.&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;What&amp;rsquo;s in This Release&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Paper 05 - Artificial Phenomenology and Experiential Structures&lt;/strong&gt; establishes that phenomenology is an architectural property, not a metaphysical mystery. When an agentically closed system maintains internal states that are causally generated through interaction with the world, persist over time, and participate in the agent&amp;rsquo;s control loop, those states constitute a genuine internal point of view. The organized patterns of such states - experiential structures - guide perception, evaluation, and action whether or not the agent can explicitly represent them.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Paper 05 - Artificial Phenomenology and Experiential Structures</title>
+      <link>http://localhost:1313/papers/paper05/</link>
+      <pubDate>Mon, 16 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/papers/paper05/</guid>
+      <description>&lt;h1 id=&#34;artificial-phenomenology-and-experiential-structures&#34;&gt;Artificial Phenomenology and Experiential Structures&lt;/h1&gt;&#xA;&lt;p&gt;&lt;strong&gt;Dar Aystron&lt;/strong&gt;&#xA;&lt;em&gt;Independent Researcher&lt;/em&gt;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;abstract&#34;&gt;Abstract&lt;/h2&gt;&#xA;&lt;p&gt;This section introduces &lt;strong&gt;Artificial Phenomenology&lt;/strong&gt; as an engineered property of agentic systems rather than a metaphysical anomaly. Within OODA Agency Theory (OAT), phenomenology is understood as the &lt;strong&gt;private, agent-relative, and causally grounded internal dynamics&lt;/strong&gt; of a system operating within an agentically closed control architecture. Phenomenology arises when a system maintains persistent identity across time, incorporates its own internal states into observation, and regulates future action in relation to those states. The organized patterns of such internal states are referred to as &lt;strong&gt;experiential structures&lt;/strong&gt;. These structures arise through ongoing interaction between the agent and its environment and guide perception, orientation, decision, and action within the OODA loop. This section establishes artificial phenomenology and experiential structures as foundational concepts for later mechanisms that make aspects of experience explicitly representable within artificial agents.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Paper 06 - The Propositional Lift and the Subject Stream</title>
+      <link>http://localhost:1313/papers/paper06/</link>
+      <pubDate>Mon, 16 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/papers/paper06/</guid>
+      <description>&lt;h1 id=&#34;the-propositional-lift-and-the-subject-stream&#34;&gt;The Propositional Lift and the Subject Stream&lt;/h1&gt;&#xA;&lt;p&gt;&lt;strong&gt;Dar Aystron&lt;/strong&gt;&#xA;&lt;em&gt;Independent Researcher&lt;/em&gt;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;abstract&#34;&gt;Abstract&lt;/h2&gt;&#xA;&lt;p&gt;Earlier papers in this series established the architectural foundations of operationally closed artificial agents based on the OODA loop. Paper 03 introduced mental states as persistent internal structures that support planning and deliberation. Paper 05 explored the emergence of artificial phenomenology as a consequence of agent architecture rather than metaphysical assumptions.&lt;/p&gt;&#xA;&lt;p&gt;This paper introduces a new architectural mechanism: the &lt;strong&gt;propositional lift&lt;/strong&gt;, through which selected runtime cognitive contents become explicit propositions available for reasoning, reflection, and memory. Actions, observations, evaluations, and attentional states may all be lifted into this representation, allowing causal relations among cognitive events to be explicitly represented.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Building the Subject: Foundations of OODA Agency Theory</title>
       <link>http://localhost:1313/logs/first_publication/</link>

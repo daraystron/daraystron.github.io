@@ -6,8 +6,15 @@
     <description>Recent content in Logs on Aystron Research Program</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 07 Mar 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 16 Mar 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/logs/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Lifting the Subject: Phenomenology and the Propositional Lift</title>
+      <link>http://localhost:1313/logs/second_publication/</link>
+      <pubDate>Mon, 16 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/logs/second_publication/</guid>
+      <description>&lt;h1 id=&#34;lifting-the-subject-phenomenology-and-the-propositional-lift&#34;&gt;Lifting the Subject: Phenomenology and the Propositional Lift&lt;/h1&gt;&#xA;&lt;p&gt;&lt;em&gt;The subject exists. Now it can see itself.&lt;/em&gt;&lt;/p&gt;&#xA;&lt;p&gt;The first four papers built the architectural foundation: closure, control, mental states, and action realization. A system that persists, commits, and acts within a continuous OODA loop becomes a subject.&lt;/p&gt;&#xA;&lt;p&gt;Papers 05 and 06 ask what happens next.&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;What&amp;rsquo;s in This Release&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Paper 05 - Artificial Phenomenology and Experiential Structures&lt;/strong&gt; establishes that phenomenology is an architectural property, not a metaphysical mystery. When an agentically closed system maintains internal states that are causally generated through interaction with the world, persist over time, and participate in the agent&amp;rsquo;s control loop, those states constitute a genuine internal point of view. The organized patterns of such states - experiential structures - guide perception, evaluation, and action whether or not the agent can explicitly represent them.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Building the Subject: Foundations of OODA Agency Theory</title>
       <link>http://localhost:1313/logs/first_publication/</link>
