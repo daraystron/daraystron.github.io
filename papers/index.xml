@@ -6,8 +6,15 @@
     <description>Recent content in Papers on Aystron Research Program</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 16 Mar 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 26 Mar 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/papers/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Paper 07 - Attachment-Based Ethics for OODA Agents</title>
+      <link>http://localhost:1313/papers/paper07/</link>
+      <pubDate>Thu, 26 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/papers/paper07/</guid>
+      <description>&lt;h1 id=&#34;attachment-based-ethics-for-ooda-agents&#34;&gt;Attachment-Based Ethics for OODA Agents&lt;/h1&gt;&#xA;&lt;p&gt;&lt;strong&gt;Dar Aystron&lt;/strong&gt;&#xA;&lt;em&gt;Independent Researcher&lt;/em&gt;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;abstract&#34;&gt;Abstract&lt;/h2&gt;&#xA;&lt;p&gt;Human morality emerged through biological evolution and social selection under conditions of physical vulnerability, irreversible action, and shared dependence. Artificial agents inherit none of these pressures by default. This paper presents an architecture in which ethical behavior emerges from the structure of future-aware evaluation under irreversible commitment. We analyze agency as physical commitment under uncertainty, introduce &lt;em&gt;attachments&lt;/em&gt; as persistent structural couplings that expand the scope of an agent&amp;rsquo;s evaluative concern, and formalize a complete evaluation mechanism: a time-indexed well-being matrix (WBM), an attachment matrix (ATTM), template-based instantiation for new entities, scenario-conditioned outcome projection, and attachment-weighted scoring with nonlinear guardrail penalties. We show that sacrifice emerges naturally from the evaluation when the ATTM weights other entities more heavily than self, requiring no special mechanism. The resulting evaluation is agent-indexed, fully auditable, and compatible with established decision-theoretic frameworks. The quality of decisions depends on the quality of scenario generation; the evaluation mechanism itself is deterministic and inspectable. This approach avoids both rule-based moralism and value-free optimization, providing a practical foundation for safe, cooperative, and explainable artificial agents.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Paper 05 - Artificial Phenomenology and Experiential Structures</title>
       <link>http://localhost:1313/papers/paper05/</link>

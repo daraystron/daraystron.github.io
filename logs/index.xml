@@ -6,8 +6,15 @@
     <description>Recent content in Logs on Aystron Research Program</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 16 Mar 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 26 Mar 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/logs/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>From Architecture to Ethics: Attachment-Based Evaluation</title>
+      <link>http://localhost:1313/logs/third_publication/</link>
+      <pubDate>Thu, 26 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/logs/third_publication/</guid>
+      <description>&lt;h1 id=&#34;from-architecture-to-ethics-attachment-based-evaluation&#34;&gt;From Architecture to Ethics: Attachment-Based Evaluation&lt;/h1&gt;&#xA;&lt;p&gt;&lt;em&gt;The agent acts in the world. Now it must care about what happens.&lt;/em&gt;&lt;/p&gt;&#xA;&lt;p&gt;The first six papers built the architecture of agency: closure, control, mental states, action, phenomenology, and the propositional lift. A system that persists, commits, reflects, and acts within a continuous OODA loop becomes a subject with a point of view.&lt;/p&gt;&#xA;&lt;p&gt;Paper 07 asks what happens when that subject shares a world with others.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Lifting the Subject: Phenomenology and the Propositional Lift</title>
       <link>http://localhost:1313/logs/second_publication/</link>

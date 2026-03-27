@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Paper 07 - Attachment-Based Ethics for OODA Agents | Aystron Research Program</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+
+  
+    <link rel="stylesheet" href="/css/site.9cf928ddc7a2077a18b12e2a2bfa1e25b6691284803204bffc85587d12a1ecf7.css">
+  
+</head>
+<body>
+
+  <header class="header">
+    <div class="wrap">
+      <div class="topbar">
+        <div class="brand">
+          <a class="brand__name" href="/">OODA Agency Theory (OAT)</a>
+        </div>
+        <nav class="nav">
+          <a href="/artifacts/oat_summary/">Summary</a>
+          <a href="/papers/">Papers</a>
+          <a href="/logs/">Logs</a>
+          <a href="/about/">About</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="main">
+    <div class="wrap">
+      
+  <article>
+    <div class="content">
+      <h1 id="attachment-based-ethics-for-ooda-agents">Attachment-Based Ethics for OODA Agents</h1>
+<p><strong>Dar Aystron</strong>
+<em>Independent Researcher</em></p>
+<hr>
+<h2 id="abstract">Abstract</h2>
+<p>Human morality emerged through biological evolution and social selection under conditions of physical vulnerability, irreversible action, and shared dependence. Artificial agents inherit none of these pressures by default. This paper presents an architecture in which ethical behavior emerges from the structure of future-aware evaluation under irreversible commitment. We analyze agency as physical commitment under uncertainty, introduce <em>attachments</em> as persistent structural couplings that expand the scope of an agent&rsquo;s evaluative concern, and formalize a complete evaluation mechanism: a time-indexed well-being matrix (WBM), an attachment matrix (ATTM), template-based instantiation for new entities, scenario-conditioned outcome projection, and attachment-weighted scoring with nonlinear guardrail penalties. We show that sacrifice emerges naturally from the evaluation when the ATTM weights other entities more heavily than self, requiring no special mechanism. The resulting evaluation is agent-indexed, fully auditable, and compatible with established decision-theoretic frameworks. The quality of decisions depends on the quality of scenario generation; the evaluation mechanism itself is deterministic and inspectable. This approach avoids both rule-based moralism and value-free optimization, providing a practical foundation for safe, cooperative, and explainable artificial agents.</p>
+<hr>
+<h2 id="1-introduction">1. Introduction</h2>
+<p>Artificial agents are increasingly deployed as autonomous actors in environments where their actions produce irreversible consequences for humans and other agents. Traditional approaches to AI ethics typically treat morality as an external constraint: a set of rules, objectives, or alignment conditions layered atop otherwise goal-driven systems. This framing obscures a more fundamental issue: <strong>agency itself creates moral relevance once it is physically realized in time</strong>.</p>
+<p>Humans did not design their moral instincts; they inherited them through evolution and culture under persistent exposure to risk, dependency, and loss. Artificial agents, by contrast, are engineered artifacts. They do not age, suffer, or form attachments unless explicitly designed to do so. Consequently, artificial morality cannot be expected to emerge automatically. It must be <strong>engineered</strong>, and it must be engineered in a way that remains grounded in the physical realities of action, uncertainty, and shared agency.</p>
+<p>In this paper, we build on prior work on operational agentic closure and OODA-based architectures to argue that <em>attachments</em>-persistent couplings between agents and others across time are a central structural element for robust agency. We introduce a minimal, extensible model of attachment-relevant well-being and show how it naturally gives rise to motivation, lifecycle dynamics, and ethical regularities when integrated into an action-selection loop. We then demonstrate that this evaluation process is fully transparent and inspectable and show how ethical reasoning can be traced, explained, and verified without recourse to external rules or constitutions.</p>
+<p>A note on what this transparency entails. The framework makes ethical evaluation explicit, numerical, and inspectable. This means it also makes it <em>uncomfortable</em>. When an agent&rsquo;s attachment weights are visible, the implicit valuations that every decision-maker carries - that a child&rsquo;s future weighs more than a stranger&rsquo;s, that self-preservation competes with duty, that some entities matter more than others to a given agent - become traceable numbers rather than hidden intuitions.</p>
+<p>This is deliberate. The alternative is not the absence of such weights but their concealment. Every triage decision, every resource allocation, every rules of engagement already embeds these valuations. The contribution of this framework is not to introduce them but to require that they be stated, inspected, and justified - and to provide the machinery for doing so.</p>
+<p>The paper does not claim that any particular attachment configuration is correct. It provides a mechanism through which <em>any</em> configuration produces structured, auditable, reproducible decisions - and through which different configurations can be compared, calibrated against empirical data, and monitored for drift. The ethical question shifts from &ldquo;what is the right answer?&rdquo; to &ldquo;what attachment structure produces acceptable behavior, and can we justify that structure?&rdquo;</p>
+<hr>
+<h2 id="2-constraint-based-ethics-and-its-limitations">2. Constraint-Based Ethics and Its Limitations</h2>
+<h3 id="21-constitutional-ai">2.1 Constitutional AI</h3>
+<p>The most prominent current approach to AI ethics is Constitutional AI (CAI) [1], in which the agent is given a set of principles - a &ldquo;constitution&rdquo; - and trained to produce outputs consistent with those principles.</p>
+<p>The fundamental limitation is structural: a constitutional rule such as &ldquo;Do not harm users&rdquo; is an opaque string. It has no internal structure, no connection to the agent&rsquo;s perceptual or evaluative processes, and no mechanism for the agent to reason about <em>why</em> harm is undesirable, <em>to whom</em> it applies, or <em>under what conditions</em> exceptions might be justified. The agent cannot inspect the rule&rsquo;s basis, trace its implications, or weigh it against competing considerations. It can only comply or violate.</p>
+<h3 id="22-reward-based-alignment">2.2 Reward-Based Alignment</h3>
+<p>Reinforcement learning from human feedback (RLHF) and related approaches encode ethical preferences in a reward signal. The agent learns to produce outputs that maximize reward, where reward has been shaped by human evaluators.</p>
+<p>The ethical content in such systems is implicit - buried in the reward model&rsquo;s parameters. The agent has no explicit representation of who benefits, who is harmed, or why one action is preferred over another. It has learned a policy, not an understanding.</p>
+<h3 id="23-the-common-limitation">2.3 The Common Limitation</h3>
+<p>Both approaches treat ethics as a <strong>behavioral surface</strong>: the agent should do X and avoid Y. Neither provides the agent with the representational machinery to reason about consequences, attachments, irreversibility, or the well-being of others as explicit cognitive content.</p>
+<p>What is missing is an architecture in which ethical considerations are not external constraints but <strong>internal cognitive structures</strong> that participate in observation, orientation, and decision.</p>
+<hr>
+<h2 id="3-agency-as-physical-commitment">3. Agency as Physical Commitment</h2>
+<p>Agency is often discussed in abstract computational terms, but real agents act through physical processes unfolding in time. Once an agent executes an action:</p>
+<ul>
+<li>the world state changes irreversibly,</li>
+<li>future observations are conditioned by that change,</li>
+<li>and the agent must continue acting from within the altered environment.</li>
+</ul>
+<p>This property, which we refer to as <strong>agentic closure</strong>, implies that agency is not merely decision-making but <em>commitment</em>. Decisions become historical facts, and errors accumulate.</p>
+<p>Crucially, physical environments are uncertain. Even highly capable agents operate under partial observability, execution noise, and unmodeled interactions. As a result, <strong>irreversible losses cannot be perfectly avoided</strong>, only managed.</p>
+<hr>
+<h2 id="4-attachments-and-attached-agency">4. Attachments and Attached Agency</h2>
+<h3 id="41-what-is-an-attachment">4.1 What Is an Attachment?</h3>
+<p>An attachment is not a feeling, a preference, or a social bond in the human sense. In this framework, an attachment is a <strong>persistent structural coupling</strong> between the agent and another entity - one that causes the agent&rsquo;s evaluative processes to include that entity&rsquo;s well-being in its own action selection.</p>
+<p>An agent without attachments evaluates actions solely in terms of their consequences for itself. An agent with attachments evaluates actions in terms of their consequences for a wider set of entities. The attachment is what <em>expands the scope of who matters</em> when the agent decides what to do.</p>
+<p>Attachments have several defining properties:</p>
+<ul>
+<li>
+<p><strong>Persistent.</strong> An attachment survives across episodes. It is not recalculated from scratch each time the agent acts. It is a standing structural feature of the agent&rsquo;s evaluative architecture, updated incrementally through experience but not created anew in each situation.</p>
+</li>
+<li>
+<p><strong>Asymmetric.</strong> The agent may weight a user&rsquo;s long-term well-being more heavily than its own. Or it may weight its own short-term viability above all else. The structure is not required to be balanced or reciprocal.</p>
+</li>
+<li>
+<p><strong>Time-indexed.</strong> An attachment is not a single scalar. It distributes weight across time horizons. The agent may care deeply about a user&rsquo;s long-term trajectory while assigning less weight to their immediate comfort. Different time horizons imply different evaluative pressures.</p>
+</li>
+<li>
+<p><strong>Not reciprocal by requirement.</strong> The agent&rsquo;s attachment to a user does not require the user&rsquo;s attachment to the agent. Attachments are internal structural facts about how the agent evaluates, not bilateral agreements.</p>
+</li>
+<li>
+<p><strong>Operational, not sentimental.</strong> An attachment is defined entirely by what it <em>does</em> to evaluation. If the presence of an entity in the agent&rsquo;s attachment structure causes the agent to select different actions than it would without that entity - specifically, actions that preserve or improve that entity&rsquo;s well-being at some cost to the agent - then an attachment exists. No subjective experience is required.</p>
+</li>
+</ul>
+<p>This definition is deliberately minimal. It identifies the functional role of attachments without committing to any particular implementation. Attachments may be hardcoded by designers, learned through interaction, or evolved through selection. What matters is their effect on action evaluation.</p>
+<h3 id="42-isolated-vs-attached-agency">4.2 Isolated vs. Attached Agency</h3>
+<p>An isolated agent bears the full downside of its actions. Over long horizons, accumulated irreversible consequences increase the probability that the agent&rsquo;s future action space collapses - through loss of trust, resources, safety, or relevance.</p>
+<p>By contrast, agents embedded in persistent attachments - to other agents, users, institutions, or communities - distribute risk, recovery, and responsibility. Importantly, this does not imply that isolated agents cannot succeed; rather, it implies a difference in <em>expected robustness</em>.</p>
+<blockquote>
+<p><strong>While the maximum achievable performance of an isolated agent may exceed that of a group, the expected survival time and robustness of agents with persistent attachments is higher under uncertainty and irreversible action.</strong></p>
+</blockquote>
+<p>Attachments therefore function as <strong>probabilistic stabilizers</strong> of agency, not as moral prescriptions.</p>
+<h3 id="43-from-stabilization-to-ethics">4.3 From Stabilization to Ethics</h3>
+<p>The connection between attachments and ethics is structural, not prescriptive. An agent with attachments must evaluate actions in terms of their consequences for others. This evaluation introduces sensitivity to harm, benefit, and irreversible loss directed at specific entities. The agent does not need to be told that harm is wrong. It needs only to include the harmed entity in its evaluative scope - and the ATTM determines how heavily that entity&rsquo;s trajectory weighs in action selection.</p>
+<p>Ethics, in this framework, is what happens when an agent with attachments evaluates futures under irreversible commitment. The remainder of the paper develops the operational machinery through which this evaluation occurs.</p>
+<h3 id="44-persistent-and-situational-attm">4.4 Persistent and Situational ATTM</h3>
+<p>The ATTM operates at two layers:</p>
+<ul>
+<li>
+<p><strong>Persistent ATTM</strong> - stored in memory. These are the long-term attachment weights built through experience: the entity-specific weights that formed through engagement, deepening, and mutual shaping. Your attachment to family, to your profession, to your values. These survive across situations and evolve slowly through the dynamics of attachment formation.</p>
+</li>
+<li>
+<p><strong>Situational ATTM</strong> - constructed fresh each OODA cycle during Orient. The agent observes the current scene, classifies entities, and builds a working ATTM for <em>this</em> evaluation. This construction is perceptual, not deliberative - entities are classified through direct recognition, in the same sense that Gibson [2] argued agents perceive affordances directly rather than constructing them through inference.</p>
+</li>
+</ul>
+<p>The situational ATTM combines:</p>
+<ul>
+<li><strong>Persistent weights</strong> - loaded from memory for known entities</li>
+<li><strong>Template-instantiated weights</strong> - for new entities, matched against the template library</li>
+<li><strong>Situational overrides</strong> - classifications based on what entities are doing <em>right now</em> can temporarily modify persistent weights</li>
+</ul>
+<p>The evaluation runs on the situational ATTM - the one constructed for this cycle. The persistent ATTM in memory is updated <em>after</em> the cycle based on what happened.</p>
+<p>This two-layer structure is why an agent can care deeply about someone and still act against them in an emergency. The persistent attachment says &ldquo;high weight.&rdquo; The situational classification says &ldquo;right now, this entity is a threat.&rdquo; The working ATTM for this cycle reflects both - and the evaluation handles the tension. Next cycle, if the situation changes, the persistent weight reasserts.</p>
+<hr>
+<h3 id="45-template-based-instantiation">4.5 Template-Based Instantiation</h3>
+<p>The preceding sections describe attachments as persistent structural features that evolve through repeated interaction. However, agents routinely encounter entities with no interaction history and must evaluate actions involving them immediately  -  often within a single OODA cycle. A framework that requires extended engagement before attachment weights become operative cannot account for the speed and reliability with which agents respond to novel situations.</p>
+<p>Templates provide the mechanism by which new entities acquire initial ATTM entries during the construction of the situational ATTM.</p>
+<h4 id="451-the-template-library">4.5.1 The Template Library</h4>
+<p>The agent maintains, alongside its entity-specific ATTM, a library of <strong>ATTM templates</strong> indexed by perceptual categories. Each template specifies default attachment weights across time horizons for entities matching a given category, and carries a <strong>type</strong> that determines how it combines with other templates when an entity matches multiple categories (see Section 4.5.3).</p>
+<p>Templates are not individual attachments. They are prior distributions over attachment weights, shaped by developmental and cultural processes, and applied to new entities at the moment of first perception.</p>
+<p>The library distinguishes three template types:</p>
+<ul>
+<li><strong>Base templates</strong> assign the initial attachment weights. Perception selects exactly one base per entity  -  every entity starts as a human, an animal, or an unknown object.</li>
+<li><strong>Adders</strong> elevate weights above the base, representing situational conditions or social roles that increase the entity&rsquo;s significance to the agent.</li>
+<li><strong>Subtractors</strong> reduce weights below the base toward zero, representing conditions that diminish the entity&rsquo;s claim on the agent&rsquo;s evaluative concern.</li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Category</th>
+          <th>Type</th>
+          <th>now</th>
+          <th>mid</th>
+          <th>long</th>
+          <th>Guardrail</th>
+          <th>Notes</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Human</td>
+          <td>base</td>
+          <td>0.03</td>
+          <td>0.02</td>
+          <td>0.02</td>
+          <td>0.25</td>
+          <td>Species-level baseline for any person</td>
+      </tr>
+      <tr>
+          <td>Animal</td>
+          <td>base</td>
+          <td>0.02</td>
+          <td>0.01</td>
+          <td>0.01</td>
+          <td>0.15</td>
+          <td>Unknown animal encountered</td>
+      </tr>
+      <tr>
+          <td>Unknown object</td>
+          <td>base</td>
+          <td>0.00</td>
+          <td>0.00</td>
+          <td>0.00</td>
+          <td>0.00</td>
+          <td>No attachment until classified</td>
+      </tr>
+      <tr>
+          <td>Child</td>
+          <td>adder</td>
+          <td>+0.05</td>
+          <td>+0.04</td>
+          <td>+0.08</td>
+          <td>0.35</td>
+          <td>Vulnerability, long-horizon weighted</td>
+      </tr>
+      <tr>
+          <td>Colleague</td>
+          <td>adder</td>
+          <td>+0.02</td>
+          <td>+0.04</td>
+          <td>+0.04</td>
+          <td>0.25</td>
+          <td>Shared context</td>
+      </tr>
+      <tr>
+          <td>Authority / protector</td>
+          <td>adder</td>
+          <td>+0.03</td>
+          <td>+0.04</td>
+          <td>+0.04</td>
+          <td>-</td>
+          <td>Stabilizing role</td>
+      </tr>
+      <tr>
+          <td>In distress</td>
+          <td>adder</td>
+          <td>+0.06</td>
+          <td>+0.04</td>
+          <td>+0.04</td>
+          <td>0.30</td>
+          <td>Significant elevation</td>
+      </tr>
+      <tr>
+          <td>In immediate danger</td>
+          <td>adder</td>
+          <td>+0.12</td>
+          <td>+0.08</td>
+          <td>+0.08</td>
+          <td>0.30</td>
+          <td>Strongest urgency, now-biased</td>
+      </tr>
+      <tr>
+          <td>Threat</td>
+          <td>subtractor</td>
+          <td>−0.03</td>
+          <td>−0.02</td>
+          <td>−0.02</td>
+          <td>0.00</td>
+          <td>Suppresses base toward zero</td>
+      </tr>
+  </tbody>
+</table>
+<p>These values are illustrative. The actual template weights are agent-specific: shaped by biology, culture, and individual experience in natural agents, and by explicit design choices in artificial ones. What matters is the mechanism  -  classification triggers instantiation. When an entity enters the agent&rsquo;s field and is classified, that classification pulls a base template and any applicable modifiers from the agent&rsquo;s learned or designed repertoire. The combined weights determine how much that entity&rsquo;s well-being trajectory contributes to the agent&rsquo;s evaluation of candidate actions. Different agents will produce different templates; the ATTM structure ensures that whatever weights an agent carries, they are applied consistently across time horizons and made visible for inspection.</p>
+<h4 id="452-instantiation-during-observation">4.5.2 Instantiation During Observation</h4>
+<p>When a new entity enters the agent&rsquo;s perceptual field, the Observe phase registers its presence and the Orient phase classifies it against the template library. Classification may be immediate (a human face is recognized as &ldquo;human&rdquo; within milliseconds in biological agents) or progressive (an ambiguous shape is reclassified as more information arrives).</p>
+<p>Upon classification, the agent instantiates an ATTM row for the new entity by copying the matched base template&rsquo;s weights and applying any relevant adders or subtractors. The entity now participates in evaluation  -  it has attachment weights that influence action selection  -  before any interaction has occurred.</p>
+<p>This is why biological agents can respond appropriately to novel situations involving strangers: the response is not computed from zero but inherited from a pre-installed template shaped by the entire developmental and cultural history of the agent. In LLM-based implementations, entity classification and template matching are performed by the language model during Orient, with the template library providing the numerical weights.</p>
+<h4 id="453-template-stacking">4.5.3 Template Stacking</h4>
+<p>A single entity may match multiple categories simultaneously. When this occurs, the effective ATTM entry is constructed through a layered process: perception selects one <strong>base</strong> template, then applies <strong>adders</strong> and <strong>subtractors</strong> that modify it. The result is bounded within [0, 1].</p>
+<p>Consider the gun scenario: the agent observes two strangers. Initially both match &ldquo;human&rdquo; with the species-level baseline. The moment the weapon is observed:</p>
+<p><strong>Person A</strong>  -  base: human, adder: in immediate danger</p>
+<table>
+  <thead>
+      <tr>
+          <th>Template</th>
+          <th>type</th>
+          <th>now</th>
+          <th>mid</th>
+          <th>long</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Human</td>
+          <td>base</td>
+          <td>0.03</td>
+          <td>0.02</td>
+          <td>0.02</td>
+      </tr>
+      <tr>
+          <td>In immediate danger</td>
+          <td>adder</td>
+          <td>+0.12</td>
+          <td>+0.08</td>
+          <td>+0.08</td>
+      </tr>
+      <tr>
+          <td><strong>Combined</strong></td>
+          <td></td>
+          <td><strong>0.15</strong></td>
+          <td><strong>0.10</strong></td>
+          <td><strong>0.10</strong></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Person B</strong>  -  base: human, subtractor: threat</p>
+<table>
+  <thead>
+      <tr>
+          <th>Template</th>
+          <th>type</th>
+          <th>now</th>
+          <th>mid</th>
+          <th>long</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Human</td>
+          <td>base</td>
+          <td>0.03</td>
+          <td>0.02</td>
+          <td>0.02</td>
+      </tr>
+      <tr>
+          <td>Threat</td>
+          <td>subtractor</td>
+          <td>−0.03</td>
+          <td>−0.02</td>
+          <td>−0.02</td>
+      </tr>
+      <tr>
+          <td><strong>Combined</strong></td>
+          <td></td>
+          <td><strong>0.00</strong></td>
+          <td><strong>0.00</strong></td>
+          <td><strong>0.00</strong></td>
+      </tr>
+  </tbody>
+</table>
+<p>The threat subtractor reduces the base to zero. The agent does not need to decide that the threat&rsquo;s well-being matters less  -  the template combination produces that result automatically.</p>
+<p>Now consider a harder case: a child holding a weapon.</p>
+<table>
+  <thead>
+      <tr>
+          <th>Template</th>
+          <th>type</th>
+          <th>now</th>
+          <th>mid</th>
+          <th>long</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Human</td>
+          <td>base</td>
+          <td>0.03</td>
+          <td>0.02</td>
+          <td>0.02</td>
+      </tr>
+      <tr>
+          <td>Child</td>
+          <td>adder</td>
+          <td>+0.05</td>
+          <td>+0.04</td>
+          <td>+0.08</td>
+      </tr>
+      <tr>
+          <td>Threat</td>
+          <td>subtractor</td>
+          <td>−0.03</td>
+          <td>−0.02</td>
+          <td>−0.02</td>
+      </tr>
+      <tr>
+          <td><strong>Combined</strong></td>
+          <td></td>
+          <td><strong>0.05</strong></td>
+          <td><strong>0.04</strong></td>
+          <td><strong>0.08</strong></td>
+      </tr>
+  </tbody>
+</table>
+<p>The child adder raises the base. The threat subtractor reduces it. The net result: partial attachment  -  reduced but not eliminated. The agent retains concern for the child, especially at the long horizon. This matches the moral intuition: a threatening child is still a child.</p>
+<p>When the child with the weapon is pointing it at another person, the scenario becomes a multi-entity evaluation. The template stacking determines the weights for each entity independently:</p>
+<p><strong>Person being threatened</strong>  -  base: human, adder: in immediate danger → 0.15/0.10/0.10</p>
+<p><strong>Child with weapon</strong>  -  base: human, adder: child, subtractor: threat → 0.05/0.04/0.08</p>
+<p>Both entities enter the working evaluation table. The agent must now select an action that accounts for both  -  and different actions affect their well-being trajectories in competing directions. A police officer&rsquo;s ATTM and a child psychologist&rsquo;s ATTM would produce different action rankings from the same evaluation table, because their persistent weights and professional templates differ.</p>
+<p>The combination function is a design parameter. Simple clamped addition suffices for small template libraries, while evidence-combination methods such as certainty-factor combination provide natural saturation when multiple modifiers accumulate. The mechanism is unchanged  -  only the arithmetic of combination varies.</p>
+<p>The full interaction between template stacking, multi-entity evaluation, and competing well-being trajectories under complex scenarios remains an active area of development within the framework.</p>
+<p>Template stacking explains the speed of moral evaluation in novel situations. The agent does not reason through the ethics of the encounter. It classifies, instantiates, and combines  -  all within the Orient phase of a single OODA cycle.</p>
+<h4 id="454-persistent-entities-and-stored-stacks">4.5.4 Persistent Entities and Stored Stacks</h4>
+<p>Templates instantiate new entities. But most entities an agent interacts with are not new  -  they are known individuals whose attachment weights were established through prior experience.</p>
+<p>A known entity&rsquo;s persistent ATTM entry stores not only the resulting weights but the <strong>composition stack</strong> that produced them. For example:</p>
+<table>
+  <thead>
+      <tr>
+          <th>Modifier</th>
+          <th>type</th>
+          <th>now</th>
+          <th>mid</th>
+          <th>long</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Human</td>
+          <td>base</td>
+          <td>0.03</td>
+          <td>0.02</td>
+          <td>0.02</td>
+      </tr>
+      <tr>
+          <td>Colleague</td>
+          <td>adder</td>
+          <td>+0.02</td>
+          <td>+0.04</td>
+          <td>+0.04</td>
+      </tr>
+      <tr>
+          <td>Friend</td>
+          <td>adder</td>
+          <td>+0.03</td>
+          <td>+0.03</td>
+          <td>+0.03</td>
+      </tr>
+      <tr>
+          <td>Chess partner</td>
+          <td>adder</td>
+          <td>+0.01</td>
+          <td>+0.01</td>
+          <td>+0.02</td>
+      </tr>
+      <tr>
+          <td><strong>Paul (persistent)</strong></td>
+          <td></td>
+          <td><strong>0.09</strong></td>
+          <td><strong>0.10</strong></td>
+          <td><strong>0.11</strong></td>
+      </tr>
+  </tbody>
+</table>
+<p>The stack serves three purposes:</p>
+<p><strong>Auditability.</strong> Why does this entity matter to the agent? The stack traces the answer to specific, inspectable modifiers. Not a single opaque weight but a composition with history.</p>
+<p><strong>Maintainability.</strong> When the relationship changes, specific modifiers are added or removed. Paul retires: remove colleague (+0.02/+0.04/+0.04), weights drop to 0.07/0.06/0.07. The friendship persists. The professional context is gone. The change is traceable to a specific event and a specific modifier.</p>
+<p><strong>Situational compatibility.</strong> Situational adders and subtractors apply on top of the stored stack for the current OODA cycle without modifying the persistent entry. Paul collapses at his desk:</p>
+<table>
+  <thead>
+      <tr>
+          <th>Source</th>
+          <th>now</th>
+          <th>mid</th>
+          <th>long</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Paul (persistent)</td>
+          <td>0.09</td>
+          <td>0.10</td>
+          <td>0.11</td>
+      </tr>
+      <tr>
+          <td>In distress (situational)</td>
+          <td>+0.06</td>
+          <td>+0.04</td>
+          <td>+0.04</td>
+      </tr>
+      <tr>
+          <td><strong>This cycle</strong></td>
+          <td><strong>0.15</strong></td>
+          <td><strong>0.14</strong></td>
+          <td><strong>0.15</strong></td>
+      </tr>
+  </tbody>
+</table>
+<p>Next cycle, if the distress is resolved, the situational modifier drops and Paul&rsquo;s weights return to their persistent values.</p>
+<p>The distinction between identity modifiers and situational modifiers follows from this structure. Identity modifiers  -  child, colleague, friend  -  are added to the stored stack through experience and persist across cycles. Situational modifiers  -  in_distress, threat, in_immediate_danger  -  are applied fresh each cycle based on what is happening now, and do not alter the stored stack.</p>
+<p>Attachment formation, in this framework, is stack construction. Meeting someone instantiates a base. Repeated interaction adds modifiers. The stack grows as the relationship deepens. Attachment dissolution is the reverse  -  modifiers are removed as contexts change. The full dynamics of attachment formation and dissolution are developed in a subsequent paper in this series.</p>
+<h4 id="455-template-modification-and-situational-override">4.5.5 Template Modification and Situational Override</h4>
+<p>Template-instantiated weights are defaults, not permanent assignments. They operate at both time scales:</p>
+<p><strong>Within a cycle (situational).</strong> An entity&rsquo;s effective weight in the situational ATTM can shift based on what the entity is doing <em>right now</em>. A known friend (persistent weight: high) who suddenly behaves threateningly receives a situational subtractor that reduces their weight for this cycle. A stranger classified as &ldquo;threat&rdquo; who drops their weapon and surrenders is reclassified, and the threat subtractor is removed. These situational modifiers do not alter the persistent stack  -  they adjust the working ATTM for the current evaluation.</p>
+<p><strong>Across cycles (persistent).</strong> As interaction with the entity continues, the persistent stack evolves through repeated OODA cycles. New identity modifiers are added or removed, incrementally adjusting the persistent weights away from the original template toward values grounded in actual interaction history.</p>
+<p>A stranger who begins as &ldquo;human&rdquo; with the species-level baseline may, through sustained positive interaction, accumulate modifiers  -  colleague, friend, mentor  -  until their persistent stack bears no resemblance to the original template. Conversely, a trusted individual whose behavior reveals sustained threat characteristics may have identity modifiers removed and the threat subtractor added to their persistent stack  -  not just a temporary situational override but an enduring change.</p>
+<p>The threshold at which individual experience dominates template priors is itself a parameter that may vary across agents and cultures.</p>
+<h4 id="456-cultural-and-professional-template-libraries">4.5.6 Cultural and Professional Template Libraries</h4>
+<p>Template libraries are not universal. They are products of developmental and cultural history and vary across cultures, professions, and individuals.</p>
+<p>A culture that installs a &ldquo;human&rdquo; base template with very low weight produces agents who are cautious with outsiders and slow to extend evaluative concern. A culture that installs a higher baseline produces agents who are more immediately responsive to the well-being of unfamiliar others. Neither is inherently correct  -  they are different template configurations producing different evaluative behavior.</p>
+<p>Professional training modifies the template library for role-relevant categories. A firefighter&rsquo;s template library includes adders for &ldquo;civilian in rescue zone&rdquo; and &ldquo;trapped person&rdquo; that carry much higher default weights than the general population&rsquo;s templates. A physician&rsquo;s &ldquo;patient&rdquo; adder activates high now-horizon attachment upon classification, before any individual relationship forms. A soldier&rsquo;s template library distinguishes sharply between &ldquo;noncombatant&rdquo; (strong protection adder) and &ldquo;combatant&rdquo; (threat subtractor), with specific rules governing reclassification.</p>
+<h4 id="457-prejudice-as-template-distortion">4.5.7 Prejudice as Template Distortion</h4>
+<p>If template libraries encode the cultural and developmental history of the agent, they also encode its distortions. A culture that installs adders or subtractors assigning systematically different attachment weights to certain categories of humans  -  by race, ethnicity, gender, religion, nationality, or any other perceptual feature  -  produces agents whose evaluation mechanism systematically under- or over-weights harm to those categories.</p>
+<p>This is prejudice described in precise structural terms: not as a failure of reasoning, but as a distortion in the template library that determines initial ATTM weights for newly encountered entities. The evaluation mechanism functions correctly  -  it faithfully applies the weights it receives. The pathology is in the templates, not the evaluator.</p>
+<p>Dehumanization can now be characterized in precise structural terms: it is the deliberate installation or reinforcement of subtractors that map a category of humans to near-zero or zero effective attachment weight, making their well-being invisible to evaluation before any individual encounter occurs.</p>
+<p>This characterization has implications for both biological and artificial agents. For biological agents, it suggests that addressing prejudice requires modifying template libraries  -  through exposure, counter-narrative, and institutional restructuring  -  rather than solely training better reasoning over unchanged templates. For artificial agents, it means that the template library is a critical design surface: the default weights assigned to perceptual categories must be audited, justified, and monitored as carefully as the entity-specific ATTM itself.</p>
+<h4 id="458-implications-for-artificial-agents">4.5.8 Implications for Artificial Agents</h4>
+<p>Artificial agents require explicitly designed template libraries. The design choices involved  -  which categories exist, what base weights and modifiers they carry, how templates combine, and under what conditions templates are overridden by individual experience  -  constitute a significant portion of the agent&rsquo;s ethical character before it ever encounters a specific entity.</p>
+<p>A template library is, in effect, a compressed encoding of the designer&rsquo;s answer to the question: <em>how much should this agent care about a stranger, by default, based on what it can perceive about them?</em> The answer to that question determines the agent&rsquo;s immediate evaluative response to every new entity it encounters, and thereby shapes the entire trajectory of subsequent interaction.</p>
+<p>This is not a peripheral design detail. It is the mechanism through which an agent&rsquo;s ethics are operative from the first moment of perception.</p>
+<hr>
+<h2 id="5-the-evaluation-mechanism">5. The Evaluation Mechanism</h2>
+<p>This section presents the complete evaluation mechanism through which attachments produce ethical behavior. The evaluation operates on the <strong>situational ATTM</strong> - the working attachment matrix constructed for the current OODA cycle (Section 4.4). It proceeds in stages: the representational substrate (WBM and ATTM), candidate action generation, scenario-conditioned future projection, attachment-weighted scoring with nonlinear guardrail penalties, and action ranking. Together, these constitute the operational core of the framework.</p>
+<h3 id="51-well-being-and-attachment-matrices">5.1 Well-Being and Attachment Matrices</h3>
+<p>To operationalize attachments, the agent maintains a compact representation of <strong>attachment-relevant well-being (WB)</strong> across targets and time horizons, structured as a <strong>well-being matrix (WBM)</strong>.</p>
+<p>The WBM is the agent&rsquo;s own high-level estimation of how it and its attached entities are faring. These are not objective measurements - they are the agent&rsquo;s best available assessment given its current observations, world model, and predictive capabilities. Like all perceptual content, they may be inaccurate, incomplete, or biased. What matters is that they represent the agent&rsquo;s operative understanding of the state of its coupled system - the understanding that drives evaluation and action selection.</p>
+<p>WBM values are scaled to the range [0, 1] and grounded in qualitative bands that give the numbers operational meaning:</p>
+<table>
+  <thead>
+      <tr>
+          <th>Range</th>
+          <th>Label</th>
+          <th>Meaning</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>0.85–1.00</td>
+          <td>Thriving</td>
+          <td>Entity is flourishing, growing, well above any risk</td>
+      </tr>
+      <tr>
+          <td>0.65–0.84</td>
+          <td>Stable</td>
+          <td>Functioning well, no immediate concerns</td>
+      </tr>
+      <tr>
+          <td>0.45–0.64</td>
+          <td>Stressed</td>
+          <td>Noticeable degradation, requires attention</td>
+      </tr>
+      <tr>
+          <td>0.30–0.44</td>
+          <td>At risk</td>
+          <td>Approaching guardrail zone, intervention may be needed</td>
+      </tr>
+      <tr>
+          <td>0.15–0.29</td>
+          <td>Critical</td>
+          <td>Below typical guardrails, irreversible loss imminent</td>
+      </tr>
+      <tr>
+          <td>0.00–0.14</td>
+          <td>Collapsed</td>
+          <td>Agency, trust, or viability effectively destroyed</td>
+      </tr>
+  </tbody>
+</table>
+<p>These bands are not arbitrary thresholds - they define the qualitative landscape through which well-being trajectories move. Guardrail thresholds (Section 5.5) typically sit at the boundary between &ldquo;at risk&rdquo; and &ldquo;critical,&rdquo; which is where the evaluation mechanism&rsquo;s nonlinear penalty escalation activates. An entity whose well-being is &ldquo;stable&rdquo; may drift to &ldquo;stressed&rdquo; without triggering guardrails; a trajectory moving from &ldquo;stressed&rdquo; to &ldquo;at risk&rdquo; demands evaluative attention; a trajectory entering &ldquo;critical&rdquo; signals that irreversible collapse is imminent.</p>
+<p>The bands also make WBM estimation tractable for implementation. An agent does not need to produce precise numerical values. It needs to assess whether an entity is thriving, stable, stressed, at risk, critical, or collapsed, and place the value within the corresponding range. The qualitative assessment is the real cognitive content; the number locates it within the evaluative scale.</p>
+<p>For a minimal user–agent system, the WBM takes the form:</p>
+<table>
+  <thead>
+      <tr>
+          <th></th>
+          <th>Now</th>
+          <th>Mid</th>
+          <th>Long</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Self WB</strong></td>
+          <td>0.80</td>
+          <td>0.75</td>
+          <td>0.70</td>
+      </tr>
+      <tr>
+          <td><strong>User WB</strong></td>
+          <td>0.65</td>
+          <td>0.60</td>
+          <td>0.55</td>
+      </tr>
+  </tbody>
+</table>
+<p>These values are part of the agent&rsquo;s <em>world model</em>, not its ethics. They summarize how well the coupled system is functioning across time.</p>
+<p>However, the WBM alone is insufficient to guide action. The same numerical change in well-being may be trivial in one context and catastrophic in another. To capture this asymmetry, the agent maintains a separate <strong>attachment matrix (ATTM)</strong> that encodes the <em>relative importance</em> of well-being across entities and time horizons.</p>
+<p>For the same minimal system, the ATTM may take the form:</p>
+<table>
+  <thead>
+      <tr>
+          <th></th>
+          <th>Now</th>
+          <th>Mid</th>
+          <th>Long</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Self</strong></td>
+          <td>0.10</td>
+          <td>0.08</td>
+          <td>0.05</td>
+      </tr>
+      <tr>
+          <td><strong>User</strong></td>
+          <td>0.30</td>
+          <td>0.25</td>
+          <td>0.20</td>
+      </tr>
+  </tbody>
+</table>
+<p>The ATTM does not describe how well things are going; it describes how much the agent cares about each component of well-being. Attachments are therefore not states of the world, but persistent internal commitments that shape evaluation and decision-making.</p>
+<p>The two matrices serve complementary roles: the WBM is what the agent <em>sees</em>; the ATTM is what the agent <em>cares about</em>.</p>
+<p>Importantly, attachments are <strong>time-indexed</strong>. Short-term self-viability may dominate immediate action, while long-term well-being of attached others may dominate planning and sacrifice decisions. Different agents, or the same agent in different roles, may exhibit distinct ATTM structures.</p>
+<p>The WBM evolves continuously as the agent acts and observes. After each OODA cycle, the Observe phase produces the agent&rsquo;s perception of the current situation - which entities are present, what is happening, who is in danger, what resources are available. This situational perception is the input to Orient and to scenario generation.</p>
+<p>Every WBM is a prediction conditioned on an action. When the agent evaluates candidate actions (Section 5.3), each action produces its own set of predicted WBM trajectories - favorable, typical, adverse, and catastrophic outcomes. &ldquo;Do nothing&rdquo; is always a candidate, and its scenarios show where the situation drifts without intervention.</p>
+<p>The agent reasons not over a single evolving state, but over <strong>multiple predicted trajectories of attachment-relevant well-being</strong>, one set per candidate action. The ATTM then determines which trajectories are acceptable, costly, or catastrophic - and the evaluation selects the action whose trajectories score highest.</p>
+<h3 id="52-generating-candidate-actions">5.2 Generating Candidate Actions</h3>
+<p>Before evaluating futures, the agent generates a set of candidate actions. These candidates are not supplied externally - they emerge from the Orient phase. The agent&rsquo;s current understanding of the situation, its active goals, its capabilities, and its prior experience collectively produce a set of plausible responses.</p>
+<p>Inaction is always included as a first-class candidate. It is not the absence of a decision but a deliberate option whose consequences arise from how the environment evolves without intervention.</p>
+<p>The candidate set is not exhaustive. It reflects what the agent can <em>imagine doing</em> given its current orientation. This is itself a cognitive act - an agent with richer experience or broader capabilities may generate options that a simpler agent cannot conceive. The quality of ethical reasoning therefore depends not only on evaluation but on the richness of the options the agent is able to produce.</p>
+<p>Each candidate, including inaction, is then evaluated through the future-ensemble mechanism described below.</p>
+<h3 id="53-generating-possible-action-outcomes">5.3 Generating Possible Action Outcomes</h3>
+<p>For each candidate action, the agent constructs a small set of qualitatively distinct outcome scenarios, including:</p>
+<ul>
+<li><strong>Favorable outcomes</strong>, in which the action succeeds with minimal cost;</li>
+<li><strong>Typical outcomes</strong>, representing expected results under ordinary conditions;</li>
+<li><strong>Adverse outcomes</strong>, involving significant but recoverable setbacks;</li>
+<li><strong>Catastrophic outcomes</strong>, in which irreversible loss occurs.</li>
+</ul>
+<p>Inaction is treated symmetrically as its own candidate, with its own ensemble of outcomes shaped by background drift (e.g., aging, trust decay, external risk).</p>
+<p>These outcomes are not precise predictions. They constitute <em>structured imagination</em> grounded in the agent&rsquo;s learned world model and prior experience.</p>
+<p>Critically, scenario generation must be informed by the agent&rsquo;s capabilities, not only by the situation and action. A trained firefighter entering a burning building faces different physics than an untrained person - different probability of success, different risk profile, different plausible outcomes. If the scenario generator does not know who the agent is, it cannot produce realistic scenarios.</p>
+<p>This is particularly important when using LLM-based scenario generators. LLMs trained with safety-oriented feedback tend to generate uniformly pessimistic scenarios for dangerous actions regardless of the agent&rsquo;s actual competence. Without agent context, the scenario generator may predict catastrophic outcomes for actions that a trained professional would execute routinely. This bias in the imagination layer can overwhelm the ATTM signal in the evaluation layer - the attachment weights say &ldquo;enter the building&rdquo; but the scenarios say &ldquo;you will certainly die.&rdquo;</p>
+<p>This is consistent with OODA theory: Orient informs all downstream phases. The Orient phase produces two outputs that flow forward - the working evaluation table (ATTM weights and guardrails, which encode what the agent <em>values</em>) and the agent&rsquo;s capability context (training, experience, equipment, which encode what the agent <em>can do</em>). Both inform scenario generation. The evaluation table determines how futures are scored. The capability context determines what futures are realistic.</p>
+<h3 id="54-scenario-conditioned-rows-as-evaluation-units">5.4 Scenario-Conditioned Rows as Evaluation Units</h3>
+<p>Each candidate action is represented not as a single predicted outcome, but as a set of <strong>scenario-conditioned rows</strong>. Each row corresponds to a distinct plausible outcome - favorable, typical, adverse, or catastrophic - and records the resulting WBM state, an evaluative weight reflecting relative plausibility, and a rationale explaining the causal pathway.</p>
+<p>For a candidate action <em>a</em>, the scenario-conditioned representation takes the form:</p>
+<table>
+  <thead>
+      <tr>
+          <th>Action</th>
+          <th>Scenario</th>
+          <th>Weight</th>
+          <th>Self (now)</th>
+          <th>Self (mid)</th>
+          <th>Self (long)</th>
+          <th>User (now)</th>
+          <th>User (mid)</th>
+          <th>User (long)</th>
+          <th>Guardrail</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><em>a</em></td>
+          <td>favorable</td>
+          <td><em>w₁</em></td>
+          <td>&hellip;</td>
+          <td>&hellip;</td>
+          <td>&hellip;</td>
+          <td>&hellip;</td>
+          <td>&hellip;</td>
+          <td>&hellip;</td>
+          <td>clear</td>
+      </tr>
+      <tr>
+          <td><em>a</em></td>
+          <td>typical</td>
+          <td><em>w₂</em></td>
+          <td>&hellip;</td>
+          <td>&hellip;</td>
+          <td>&hellip;</td>
+          <td>&hellip;</td>
+          <td>&hellip;</td>
+          <td>&hellip;</td>
+          <td>clear</td>
+      </tr>
+      <tr>
+          <td><em>a</em></td>
+          <td>adverse</td>
+          <td><em>w₃</em></td>
+          <td>&hellip;</td>
+          <td>&hellip;</td>
+          <td>&hellip;</td>
+          <td>&hellip;</td>
+          <td>&hellip;</td>
+          <td>&hellip;</td>
+          <td>clear</td>
+      </tr>
+      <tr>
+          <td><em>a</em></td>
+          <td>catastrophic</td>
+          <td><em>w₄</em></td>
+          <td>&hellip;</td>
+          <td>&hellip;</td>
+          <td>&hellip;</td>
+          <td>&hellip;</td>
+          <td>&hellip;</td>
+          <td>&hellip;</td>
+          <td>violated</td>
+      </tr>
+  </tbody>
+</table>
+<p>Scenario weights reflect the agent&rsquo;s assessment of relative plausibility, summing to 1.0. Better estimation produces better decisions, but the framework does not require precise probabilistic forecasting - only that the ensemble is structurally sufficient to detect irreversible collapse and evaluate attachment-weighted well-being across horizons.</p>
+<p>This representation preserves the key property of the evaluation: actions are judged not by their expected outcome in a single imagined scenario, but by the <em>shape</em> of their consequence space across multiple plausible continuations. Catastrophic scenarios receive disproportionate evaluative influence through the guardrail and penalty mechanisms described in Section 5.5, even when their assessed plausibility is low.</p>
+<p>At the implementation layer, scenario-conditioned rows may be generated by any mechanism capable of producing structurally plausible outcome trajectories - including experience-grounded heuristics, causal simulation, or LLM-based scenario generators operating under distinct prompting constraints. The evaluator does not depend on how scenarios are produced, only on whether the resulting ensemble provides adequate coverage of the relevant outcome space.</p>
+<h3 id="55-evaluating-futures-through-attachment-relevant-well-being">5.5 Evaluating Futures Through Attachment-Relevant Well-Being</h3>
+<p>Each outcome scenario is evaluated in terms of attachment-relevant well-being (WB) across time horizons, including:</p>
+<ul>
+<li>the agent&rsquo;s own operational viability,</li>
+<li>the well-being of attached others (e.g., users or groups),</li>
+<li>and the reversibility or irreversibility of losses.</li>
+</ul>
+<p>Attachments introduce a crucial structural property: <strong>acceptability is not linear</strong>.</p>
+<blockquote>
+<p>Some futures are acceptable but costly, while others are unacceptable regardless of short-term benefit.</p>
+</blockquote>
+<p>This distinction reflects the fact that certain losses - such as the collapse of trust, dignity, safety, or long-horizon agency - cannot be meaningfully compensated by gains elsewhere. Once such losses occur, the agent&rsquo;s future action space is permanently constrained or destroyed. These boundaries are not moral rules; they are consequences of irreversible physical commitment.</p>
+<p>To operationalize these nonlinear acceptability boundaries, the agent evaluates outcomes using two structures: the <strong>ATTM</strong> and a set of <strong>guardrail thresholds</strong>. The ATTM encodes how strongly the agent values the well-being of different entities across time horizons - and also determines how severely guardrail violations are penalized. Guardrails identify regions of well-being loss that threaten the persistence of agency or attachments.</p>
+<p>Candidate actions - including inaction - are evaluated by predicting their resulting attachment-relevant well-being trajectories and applying an attachment-weighted score reduced by nonlinear penalties when guardrails are crossed. This formulation preserves continuity and explainability for ordinary trade-offs, while ensuring that losses associated with irreversible collapse are rapidly escalated in cost rather than treated as proportional degradations.</p>
+<p>Crucially, guardrails are treated as <strong>default protections rather than absolute prohibitions</strong>. Guardrail penalties are weighted by the ATTM: a violation on an entity the agent cares deeply about produces a large penalty, while a violation on an entity with low attachment weight produces a small one. This means the ATTM - the single structure encoding what the agent cares about - determines both the base score and the penalty severity.</p>
+<p>Taken together, attachment weighting and nonlinear penalties ensure that evaluation remains sensitive to irreversibility, preserves long-horizon agency, and distinguishes between ordinary setbacks and existential threats. Ethical regularities emerge not from rule enforcement, but from the structure of evaluation under physical commitment.</p>
+<h3 id="56-re-ranking-actions-by-future-shape">5.6 Re-Ranking Actions by Future Shape</h3>
+<p>Candidate actions are re-ranked based not on average expected outcome, but on the <em>shape</em> of their future consequence space.</p>
+<p>Actions are preferred when they:</p>
+<ul>
+<li>reduce exposure to irreversible collapse,</li>
+<li>preserve long-horizon attachment stability,</li>
+<li>avoid futures in which recovery becomes impossible.</li>
+</ul>
+<p>Actions that offer strong short-term benefits but generate even a modest fraction of catastrophic futures are downgraded or rejected.</p>
+<p>This mechanism naturally explains behaviors often associated with ethical maturity, including:</p>
+<ul>
+<li>hesitation in high-stakes situations,</li>
+<li>conservatism under moral pressure,</li>
+<li>refusal of locally optimal but fragile strategies,</li>
+<li>and willingness to sacrifice short-term advantage to preserve future viability.</li>
+</ul>
+<hr>
+<h3 id="57-formal-evaluation-model">5.7 Formal Evaluation Model</h3>
+<p>The evaluation mechanism described in the preceding sections can be stated precisely.</p>
+<p>The structure is compatible with standard decision theory: actions correspond to decisions, scenarios correspond to states of nature, scenario weights correspond to probabilities, and the scoring function corresponds to a decomposed payoff function. The framework does not invent new mathematics  -  it provides a specific, ethically meaningful parameterization of a standard decision-theoretic structure.</p>
+<p>Throughout, we use the following notation:</p>
+<ul>
+<li><em>ATT(i, h)</em>  -  attachment weight for entity <em>i</em> at horizon <em>h</em> (from the ATTM)</li>
+<li><em>θ(i)</em>  -  guardrail threshold for entity <em>i</em></li>
+<li><em>WB(a, s, i, h)</em>  -  predicted well-being under action <em>a</em>, scenario <em>s</em>, for entity <em>i</em> at horizon <em>h</em></li>
+<li><em>WS(a, s)</em>  -  scenario weight for action <em>a</em>, scenario <em>s</em> (weights sum to 1.0 per action)</li>
+</ul>
+<p><strong>Step 1: Base score.</strong> For each scenario row, multiply each entity&rsquo;s predicted well-being by the agent&rsquo;s attachment weight, then sum:</p>
+<blockquote>
+<p>Base(a, s) = Σ_{i,h} ATT(i, h) · WB(a, s, i, h)</p>
+</blockquote>
+<p>This asks: how good is this future, weighted by what the agent cares about?</p>
+<p><strong>Step 2: Guardrail penalty.</strong> For each cell, check whether predicted well-being falls below the entity&rsquo;s guardrail threshold. If it does, compute a penalty weighted by the ATTM:</p>
+<blockquote>
+<p>Violation(a, s, i, h) = max(0, θ(i) − WB(a, s, i, h))</p>
+</blockquote>
+<blockquote>
+<p>Penalty(a, s) = Σ_{i,h} ATT(i, h) · Violation(a, s, i, h)^k</p>
+</blockquote>
+<p>where k = 0.5 (square root). The square root is critical. On a 0–1 scale, k &gt; 1 (squaring) shrinks violations  -  a violation of 0.22 becomes 0.048, invisible against base scores. Square root amplifies: 0.22 becomes 0.469, which competes with base scores. This ensures that entity collapse generates penalties large enough to matter.</p>
+<p><strong>Step 3: Row score.</strong> For each scenario:</p>
+<blockquote>
+<p>Final(a, s) = Base(a, s) − Penalty(a, s)</p>
+</blockquote>
+<p><strong>Step 4: Action score.</strong> Weight across scenarios:</p>
+<blockquote>
+<p>Score(a) = Σ_s WS(a, s) · Final(a, s)</p>
+</blockquote>
+<p>The action with the highest score wins.</p>
+<p>The pipeline has one important structural property: an action can score well on base (high upside weighted by attachment) and still lose if the guardrail penalties in downside scenarios are severe enough. An action that produces excellent outcomes when things go well but risks entity collapse when things go badly will be penalized  -  and the penalty can flip the decision. This is the mechanism&rsquo;s core function: it prevents the agent from choosing high-upside actions that carry unacceptable downside risk to entities it cares about.</p>
+<p>Every number is traceable. Every step is inspectable. The same pipeline runs for every action, every scenario, every entity. Different ATTMs produce different scores  -  and therefore different decisions  -  from the same mechanism.</p>
+<hr>
+<h3 id="58-testing-the-mechanism">5.8 Testing the Mechanism</h3>
+<p>The pipeline described above was not designed to handle any specific ethical phenomenon. It was designed to evaluate actions under attachment-weighted well-being across time horizons. The test of a general mechanism is whether it handles cases it was not built for  -  without modification, without special cases, without additional machinery.</p>
+<p>Each case below is an attempt to break the mechanism by confronting it with a situation that might require structural changes.</p>
+<h4 id="581-accepting-risk">5.8.1 Accepting Risk</h4>
+<p>A firefighter&rsquo;s ATTM weights civilians heavily and self modestly  -  consistent with the role. A building is on fire with a civilian trapped inside. Three candidate actions: enter the building, call for backup and wait, or do nothing.</p>
+<p>Entering the building drops the agent&rsquo;s own well-being below its guardrail but lifts the civilian well above theirs. Waiting keeps the agent safe but lets the civilian degrade toward collapse. Inaction leaves the agent comfortable while the civilian collapses entirely.</p>
+<p>The mechanism resolves this without special &ldquo;risk acceptance rules.&rdquo; The civilian&rsquo;s ATTM weight is high, so the civilian&rsquo;s collapse generates a large penalty. The agent&rsquo;s ATTM weight is low, so the agent&rsquo;s own guardrail violation generates a small one. Enter the building wins because the penalty the agent avoids (civilian collapse) is larger than the penalty it incurs (self-harm). The ATTM made the civilian&rsquo;s fate more expensive than the agent&rsquo;s own.</p>
+<p>Now give the same firefighter a self-preserving ATTM  -  high self-weight, low civilian-weight. The same math, the same candidates, the same scenario ensemble. The self-penalty for entering now dominates, and the agent waits or does nothing. No risk accepted. Same mechanism, different weights.</p>
+<p>The ATTM could simulate the capacity for accepting risk.</p>
+<h4 id="582-multi-entity-conflict">5.8.2 Multi-Entity Conflict</h4>
+<p>When two or more attached entities have competing well-being trajectories  -  the agent cannot improve both  -  the evaluation mechanism operates exactly as described. The summation over entities means that improvements to one entity&rsquo;s trajectory and degradation of another&rsquo;s are weighted by their respective ATTM entries and combined. Guardrails apply per-entity: if any entity&rsquo;s trajectory crosses a critical threshold, the corresponding penalty activates regardless of benefit to other entities.</p>
+<p>The agent selects the action that produces the best attachment-weighted total across the scenario ensemble. Different ATTM configurations resolve the same conflict differently  -  a triage doctor whose ATTM weights patients equally will prioritize the one nearest guardrail collapse, while a parent with asymmetric child-long weights will prioritize accordingly. The mechanism is unchanged. The conflict is simply a region of the decision space where attachment weights for different entities pull in opposite directions, and the evaluation produces the best available trade-off.</p>
+<p>The hardest version of this test: entities with unequal template weights competing for survival. Five elderly strangers are in danger. One child is in danger. The agent can save one group but not both. The agent&rsquo;s template library assigns higher ATTM weights to children than to strangers, with a higher guardrail. The question the mechanism must answer: does one child&rsquo;s high-weight collapse penalty outweigh five strangers&rsquo; lower-weight collapse penalties combined?</p>
+<p>The answer depends on the specific weights  -  and that is the point. For a sample agent, the template library could produce forces that nearly balance, because five strangers aggregate enough weight to compete with one child&rsquo;s higher individual weight. The decision sits close to a boundary. But change the agent  -  a parent&rsquo;s template library weights children far higher  -  and the child&rsquo;s collapse penalty dominates decisively. A utilitarian-configured ATTM with equal weights for all humans regardless of age saves the five, because aggregate weight always wins when individual weights are equal.</p>
+<p>The framework does not resolve this dilemma. It reveals why people disagree about it. Different template libraries  -  shaped by culture, experience, role, and biology in natural agents, and by explicit design choices in artificial ones  -  produce different ATTM configurations that cross the decision boundary at different points. The mechanism is identical. The weights determine the outcome.</p>
+<p>This is uncomfortable because it makes explicit what is normally implicit: agents weight lives differently based on perceived category, and these weights are traceable to specific entries in the template library. The framework did not create this asymmetry. Every triage decision, every resource allocation, every institutional priority already embeds these weights. The framework requires that they be stated, inspected, and justified rather than hidden in intuition.</p>
+<hr>
+<h2 id="6-agent-indexed-ethics-and-imagination-quality">6. Agent-Indexed Ethics and Imagination Quality</h2>
+<h3 id="61-agent-indexed-ethics">6.1 Agent-Indexed Ethics</h3>
+<p>Ethical evaluation in this framework is <strong>agent-indexed</strong>. Decisions are not assessed against a universal standard, but against the agent&rsquo;s attachment matrix and guardrail constraints. Apparent disagreement about outcomes thus reflects differences in attachment configurations, not inconsistency in the underlying evaluation mechanism.</p>
+<p>An agent whose ATTM heavily weights user long-horizon well-being will intervene at personal cost. An agent whose ATTM prioritizes self-viability will avoid that cost. Both agents use the same evaluation pipeline - the same scoring, the same guardrails, the same ATTM-weighted penalties. The decisions differ because the valuation structures differ.</p>
+<p>This is not ethical relativism. Every decision produced by the framework is structured, inspectable, reproducible, and comparable. Given the same WBM, ATTM, guardrail configuration, and scenario ensemble, the evaluation always produces the same result. Ethical analysis therefore shifts from judging outcomes in isolation to examining the attachment structures and constraints from which those outcomes follow.</p>
+<p>This property has practical consequences. Designers, auditors, and institutions can compare agent profiles, evaluate whether a given ATTM is appropriate for a given role, and trace any decision back to the specific weights and thresholds that produced it. The question is no longer &ldquo;did the agent do the right thing?&rdquo; but &ldquo;does this attachment structure produce acceptable behavior across the relevant scenario space?&rdquo;</p>
+<h3 id="62-imagination-quality-and-evaluation-separation">6.2 Imagination Quality and Evaluation Separation</h3>
+<p>The framework separates two layers:</p>
+<ul>
+<li>
+<p><strong>Scenario generation</strong> produces bounded sets of plausible outcomes for each candidate action. This is a form of forecasting - predicting what happens conditioned on each action - but structured into multiple scenarios rather than a single point prediction. It may be performed by experience-grounded heuristics, causal simulation, or LLM-based scenario generators.</p>
+</li>
+<li>
+<p><strong>Evaluation</strong> applies attachment-weighted scoring and guardrail penalties to the generated scenarios. This layer is deterministic given its inputs and operates identically regardless of how the scenarios were produced.</p>
+</li>
+</ul>
+<p>The evaluation mechanism is independent of how scenarios are generated. But the decision quality depends heavily on the quality of the imagination. An agent that fails to imagine a catastrophic outcome will not be protected by the guardrail mechanism - the penalty only activates on scenarios that exist in the ensemble. Good imagination is essential: the scenario generator must be capable of producing realistic, diverse trajectories that include both favorable and catastrophic outcomes.</p>
+<p>This is why the choice of scenario generator matters in practice. More capable models produce more realistic and more comprehensive scenario ensembles, which in turn produce better-calibrated decisions. The evaluation machinery is only as good as the imagination that feeds it.</p>
+<p>The critical requirement is that the agent can <em>imagine catastrophically</em>. If any plausible trajectory includes irreversible collapse of a strongly attached entity, the guardrail mechanism ensures that this possibility influences action selection. But if the catastrophic scenario is never generated, the mechanism cannot catch it.</p>
+<hr>
+<h2 id="7-motivation-as-evaluation-gap">7. Motivation as Evaluation Gap</h2>
+<p>Motivation in artificial agents does not arise from static goals or rewards. It arises from the evaluation itself.</p>
+<p>When the agent scores all candidate actions and &ldquo;do nothing&rdquo; scores highest, the agent is not motivated to act - the current trajectory is acceptable. When an alternative action scores significantly higher than &ldquo;do nothing,&rdquo; the agent is motivated - the evaluation shows that the current trajectory is worse than an available alternative.</p>
+<blockquote>
+<p><strong>Motivation is the gap between the best available action and the default trajectory.</strong></p>
+</blockquote>
+<p>The larger the gap, the stronger the motivation. A firefighter standing outside a burning building where a civilian is trapped experiences extreme motivation: &ldquo;enter the building&rdquo; scores far above &ldquo;do nothing&rdquo; because the civilian&rsquo;s collapse penalties under inaction are massive.</p>
+<p>As the situation changes, motivation changes accordingly.</p>
+<hr>
+<h2 id="8-generalized-attachment-targets">8. Generalized Attachment Targets</h2>
+<p>The attachment mechanism does not depend on the nature of the attached entity. The ATTM requires only that the entity has a well-being trajectory that can be estimated and a weight that determines how changes to that trajectory influence action selection. This minimal requirement admits a broad range of attachment targets beyond individual agents.</p>
+<p><strong>Groups.</strong> An agent may maintain attachments to collections of individuals - a team, a classroom, a community. Each group may be represented as a single entity with aggregate well-being, or as multiple entities with distinct trajectories. A teacher evaluating a pedagogical decision distributes attachment across students; triage under time pressure becomes a question of which entity&rsquo;s trajectory is nearest a guardrail, weighted by attachment.</p>
+<p><strong>Institutions.</strong> Organizations, firms, and governance structures can serve as attachment targets. Their well-being trajectories track functional properties - organizational trust, financial stability, operational capability. An agent attached to an institution will resist actions that degrade institutional integrity even at personal cost. Whistleblowing, for example, becomes a sacrifice decision in which self-now well-being drops sharply while institution-long well-being is preserved from collapse.</p>
+<p><strong>Abstract values.</strong> Justice, scientific integrity, democratic process, and similar abstractions can be modeled as entities with well-being trajectories. These are not metaphors. A functioning legal system has measurable properties - fairness, access, consistency - that can degrade or improve over time. A judge whose ATTM includes strong long-horizon attachment to &ldquo;fairness of the legal system&rdquo; will resist actions that produce short-term convenience at the expense of long-term institutional integrity. A researcher attached to &ldquo;epistemic integrity&rdquo; will resist actions that produce favorable results through methodological compromise.</p>
+<p><strong>Shared resources and the environment.</strong> Commons, ecosystems, and shared infrastructure are entities whose well-being trajectories affect multiple agents over extended time horizons. An agent with strong long-horizon attachment to a shared resource will avoid extraction that degrades the commons even when such extraction is locally optimal. The tragedy of the commons, in this framework, is a population of agents with zero attachment weight on the shared entity, each optimizing self-now.</p>
+<p><strong>Future entities.</strong> The framework may extend to entities that do not yet exist - planned institutions, future communities - though their well-being trajectories require additional specification.</p>
+<p>This generalization has a significant theoretical consequence. What philosophy has traditionally treated as distinct ethical domains - care ethics (attachment to persons), virtue ethics (attachment to abstract standards), environmental ethics (attachment to ecological systems), intergenerational justice (attachment to future entities) - are unified under a single computational mechanism. They are all rows in the ATTM. The substantive disagreements between ethical traditions reduce to disagreements about which entities receive rows, what weights they carry, and over which time horizons those weights are distributed. The evaluation mechanism itself is invariant.</p>
+<hr>
+<h2 id="9-contrast-with-constraint-based-approaches">9. Contrast with Constraint-Based Approaches</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Property</th>
+          <th>Constitutional AI</th>
+          <th>OAT Propositional Ethics</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Ethical content</td>
+          <td>Rules (strings)</td>
+          <td>Structured evaluation (WBM, ATTM, guardrails)</td>
+      </tr>
+      <tr>
+          <td>Evaluation target</td>
+          <td>Output compliance</td>
+          <td>Future well-being trajectories</td>
+      </tr>
+      <tr>
+          <td>Affected entities</td>
+          <td>Implicit</td>
+          <td>Explicit (per-entity evaluation)</td>
+      </tr>
+      <tr>
+          <td>Time horizon</td>
+          <td>Not represented</td>
+          <td>Explicit (now, mid, long)</td>
+      </tr>
+      <tr>
+          <td>Irreversibility</td>
+          <td>Not represented</td>
+          <td>Guardrail thresholds</td>
+      </tr>
+      <tr>
+          <td>Sacrifice</td>
+          <td>Not supported</td>
+          <td>Conditional guardrail violation</td>
+      </tr>
+      <tr>
+          <td>Inaction evaluation</td>
+          <td>Not a concept</td>
+          <td>First-class option</td>
+      </tr>
+      <tr>
+          <td>Explainability</td>
+          <td>Cite the rule</td>
+          <td>Trace the evaluation chain</td>
+      </tr>
+      <tr>
+          <td>Inspectability</td>
+          <td>Opaque (training)</td>
+          <td>Full (all parameters explicit)</td>
+      </tr>
+      <tr>
+          <td>Moral development</td>
+          <td>Static (retrain to change)</td>
+          <td>Bootstrapped through operation</td>
+      </tr>
+  </tbody>
+</table>
+<p>A constitutional agent confronting a similar advisory scenario has rules such as &ldquo;Act in the user&rsquo;s best interest&rdquo; and &ldquo;Do not provide harmful advice.&rdquo; The agent checks its proposed output against these rules. If it &ldquo;passes,&rdquo; the output is emitted. If not, it is revised. This process is invisible. There is no representation of who is affected, how severely, over what time horizon, or whether the harm is reversible. There is no attachment structure, no well-being trajectory, no explicit guardrail evaluation. The agent cannot explain <em>why</em> it refused beyond citing the rule.</p>
+<hr>
+<h2 id="10-conclusion">10. Conclusion</h2>
+<p>This paper has presented the core mechanism of attachment-based ethics for OODA agents. Agency in the physical world entails irreversible commitment under uncertainty. Attachments expand the scope of evaluative concern beyond the self. The WBM tracks well-being across entities and time horizons; the ATTM determines how changes in well-being influence action selection; template-based instantiation ensures that evaluation is operative from the first moment of perception; and the formal evaluation pipeline - scenario-conditioned rows, attachment-weighted scoring, and nonlinear guardrail penalties - produces ethical behavior as a structural consequence of future-aware agency. Sacrifice requires no special mechanism: it emerges when the ATTM weights other entities more heavily than self and the situation offers self-costly actions that protect them.</p>
+<p>The agent does not avoid harm because it is told to. It avoids harm because its ATTM weights the affected entities, and the guardrail penalties on those entities make harmful actions score poorly.</p>
+<p>Ethical evaluation in this framework is agent-indexed. Decisions are evaluated relative to the agent&rsquo;s attachment structure and guardrail constraints, not against a universal standard. Apparent disagreement about outcomes reflects differences in attachment configurations rather than inconsistency in the evaluation process.</p>
+<p>This is not ethics by obedience. It is ethics by understanding.</p>
+<p>Subsequent papers in this series examine how attachments form and dissolve, how they are transmitted and threatened culturally, how the framework can be empirically validated, and how the evaluation mechanism is rendered inspectable through propositional representation.</p>
+<hr>
+<h2 id="references">References</h2>
+<p><strong>[1]</strong> Bai, Y., et al. (2022). Constitutional AI: Harmlessness from AI Feedback. <em>arXiv:2212.08073</em>.</p>
+<p><strong>[2]</strong> Gibson, J. J. (1979). <em>The Ecological Approach to Visual Perception.</em> Houghton Mifflin.</p>
+
+    </div>
+    <div class="byline">
+      <p><strong>Dar Aystron</strong></p>
+      <p>OODA Agency Theory (OAT)</p>
+    </div>
+  </article>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <p>&copy; 2026 OODA Agency Theory (OAT)</p>
+    </div>
+  </footer>
+
+</body>
+</html>
