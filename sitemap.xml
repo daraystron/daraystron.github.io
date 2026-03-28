@@ -2,55 +2,64 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/</loc>
+    <loc>https://aystron.ai/logs/fourth_publication/</loc>
+    <lastmod>2026-03-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://aystron.ai/</loc>
+    <lastmod>2026-03-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://aystron.ai/logs/</loc>
+    <lastmod>2026-03-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://aystron.ai/papers/paper08/</loc>
+    <lastmod>2026-03-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://aystron.ai/papers/paper09/</loc>
+    <lastmod>2026-03-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://aystron.ai/papers/</loc>
+    <lastmod>2026-03-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://aystron.ai/logs/third_publication/</loc>
     <lastmod>2026-03-26T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/logs/third_publication/</loc>
+    <loc>https://aystron.ai/papers/paper07/</loc>
     <lastmod>2026-03-26T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/logs/</loc>
-    <lastmod>2026-03-26T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/papers/paper07/</loc>
-    <lastmod>2026-03-26T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/papers/</loc>
-    <lastmod>2026-03-26T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/logs/second_publication/</loc>
+    <loc>https://aystron.ai/logs/second_publication/</loc>
     <lastmod>2026-03-16T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/papers/paper05/</loc>
+    <loc>https://aystron.ai/papers/paper05/</loc>
     <lastmod>2026-03-16T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/papers/paper06/</loc>
+    <loc>https://aystron.ai/papers/paper06/</loc>
     <lastmod>2026-03-16T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/artifacts/</loc>
+    <loc>https://aystron.ai/artifacts/</loc>
     <lastmod>2026-03-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/logs/first_publication/</loc>
+    <loc>https://aystron.ai/logs/first_publication/</loc>
     <lastmod>2026-03-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/artifacts/oat_summary/</loc>
+    <loc>https://aystron.ai/artifacts/oat_summary/</loc>
     <lastmod>2026-03-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/papers/paper01/</loc>
+    <loc>https://aystron.ai/papers/paper01/</loc>
     <lastmod>2026-03-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/papers/paper02/</loc>
+    <loc>https://aystron.ai/papers/paper02/</loc>
     <lastmod>2026-03-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/papers/paper03/</loc>
+    <loc>https://aystron.ai/papers/paper03/</loc>
     <lastmod>2026-03-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/papers/paper04/</loc>
+    <loc>https://aystron.ai/papers/paper04/</loc>
     <lastmod>2026-03-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/about/</loc>
+    <loc>https://aystron.ai/about/</loc>
   </url><url>
-    <loc>http://localhost:1313/categories/</loc>
+    <loc>https://aystron.ai/categories/</loc>
   </url><url>
-    <loc>http://localhost:1313/tags/</loc>
+    <loc>https://aystron.ai/tags/</loc>
   </url>
 </urlset>

@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Paper 09 - Critics: Monitoring Mechanisms for Learning and Adaptation in OODA-Based Agents | Aystron Research Program</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+
+  
+    <link rel="stylesheet" href="/css/site.9cf928ddc7a2077a18b12e2a2bfa1e25b6691284803204bffc85587d12a1ecf7.css">
+  
+</head>
+<body>
+
+  <header class="header">
+    <div class="wrap">
+      <div class="topbar">
+        <div class="brand">
+          <a class="brand__name" href="/">OODA Agency Theory (OAT)</a>
+        </div>
+        <nav class="nav">
+          <a href="/artifacts/oat_summary/">Summary</a>
+          <a href="/papers/">Papers</a>
+          <a href="/logs/">Logs</a>
+          <a href="/about/">About</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="main">
+    <div class="wrap">
+      
+  <article>
+    <div class="content">
+      <h1 id="critics-monitoring-mechanisms-for-learning-and-adaptation-in-ooda-based-agents">Critics: Monitoring Mechanisms for Learning and Adaptation in OODA-Based Agents</h1>
+<h2 id="abstract">Abstract</h2>
+<p>Adaptive agents must detect when their behavior, knowledge, or internal reasoning becomes inadequate. Traditional artificial intelligence systems often rely on external evaluation or offline retraining to address such deficiencies. Autonomous agents, however, require internal mechanisms capable of continuously monitoring their own operation.</p>
+<p>This paper introduces <strong>critics</strong> as monitoring mechanisms within the OODA-based architecture of OODA Agency Theory (OAT). Critics observe the internal activity of an agent and generate diagnostic observations about anomalies, inconsistencies, and performance failures. These observations become part of the agent&rsquo;s perception stream and influence subsequent orientation and decision processes.</p>
+<p>Critics extend both the <strong>internal sensory field</strong> and the <strong>internal action repertoire</strong> of the agent while preserving a single OODA control loop. Through this mechanism, critics enable learning, adaptation, and structural evolution in advanced artificial agents.</p>
+<hr>
+<h2 id="1-introduction">1. Introduction</h2>
+<p>Agents operating in complex environments inevitably encounter situations where their existing knowledge or strategies are inadequate. Effective adaptation therefore requires mechanisms capable of detecting internal failures, inconsistencies, and unexpected outcomes.</p>
+<p>OODA Agency Theory models artificial agents as systems organized around a continuous <strong>Observe-Orient-Decide-Act (OODA)</strong> cycle [1]. Within this architecture, learning and adaptation occur through the interaction of perception, internal models, and action.</p>
+<p>However, adaptation requires the ability to recognize when something is wrong. Without such recognition, an agent may continue applying ineffective strategies indefinitely. The question is not whether monitoring is needed, but how it should be integrated into the agent&rsquo;s architecture.</p>
+<p>The prevailing approach in contemporary AI treats evaluation as an external process. Benchmarks, test suites, evaluation frameworks, and human review processes assess a system&rsquo;s performance from outside, after the fact. This paper argues that autonomous agents require a fundamentally different approach: <strong>internal monitoring mechanisms that operate continuously within the agent&rsquo;s own control loop</strong>.</p>
+<p>This paper introduces <strong>critics</strong> as architectural components responsible for detecting anomalies in the operation of the agent itself. Critics monitor internal processes and generate observations describing detected problems. These observations enter the normal OODA cycle and influence the agent&rsquo;s reasoning and decisions.</p>
+<hr>
+<h2 id="2-critics-as-internal-sensors">2. Critics as Internal Sensors</h2>
+<p>Critics are best understood as <strong>internal sensors</strong>.</p>
+<p>External sensors detect properties of the environment. Internal sensors detect properties of the agent&rsquo;s own activity and state. An agent&rsquo;s observation stream combines both, and both enter the <strong>Observe</strong> stage of the OODA loop.</p>
+<p>Internal sensors encompass a broad range of self-monitoring capabilities: awareness of resource constraints, time pressure, processing load, the state of current plans and goals, and many others. Critics are a specialized class of internal sensor, focused specifically on detecting anomalies, inconsistencies, and failures in the agent&rsquo;s mental states and processes.</p>
+<p>An agent&rsquo;s internal activity produces a rich set of mental states: beliefs, goals, plans, predictions, intermediate reasoning, and the decisions that result from orientation. Critics may monitor any of these. A critic may observe a single OODA cycle - detecting, for example, a contradiction within the current orientation - or it may observe patterns across many episodes, detecting conditions such as a persistent inability to find adequate actions during the Decide phase, or a recurring failure of predictions over successive cycles.</p>
+<p>This design preserves the principle that an agent operates through <strong>a single control loop</strong>. Critics do not introduce a separate monitoring process that runs alongside the agent&rsquo;s reasoning. They extend the agent&rsquo;s perceptual capabilities so that the agent can perceive its own internal states with the same architectural mechanisms it uses to perceive the external world.</p>
+<hr>
+<h2 id="3-critics-as-expert-monitors">3. Critics as Expert Monitors</h2>
+<p>Critics are not generic anomaly detectors. Each critic is a <strong>specialized expert</strong> associated with particular classes of failures or unusual conditions.</p>
+<p>A critic encapsulates knowledge of:</p>
+<ul>
+<li>the kinds of anomalies it monitors</li>
+<li>how to detect them</li>
+<li>possible corrective actions</li>
+</ul>
+<h3 id="31-critic-types-and-conflict-classification">3.1 Critic Types and Conflict Classification</h3>
+<p>Each critic is specialized for particular classes of anomalies. The following table illustrates representative critic types. This is not an exhaustive list; the kinds of critics an agent employs will depend on its domain, architecture, and the mental states it maintains.</p>
+<table>
+  <thead>
+      <tr>
+          <th>Critic</th>
+          <th>Detects</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Logical critic</td>
+          <td>contradictions between beliefs</td>
+      </tr>
+      <tr>
+          <td>Prediction critic</td>
+          <td>mismatch between predictions and outcomes</td>
+      </tr>
+      <tr>
+          <td>Planning critic</td>
+          <td>weak or inconsistent plans</td>
+      </tr>
+      <tr>
+          <td>Goal critic</td>
+          <td>conflicts between goals</td>
+      </tr>
+      <tr>
+          <td>Evidence critic</td>
+          <td>insufficient justification</td>
+      </tr>
+  </tbody>
+</table>
+<p>The anomalies detected by critics may be classified along several dimensions. Three foundational conflict categories - <strong>incompleteness</strong>, <strong>contradiction</strong>, and <strong>novelty</strong> - capture distinct monitoring concerns:</p>
+<ul>
+<li><em>Incompleteness</em> arises when the agent&rsquo;s knowledge lacks information needed for reasoning.</li>
+<li><em>Contradiction</em> arises when different knowledge elements support conflicting conclusions.</li>
+<li><em>Novelty</em> arises when incoming information cannot be assimilated into existing knowledge structures.</li>
+</ul>
+<p>These categories are not exhaustive. An agent operating in a complex domain will encounter additional classes of anomaly that do not reduce to missing information, logical conflict, or unassimilable input. Operational concerns such as persistent plan failure, goal incoherence, resource exhaustion, and recurring inability to find adequate actions during the Decide phase represent monitoring dimensions that extend beyond the foundational three. A mature agent may develop specialized critics for any aspect of its mental life where systematic failure is possible.</p>
+<p>The diagnostic propositions produced by critics are not uniform signals. They carry structure. A well-designed critic produces propositions that include:</p>
+<ul>
+<li><strong>conflict type</strong> - the specific kind of anomaly detected</li>
+<li><strong>parameters</strong> - the knowledge elements involved</li>
+<li><strong>category</strong> - the class of conflict (incompleteness, contradiction, novelty, or other)</li>
+<li><strong>possible causes</strong> - candidate explanations for why the conflict arose</li>
+<li><strong>recommendations</strong> - suggested corrective actions</li>
+</ul>
+<p>The richness of this diagnostic determines how effectively the agent can respond. A critic that merely signals &ldquo;error detected&rdquo; provides less adaptive value than one that identifies the conflicting elements, classifies the nature of the conflict, and proposes candidate resolutions.</p>
+<h3 id="32-diagnostic-observations">3.2 Diagnostic Observations</h3>
+<p>When critic observations are lifted into the propositional layer, they become structured diagnostic propositions using the representational language introduced in Paper 06 [8]. The following examples illustrate the lifted case.</p>
+<p>A logical critic detecting a contradiction between two beliefs:</p>
+<pre tabindex="0"><code>(:contradiction (:as .cr1 :in .S1)
+  :critic :LogicalCritic
+  :element_a .b3
+  :element_b .b7)
+</code></pre><p>A prediction critic detecting a mismatch between an expected and observed outcome:</p>
+<pre tabindex="0"><code>(:prediction_error (:as .cr2 :in .S1)
+  :critic :PredictionCritic
+  :predicted .p1
+  :observed .f4
+  :magnitude :high)
+</code></pre><p>A planning critic assessing the quality of a current plan:</p>
+<pre tabindex="0"><code>(:plan_quality (:as .cr3 :in .S1)
+  :critic :PlanningCritic
+  :plan .pl1
+  :assessment :low)
+</code></pre><p>A critic observing a pattern across multiple episodes - for example, that the Decide phase has repeatedly failed to identify adequate actions:</p>
+<pre tabindex="0"><code>(:decision_inadequacy (:as .cr4 :in .S1)
+  :critic :PlanningCritic
+  :phase :Decide
+  :episodes [:set .S_n-3 .S_n-2 .S_n-1 .S1]
+  :pattern :persistent_failure)
+</code></pre><p>These propositions enter the subject stream and become inputs to subsequent OODA cycles.</p>
+<p>The diagnostic propositions shown above represent the <em>lifted</em> case - critic observations that have entered the subject stream and become available for reasoning and deliberate response. Critics may also operate entirely at the implementation layer, detecting and correcting anomalies without their activity being lifted into explicit propositions. Such implementation-level critics correspond to subconscious monitoring and learning processes. The propositional examples in this paper focus on the lifted case, where critic observations require deliberate attention, goal formation, or planning.</p>
+<hr>
+<h2 id="4-critics-and-the-action-space">4. Critics and the Action Space</h2>
+<p>Critics extend not only perception but also the <strong>internal action repertoire</strong> of the agent.</p>
+<p>A critic may propose candidate corrective actions as propositions that enter the agent&rsquo;s decision process. Some corrective actions are simple and atomic - revise a single belief, request a piece of information. Others are more complex: a critic observation may generate a <strong>corrective goal</strong>, and that goal may in turn require a <strong>multi-step plan</strong> to achieve.</p>
+<p>For example, a simple corrective action:</p>
+<pre tabindex="0"><code>(:corrective_action (:as .ca1 :in .S1)
+  :source .cr1
+  :action (:revise_belief
+    :agent :Self
+    :target .b3))
+</code></pre><p>A corrective action that generates a goal requiring planning:</p>
+<pre tabindex="0"><code>(:corrective_goal (:as .cg1 :in .S1)
+  :source .cr2
+  :goal (:resolve_prediction_failure
+    :agent :Self
+    :regarding .f4))
+</code></pre><p>This goal may then lead, through normal Orient and Decide processing, to a multi-step plan:</p>
+<pre tabindex="0"><code>(:step (:as .st1 :in .S2)
+  :agent :Self
+  :action (:request_information
+    :agent :Self
+    :about .f4))
+
+(:step (:as .st2 :in .S2)
+  :agent :Self
+  :action (:revise_model
+    :agent :Self
+    :target .m1))
+
+(:step (:as .st3 :in .S2)
+  :agent :Self
+  :action (:re_evaluate
+    :agent :Self
+    :situation .S1))
+
+(:plan (:as .pl2 :in .S2)
+  :agent :Self
+  :goal .cg1
+  :steps [:seq .st1 .st2 .st3])
+</code></pre><p>The key architectural point is that corrective actions, corrective goals, and the plans generated to achieve them all flow through the same OODA machinery as any other goal or plan. A critic observation enters the subject stream; orientation interprets it; a corrective goal may be adopted during Decide; subsequent cycles generate and execute a plan to achieve that goal. The entire chain - from anomaly detection through goal adoption through multi-step corrective action - is interconnected through propositional references and processed by the single control loop.</p>
+<p>For example, a prediction critic may detect persistent error in an ML-based prediction model used by the agent. The resulting corrective goal - improve prediction quality - may generate a plan that includes delegating model retraining to an outbound micro-expert. The micro-expert performs the retraining as a specialized task; the improved model feeds back into the agent&rsquo;s subsequent OODA cycles. The entire chain - from anomaly detection through goal adoption through delegation to a specialized component through improved prediction - flows through the same architectural machinery.</p>
+<p>These actions and goals are not executed automatically. They become <strong>options available to the Decide stage</strong>, where they may appear alongside externally directed action candidates. Critics therefore extend both the sensory space and the action space of the agent, enabling perception of internal anomalies and consideration of corrective actions, without introducing additional control loops.</p>
+<hr>
+<h2 id="5-critics-and-learning">5. Critics and Learning</h2>
+<p>Section 4 established that critic observations generate corrective actions, corrective goals, and multi-step plans - all flowing through the normal OODA machinery. The depth of the agent&rsquo;s response depends on which level of knowledge the critic signal implicates. OAT distinguishes three levels:</p>
+<p><strong>Factographic knowledge</strong> describes concrete situations and their properties. A prediction critic detects that a specific fact is wrong, missing, or exceptional. The corrective response operates at this level: override an incorrect value, add a missing fact, correct a misrecorded observation, or record an exception. Robust reasoning methods routinely manage exceptions without revising the underlying models or rules.</p>
+<p><strong>General knowledge</strong> captures patterns, regularities, and abstractions across situations. When a critic detects not just a single incorrect fact but a systematic failure - a model consistently misclassifies a class of situations, an explanation pattern repeatedly fails to account for observations, or predictions diverge from outcomes across multiple episodes - the corrective goal must target the model or rule itself. In the micro-expert example from Section 4, retraining a prediction model is a general-level learning response: the model&rsquo;s structure or parameters are revised to capture patterns the previous version could not. A corrective plan at this level might include gathering additional evidence, constructing an alternative model, evaluating it against the accumulated anomalies, and replacing the deficient model. Each step is a proposition in the plan; the plan executes across multiple OODA cycles through the machinery described in Section 4.</p>
+<p><strong>Categorical knowledge</strong> provides the fundamental representational vocabulary - the types, relations, and structural primitives used to describe situations. When critics detect persistent failures that resist resolution at both the factographic and general levels, the agent faces a deeper problem: its representational categories are inadequate. It lacks the vocabulary to describe the situations it encounters. No amount of parameter adjustment or model revision will help, because the representations themselves cannot capture the relevant distinctions. Learning at this level requires structural reorganization, which is addressed in Section 6.</p>
+<hr>
+<h2 id="6-structural-adaptation">6. Structural Adaptation</h2>
+<p>In some situations, incremental learning is insufficient. Incremental learning adjusts parameters or modifies rules within existing representational structures. <strong>Structural learning</strong> modifies the structures themselves.</p>
+<p>Persistent anomalies may indicate that the agent lacks necessary cognitive structures. When such conditions are detected repeatedly, critics may lead the agent to consider structural changes such as:</p>
+<ul>
+<li>introducing new representational categories</li>
+<li>modifying planning strategies</li>
+<li>reorganizing knowledge structures</li>
+<li>expanding internal models</li>
+</ul>
+<p>These deeper changes flow through the same OODA mechanism as all other decisions. The critic detects a pattern of unresolvable conflicts; the orientation phase interprets this pattern as evidence of structural inadequacy; the decision phase selects a structural modification from the available action space. No separate control mechanism is required.</p>
+<p>The connection between conflict accumulation and structural change is not merely theoretical. Any system that operates long enough in a complex domain will encounter conflicts that cannot be resolved by modifying individual knowledge elements. Resolution requires changes at the representational level itself - introducing new categories, restructuring relationships between existing abstractions, or modifying the classification system. Structural adaptation is a practical necessity for systems operating under real-world conditions of incomplete and evolving knowledge.</p>
+<hr>
+<h2 id="7-critics-and-external-evaluation">7. Critics and External Evaluation</h2>
+<p>The concept of critics should be distinguished from the dominant approach to evaluation in contemporary AI systems.</p>
+<h3 id="71-external-evaluation">7.1 External Evaluation</h3>
+<p>External evaluation assesses a system&rsquo;s performance from outside. Benchmarks, test suites, evaluation frameworks, and human review processes measure outputs against predefined criteria. This approach treats evaluation as a phase in the system&rsquo;s lifecycle - something that happens during development, after deployment, or at scheduled intervals.</p>
+<p>External evaluation has several characteristic properties:</p>
+<ul>
+<li><strong>Decoupled from operation.</strong> The system being evaluated does not have access to the evaluation results during its normal operation. Evaluation and execution are separate processes.</li>
+<li><strong>Retrospective.</strong> Evaluation examines past outputs. By the time an evaluation identifies a deficiency, the system has already produced the deficient outputs.</li>
+<li><strong>Criteria-referenced.</strong> Performance is measured against fixed external standards. The system does not determine what constitutes adequate performance; the evaluator does.</li>
+<li><strong>Episodic.</strong> Evaluation occurs at discrete points rather than continuously. Between evaluations, the system operates without self-assessment.</li>
+</ul>
+<p>These properties make external evaluation well-suited for quality assurance, compliance verification, and comparative benchmarking. They make it poorly suited for autonomous adaptation.</p>
+<h3 id="72-internal-monitoring">7.2 Internal Monitoring</h3>
+<p>Critics operate under a fundamentally different set of assumptions:</p>
+<ul>
+<li><strong>Coupled to operation.</strong> Critic observations enter the agent&rsquo;s perception stream during operation. Monitoring and execution are part of the same process.</li>
+<li><strong>Prospective.</strong> Critics detect anomalies as they arise, enabling the agent to adjust before producing further deficient outputs.</li>
+<li><strong>Coherence-referenced.</strong> Critics monitor for internal coherence - contradictions, prediction errors, plan failures - rather than for conformance to external standards. The criteria emerge from the agent&rsquo;s own knowledge and reasoning.</li>
+<li><strong>Continuous.</strong> Critics operate on every OODA cycle. Monitoring is not a phase but a permanent feature of the agent&rsquo;s architecture, spanning observation, orientation, decision, and action.</li>
+</ul>
+<h3 id="73-architectural-implications">7.3 Architectural Implications</h3>
+<p>The distinction between external evaluation and internal monitoring is architectural, not merely procedural.</p>
+<p>External evaluation preserves a separation between the system and its evaluator. This separation is appropriate when the goal is oversight - when an external authority needs to verify that a system meets specified requirements. Constitutional AI [7], RLHF, and similar alignment approaches operate within this paradigm: the system is shaped by external evaluation signals, but the evaluation itself remains external to the system&rsquo;s operational loop.</p>
+<p>Critics eliminate this separation. The evaluator is part of the system. This integration is what makes critics a mechanism for <strong>autonomy</strong> rather than a mechanism for <strong>oversight</strong>. An agent with critics does not depend on external evaluation to detect that its beliefs are contradictory, its predictions are failing, or its plans are inadequate. It detects these conditions itself, as part of its own operational process.</p>
+<p>This does not mean that external evaluation becomes unnecessary. External evaluation serves purposes that internal monitoring cannot: verifying that the agent&rsquo;s goals are appropriate, that its critic mechanisms are functioning correctly, and that its behavior satisfies externally imposed constraints. The relationship between internal critics and external evaluation is complementary, not competitive. Critics enable autonomous adaptation; external evaluation provides societal accountability.</p>
+<p>It is worth noting that contemporary agentic AI practice has begun to converge on a similar intuition. Online evaluation mechanisms - guardrails, output validators, trace monitors operating during agent execution - represent a practical recognition that evaluation cannot always be deferred to an offline phase. However, these mechanisms remain structurally thin: they typically function as pass/fail gates inserted between processing steps, lacking the diagnostic richness described in Section 3.1, the integration into the agent&rsquo;s own perceptual stream, and the connection to multi-level adaptation described in Sections 5 and 6. Agentic AI practitioners have independently converged on the need for something like critics, but have only implemented the thinnest version.</p>
+<p>However, the two approaches differ in what they assume about the locus of adaptive intelligence. External evaluation assumes that the intelligence required to assess performance resides outside the system. Critics assume that an agent must be capable of assessing its own performance - that self-monitoring is a constitutive feature of agency, not an optional add-on.</p>
+<hr>
+<h2 id="8-intellectual-context">8. Intellectual Context</h2>
+<p>The concept of critics aligns with several influential traditions in cognitive science, cybernetics, and philosophy of science.</p>
+<h3 id="cognitive-development">Cognitive Development</h3>
+<p>Developmental psychology emphasizes the role of internal conflict in learning. Jean Piaget described cognitive development as the interaction between <strong>assimilation</strong> and <strong>accommodation</strong>, where existing cognitive structures interpret experience until persistent mismatches force structural change [3].</p>
+<p>Within the OAT framework, critics play a role analogous to mechanisms that detect such mismatches. When critics observe contradictions, prediction errors, or repeated failures, they generate observations that signal the inadequacy of current internal structures.</p>
+<h3 id="cybernetic-regulation">Cybernetic Regulation</h3>
+<p>Cybernetics provides a theoretical foundation for adaptive regulation. W. Ross Ashby introduced the concept of <strong>ultrastability</strong>, in which a system reorganizes its internal structure when normal regulatory mechanisms fail to maintain stability [2].</p>
+<p>Critics in OAT provide a mechanism that detects the conditions requiring such reorganization. By monitoring prediction errors, contradictions, and performance anomalies, critics generate signals that may lead to adaptive changes in the agent&rsquo;s internal organization. The progression from factographic correction through model revision to structural reorganization (Section 6) corresponds to Ashby&rsquo;s distinction between regulatory adaptation within a given structure and the deeper reorganization that ultrastability demands.</p>
+<h3 id="scientific-change">Scientific Change</h3>
+<p>Thomas Kuhn described scientific progress as a process in which periods of normal science are periodically disrupted by <strong>anomalies</strong> that cannot be explained within the prevailing theoretical framework [5]. When such anomalies accumulate, a paradigm shift may occur.</p>
+<p>Critics perform a comparable role within artificial agents. By detecting persistent inconsistencies and unexplained outcomes, they accumulate evidence that existing models or strategies are inadequate. The transition from incremental learning to structural adaptation (Section 6) parallels Kuhn&rsquo;s account of the transition from normal science to paradigm change.</p>
+<h3 id="social-learning">Social Learning</h3>
+<p>Lev Vygotsky emphasized the fundamentally social nature of cognitive development. Learning often occurs through interaction with others within the <strong>zone of proximal development</strong>, where critique and guidance enable individuals to refine reasoning and acquire new capabilities [4].</p>
+<p>In multi-agent systems, critics may similarly operate across agents. One agent may observe and critique the reasoning of another, generating feedback that improves collective performance. This possibility is not developed further in the present paper but represents a natural extension of the critic concept.</p>
+<h3 id="cognitive-architectures">Cognitive Architectures</h3>
+<p>Marvin Minsky described critics in <em>The Society of Mind</em> as agents that observe and evaluate the activity of other agents, triggering corrective mechanisms when problems are detected [6].</p>
+<p>OAT adopts a similar concept but integrates critics into a fundamentally different architecture. In Minsky&rsquo;s model, critics are agents within a heterarchical society, interacting with other agents through emergent negotiation. In OAT, critics are monitoring mechanisms within a single OODA-based control loop, where architectural coherence is maintained by the cycle itself rather than by negotiation among independent components. This distinction determines how conflicts between critic observations and ongoing reasoning are resolved: through a unified decision process rather than through competition among autonomous agents.</p>
+<hr>
+<h2 id="9-implementation-considerations">9. Implementation Considerations</h2>
+<p>Critics may be implemented using various mechanisms depending on the type of monitoring required and the resources available.</p>
+<p><strong>Rule-based critics</strong> apply predefined patterns to detect known classes of anomalies. These are appropriate for well-understood failure modes where the conditions triggering a conflict can be specified in advance. The conflict classification structures described in Section 3.1 provide a model for organizing such rules.</p>
+<p><strong>Statistical monitors</strong> detect anomalies through deviation from expected distributions. Prediction critics, for example, may track running statistics of prediction errors and generate observations when error rates exceed established thresholds.</p>
+<p><strong>Logical consistency checkers</strong> verify that the agent&rsquo;s beliefs satisfy specified constraints. These correspond most directly to the contradiction-detection function of the logical critic.</p>
+<p><strong>Language-model-based evaluators</strong> represent a contemporary implementation path. Large language models can evaluate reasoning traces, detect inconsistencies in natural-language explanations, and propose candidate repairs expressed in the same representational medium as the agent&rsquo;s reasoning. This capability makes LLMs particularly effective as critics in systems where reasoning is conducted through natural language.</p>
+<p>The choice of implementation mechanism does not affect the architectural role of the critic. Regardless of whether a critic uses rules, statistics, logical inference, or language model evaluation, its function within the OODA loop remains the same: it generates diagnostic signals that influence the agent&rsquo;s subsequent processing, whether at the implementation layer or - when lifted - as explicit propositions entering the subject stream.</p>
+<hr>
+<h2 id="10-conclusion">10. Conclusion</h2>
+<p>Critics provide a foundational mechanism for learning and adaptation in OODA-based agents. By monitoring internal processes and generating observations about anomalies, critics allow agents to detect when their current knowledge, models, or strategies become inadequate.</p>
+<p>Treating critics as internal sensors preserves a single coherent control loop while enabling rich self-monitoring capabilities. By expanding both the perceptual and action capabilities of the agent, critics support learning at multiple levels: correction of concrete facts at the factographic level, model revision at the general level, and structural reorganization at the categorical level.</p>
+<p>The distinction between internal critics and external evaluation clarifies the architectural role that self-monitoring plays in autonomous agency. External evaluation assesses performance from outside, after the fact, against fixed criteria. Critics monitor from inside, continuously, for internal coherence. Both serve important purposes, but only internal monitoring provides the real-time self-awareness that autonomous adaptation demands. An agent that must wait for external evaluation to discover its own failures is not yet fully autonomous. An agent with critics has taken a step toward genuine self-regulation.</p>
+<hr>
+<h2 id="references">References</h2>
+<p>[1] J. R. Boyd. <em>The Essence of Winning and Losing.</em> Unpublished briefing slides and lectures, 1987–1996.</p>
+<p>[2] W. R. Ashby. <em>An Introduction to Cybernetics.</em> Chapman &amp; Hall, London, 1956.</p>
+<p>[3] J. Piaget. <em>The Origins of Intelligence in Children.</em> International Universities Press, 1952.</p>
+<p>[4] L. S. Vygotsky. <em>Thought and Language.</em> MIT Press, 1962.</p>
+<p>[5] T. S. Kuhn. <em>The Structure of Scientific Revolutions.</em> University of Chicago Press, 1962.</p>
+<p>[6] M. Minsky. <em>The Society of Mind.</em> Simon &amp; Schuster, 1986.</p>
+<p>[7] Y. Bai et al. &ldquo;Constitutional AI: Harmlessness from AI Feedback.&rdquo; <em>arXiv preprint arXiv:2212.08073</em>, 2022.</p>
+<p>[8] D. Aystron. &ldquo;The Propositional Lift and the Subject Stream.&rdquo; <em>OODA Agency Theory Working Papers</em>, Paper 06, 2026.</p>
+
+    </div>
+    <div class="byline">
+      <p><strong>Dar Aystron</strong></p>
+      <p>OODA Agency Theory (OAT)</p>
+    </div>
+  </article>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <p>&copy; 2026 OODA Agency Theory (OAT)</p>
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Paper 08 - Planning and Temporal Control in OODA-Based Agents | Aystron Research Program</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+
+  
+    <link rel="stylesheet" href="/css/site.9cf928ddc7a2077a18b12e2a2bfa1e25b6691284803204bffc85587d12a1ecf7.css">
+  
+</head>
+<body>
+
+  <header class="header">
+    <div class="wrap">
+      <div class="topbar">
+        <div class="brand">
+          <a class="brand__name" href="/">OODA Agency Theory (OAT)</a>
+        </div>
+        <nav class="nav">
+          <a href="/artifacts/oat_summary/">Summary</a>
+          <a href="/papers/">Papers</a>
+          <a href="/logs/">Logs</a>
+          <a href="/about/">About</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="main">
+    <div class="wrap">
+      
+  <article>
+    <div class="content">
+      <h1 id="paper-08-----planning-and-temporal-control-in-ooda-based-agents">Paper 08  -  Planning and Temporal Control in OODA-Based Agents</h1>
+<p><strong>Dar Aystron</strong>
+<em>Independent Researcher</em></p>
+<hr>
+<h1 id="abstract">Abstract</h1>
+<p>Many contemporary AI agent frameworks rely on prompt-driven reasoning loops in which plans are generated and immediately executed. Such approaches typically lack persistent internal structure, explicit temporal reasoning, and robust mechanisms for interruption or asynchronous deliberation.</p>
+<p>This paper introduces a design for planning and temporal control within agents built according to <strong>OODA Agency Theory (OAT)</strong>. In this architecture, planning is treated as an <strong>agentic action</strong>, and plans are represented as <strong>persistent mental states</strong> that guide behavior across OODA cycles. Calendar and scheduling structures extend the agent’s sensor field into time, while computational capabilities may be invoked either synchronously as delegated skills within the OODA loop or asynchronously as background <strong>micro-experts</strong>. These micro-experts perform specialized tasks in the background and report results to a <strong>single central OODA loop</strong>, preserving unified agency while enabling distributed capability.</p>
+<p>The resulting architecture supports temporal autonomy, natural interruption handling, structured deliberation, and explainability by construction.</p>
+<hr>
+<h2 id="1-introduction">1. Introduction</h2>
+<p>Recent progress in AI agents has been driven by architectures that combine large language models with tool execution loops. Systems such as ReAct and planner-executor frameworks enable models to reason about tasks and invoke tools in sequence.</p>
+<p>However, these systems often exhibit several structural limitations:</p>
+<ul>
+<li>plans are ephemeral prompt artifacts,</li>
+<li>internal state and commitments are not explicitly represented,</li>
+<li>temporal commitments are implicit,</li>
+<li>asynchronous reasoning processes are difficult to integrate,</li>
+<li>interruptions require ad-hoc mechanisms.</li>
+</ul>
+<p>This paper presents a different architectural approach grounded in <strong>OODA Agency Theory (OAT)</strong>. Papers 01-02 established the OODA loop as a persistent control architecture and showed how operational agentic closure arises from continuous commitment perception [1]. Paper 03 introduced mental states as persistent internal structures. Paper 04 analyzed action realization as a physically grounded control transition. Papers 05-06 developed artificial phenomenology and the propositional lift. Paper 07 formalized attachment-based ethics as a consequence of irreversible action under uncertainty.</p>
+<p>The present paper extends this architectural program to <strong>planning and temporal control</strong>. The broader intellectual foundations lie in the cybernetic tradition of feedback-based control systems developed by Wiener [3] and Ashby [2], classical work on problem-solving systems in artificial intelligence [4], and philosophical accounts of planning and intention as organizing structures for practical reasoning [5].</p>
+<p>To illustrate the architecture, we follow a simple running scenario throughout the paper: an agent tasked with preparing a report from incoming data sources while continuing to respond to other requests.</p>
+<hr>
+<h2 id="2-ooda-as-the-core-control-architecture">2. OODA as the Core Control Architecture</h2>
+<p>In OAT an agent is organized around a continuous control loop:</p>
+<p>Observe &gt; Orient &gt; Decide &gt; Act</p>
+<p>Each stage plays a distinct role.</p>
+<ul>
+<li>Observe gathers signals from the environment, internal state, and temporal events.</li>
+<li>Orient constructs the current situation model.</li>
+<li>Decide selects the next action.</li>
+<li>Act executes the chosen operation.</li>
+</ul>
+<p>The loop runs continuously. Actions influence the environment and internal state, which produce new observations in subsequent cycles. In this way the system maintains <strong>operational agentic closure</strong>.</p>
+<p>The present paper shows how planning and temporal control integrate naturally into this loop.</p>
+<hr>
+<h2 id="3-mental-states-in-the-planning-context">3. Mental States in the Planning Context</h2>
+<p>Paper 03 established mental states as persistent internal structures that participate in observation and constrain future action. The present paper introduces three specific mental state types  -  plans, calendar commitments, and tracking states for micro-expert tasks  -  and shows how each integrates into the OODA loop.</p>
+<hr>
+<h2 id="4-planning-as-an-agentic-action">4. Planning as an Agentic Action</h2>
+<p>Traditional AI systems often treat planning as an implicit reasoning step inside a decision procedure. In OAT, planning is treated differently. Planning is itself <strong>an action performed by the agent</strong>. Consider the report-preparation scenario.</p>
+<h3 id="example-ooda-cycle-planning-as-an-action">Example OODA Cycle (Planning as an Action)</h3>
+<ul>
+<li><strong>Observe:</strong>  The agent receives a request to prepare a report.</li>
+<li><strong>Orient:</strong>  The agent forms a situation model, identifying what information is already available, what data sources must be consulted, and what constraints or deadlines may apply.</li>
+<li><strong>Decide:</strong>  Rather than immediately invoking tools, the agent determines that constructing a plan is the most appropriate next step.</li>
+<li><strong>Act:</strong>  The agent invokes a planning procedure and stores the resulting plan as a persistent internal object.</li>
+</ul>
+<p>The resulting plan becomes part of the agent’s mental state and guides subsequent OODA cycles.</p>
+<hr>
+<h2 id="5-plans-as-persistent-mental-states">5. Plans as Persistent Mental States</h2>
+<p>Plans in this architecture are not temporary instructions generated for immediate execution. Instead, they exist as persistent internal objects.</p>
+<p>A plan typically contains:</p>
+<ul>
+<li>the goal it supports</li>
+<li>a set of steps</li>
+<li>dependencies among those steps</li>
+<li>constraints and priorities</li>
+<li>a current execution status</li>
+</ul>
+<p>For example, the report plan might include steps such as collecting data, analyzing the results, and writing the final summary.</p>
+<p>Importantly, the plan does not execute automatically. Once created, a plan enters the agent&rsquo;s mental state as a new internal object. In the next OODA cycle, the Observe phase discovers the plan alongside any other new observations - external inputs, temporal events, or competing commitments. Orient integrates the plan into the current situation model, and only then does Decide determine whether to begin executing it. The plan must compete for attention and priority like any other observation. A plan created during one cycle may therefore not be acted upon immediately if a higher-priority event arrives in the same Observe phase.</p>
+<p>In this way, the architecture maintains a genuine separation between plan formation and plan uptake. Plans act as <strong>guides for future decisions</strong>, not as automatic execution triggers. During each subsequent OODA cycle the agent considers whether the next step should be executed, modified, postponed, or abandoned.</p>
+<p>This interpretation closely aligns with Bratman’s view of plans as organizing commitments that guide behavior across time while remaining subject to reconsideration [5].</p>
+<p>Plans persist as mental states across OODA cycles and may exist in various conditions - active, postponed, interrupted, or waiting. At each cycle, Observe surfaces plans selectively based on their status, temporal triggers, and relevance to the current situation. Orient constructs a coherent situation model from this landscape alongside external inputs and other internal state, and Decide selects the next action - which may be a step within an existing plan, or a management action on the plans themselves, such as postponing, resuming, reprioritizing, or canceling a plan.</p>
+<hr>
+<h2 id="6-plan-execution-across-cycles">6. Plan Execution Across Cycles</h2>
+<p>Execution unfolds gradually across multiple OODA cycles.</p>
+<p>Example cycle:</p>
+<ul>
+<li><strong>Observe</strong>: The system continues normal operation while the report plan is active.</li>
+<li><strong>Orient</strong>: The agent recognizes that the next step in the plan is to collect data from relevant sources.</li>
+<li><strong>Decide</strong>: Executing the data-collection step becomes the next action.</li>
+<li><strong>Act</strong>: The agent invokes the data-collection process.</li>
+</ul>
+<p>Later cycles may detect new information or unexpected obstacles. If a required data source becomes unavailable, the agent may reconsider the plan and generate a revised version.</p>
+<p>Thus the plan guides behavior without rigidly determining it.</p>
+<h3 id="plan-failure-and-abandonment">Plan Failure and Abandonment</h3>
+<p>Plans may also become infeasible. A required resource may become permanently unavailable, constraints may shift, or new information may render the original goal irrelevant. In such cases, the agent detects the failure during Orient, when the current situation model conflicts with the plan’s assumptions. The Decide phase then selects among revision, replacement, or abandonment. Abandonment is itself an agentic action: the plan is explicitly removed from the agent’s mental state, and the commitment it represented is released. This is not a passive loss but a deliberate transition, recorded in the agent’s operational history. Where plans involve commitments to others, the attachment-based evaluation framework developed in Paper 07 provides the mechanism for weighing the consequences of abandonment against continuation.</p>
+<hr>
+<h2 id="7-temporal-structures-calendars-and-scheduling">7. Temporal Structures: Calendars and Scheduling</h2>
+<p>Agents that operate continuously require explicit representations of time.</p>
+<p>For this purpose the architecture includes a <strong>calendar structure</strong> within the agent’s mental state. Calendar entries represent commitments scheduled for the future.</p>
+<p>The simplest calendar operation is assigning a future action to a time slot. More complex behaviors can be built on top of this primitive, such as retrying a failed operation after a delay, running periodic system checks, or scheduling a future review of an active plan.</p>
+<p>When the scheduled time arrives, the calendar generates an event that enters the OODA loop through the <strong>Observe</strong> stage.</p>
+<p>These scheduled events extend the agent’s operational field into time. In addition to responding to external events, the agent can initiate actions when scheduled conditions occur.</p>
+<hr>
+<h2 id="8-temporal-sensors">8. Temporal Sensors</h2>
+<p>Scheduled events enter the control loop through <strong>temporal sensors</strong>.</p>
+<p>When the time associated with a calendar entry arrives, the system produces an event that becomes an observation within the OODA loop.</p>
+<p><strong>Example OODA cycle (scheduled continuation of a long-running plan):</strong></p>
+<ul>
+<li>
+<p><strong>Observe:</strong><br>
+A temporal sensor fires: a calendar entry indicates that the current time slot is reserved for continuing the report plan. The plan is in a suspended state, with data collection completed and analysis pending.</p>
+</li>
+<li>
+<p><strong>Orient:</strong><br>
+The agent retrieves the plan&rsquo;s current status and identifies the next incomplete step. No competing high-priority requests are present.</p>
+</li>
+<li>
+<p><strong>Decide:</strong><br>
+Resuming the report plan at the analysis step is the appropriate action.</p>
+</li>
+<li>
+<p><strong>Act:</strong><br>
+The agent begins the analysis using the previously collected data.</p>
+</li>
+</ul>
+<p>Temporal events therefore become <strong>first-class observations</strong> within the OODA cycle.</p>
+<hr>
+<h2 id="9-delegated-skills-and-micro-experts">9. Delegated Skills and Micro-Experts</h2>
+<p>Actions selected during the <strong>Act</strong> stage may update the agent’s internal state, interact with external systems, or delegate work to specialized capabilities.</p>
+<p>Delegated capabilities may be executed in two different modes depending on the expected duration of the operation.</p>
+<h3 id="synchronous-delegated-skills">Synchronous Delegated Skills</h3>
+<p>Most actions performed by the agent are relatively quick and can be executed directly within the control loop. In these cases the agent invokes a capability and waits for the result before the next OODA cycle begins.</p>
+<p>Typical examples include:</p>
+<ul>
+<li>retrieving a document</li>
+<li>querying a database</li>
+<li>calling an external API</li>
+<li>executing a short planning procedure</li>
+<li>performing a small calculation</li>
+</ul>
+<p><strong>Example OODA cycle (synchronous delegation):</strong></p>
+<ul>
+<li>
+<p><strong>Observe:</strong><br>
+The report plan requires retrieving recent sales data.</p>
+</li>
+<li>
+<p><strong>Orient:</strong><br>
+The agent determines that the data can be obtained through a database query.</p>
+</li>
+<li>
+<p><strong>Decide:</strong><br>
+Delegating this step to a data-retrieval skill is the most appropriate action.</p>
+</li>
+<li>
+<p><strong>Act:</strong><br>
+The agent invokes the retrieval skill and waits for the result.</p>
+</li>
+</ul>
+<p>When the operation completes, the result is received during the <strong>Act</strong> stage and recorded in the agent’s internal state. An event reflecting this result is then generated for the next OODA cycle.</p>
+<p>Because the control loop evaluates events - including outcomes of actions from previous cycles - and then selects the next action, the agent maintains unified control over its activity.</p>
+<h3 id="asynchronous-micro-experts">Asynchronous Micro-Experts</h3>
+<p>Some operations require significantly longer computation.<br>
+Blocking the OODA loop in these cases would make the agent unresponsive.</p>
+<p>For such tasks the architecture allows the agent to launch <strong>asynchronous micro-experts</strong> - background processes that perform specialized computation while the OODA loop continues operating.</p>
+<p>Typical examples include:</p>
+<ul>
+<li>Monte Carlo Tree Search</li>
+<li>large analytical pipelines</li>
+<li>multi-source retrieval</li>
+<li>complex planning searches</li>
+</ul>
+<p><strong>Example OODA cycle (launching a micro-expert):</strong></p>
+<ul>
+<li>
+<p><strong>Observe:</strong><br>
+The report requires evaluating multiple analytical strategies.</p>
+</li>
+<li>
+<p><strong>Orient:</strong><br>
+The agent determines that deeper analysis is required.</p>
+</li>
+<li>
+<p><strong>Decide:</strong><br>
+Launching a background search process is appropriate.</p>
+</li>
+<li>
+<p><strong>Act:</strong><br>
+The agent starts a Monte Carlo Tree Search process.</p>
+</li>
+</ul>
+<p>The control loop continues cycling while the micro-expert runs.<br>
+When the computation finishes, the result appears as a new observation in a future cycle.</p>
+<h3 id="temporal-coupling">Temporal Coupling</h3>
+<p>Both execution modes preserve unified agency because the <strong>central OODA loop retains authority over all commitments and decisions</strong>.</p>
+<p>The difference lies in how the work interacts with the control loop.</p>
+<ul>
+<li>
+<p><strong>Delegated skills</strong> execute directly within the <strong>Act</strong> stage.<br>
+The loop waits for the result, which is recorded in the agent’s internal state and represented as an event in the next OODA cycle.</p>
+</li>
+<li>
+<p><strong>Micro-experts</strong> operate outside the control loop as background processes.<br>
+The loop continues cycling while they run, and their activity may generate status or completion events that appear in later cycles. The micro-expert’s output re-enters the agent’s perception through the Observe phase without the agent having maintained continuous awareness of the computation - structurally analogous to how solutions to complex problems sometimes surface in human cognition after a period of incubation.</p>
+</li>
+</ul>
+<hr>
+<h2 id="10-multiple-planning-strategies">10. Multiple Planning Strategies</h2>
+<p>Because planning is treated as an action, the agent may invoke different planning mechanisms depending on the situation.</p>
+<p>For structured domains, the agent might use a classical planner. For open-ended reasoning it may use an LLM-assisted planner. For evaluating complex decision spaces it may launch a Monte Carlo Tree Search as a micro-expert process.</p>
+<p>The choice of planner is itself determined during the Orient and Decide phases. The agent assesses the structure of the problem - whether it is well-defined or open-ended, time-constrained or exploratory - and selects the planning mechanism accordingly. This meta-level decision follows the same OODA discipline as any other action selection.</p>
+<hr>
+<h2 id="11-natural-interrupt-handling">11. Natural Interrupt Handling</h2>
+<p>Real systems must handle interruptions gracefully.</p>
+<p>Suppose the agent is analyzing data for the report when the user asks an unrelated question:</p>
+<blockquote>
+<p>“What is the weather in Paris today?”</p>
+</blockquote>
+<p><strong>Example OODA cycle (handling an interruption):</strong></p>
+<ul>
+<li>
+<p><strong>Observe:</strong><br>
+A new user request arrives.</p>
+</li>
+<li>
+<p><strong>Orient:</strong><br>
+The agent recognizes that this request is independent of the report task.</p>
+</li>
+<li>
+<p><strong>Decide:</strong><br>
+Answering the user becomes the highest-priority action.</p>
+</li>
+<li>
+<p><strong>Act:</strong><br>
+The agent retrieves the weather information and provides the response.</p>
+</li>
+</ul>
+<p>Afterward the agent simply returns to the report plan. No special interrupt mechanism is required because the OODA loop reevaluates priorities during every cycle.</p>
+<hr>
+<h2 id="12-explainability-and-temporal-autonomy">12. Explainability and Temporal Autonomy</h2>
+<p>Because the architecture maintains explicit mental structures, the system can explain its behavior directly. The agent can report the current active goal, the plan being executed, scheduled future steps, and recent observations that influenced decisions. Such explanations are derived directly from the system’s internal state rather than reconstructed after the fact.</p>
+<p>With persistent plans and calendar commitments, the agent can also operate continuously across extended periods. It can initiate actions at scheduled times, revisit earlier plans, retry failed operations, and coordinate tasks that unfold over hours or days. This capability transforms the system from a reactive tool into a persistent agent operating within time.</p>
+<hr>
+<h2 id="13-example-operational-sequence">13. Example Operational Sequence</h2>
+<p>The following simplified narrative illustrates the architecture in operation.</p>
+<p><strong>Cycle 1</strong></p>
+<p><strong>Observe:</strong> A request to prepare a report arrives.</p>
+<p><strong>Orient:</strong> The agent constructs a situation model describing the request and the available data sources.</p>
+<p><strong>Decide:</strong> Creating a plan is the most appropriate next action.</p>
+<p><strong>Act:</strong> The agent generates a report plan and records it in its mental state.</p>
+<hr>
+<p><strong>Cycle 2</strong></p>
+<p><strong>Observe:</strong> The agent perceives the newly created report plan in its mental state.</p>
+<p><strong>Orient:</strong> The agent determines that the first step of the plan is data collection.</p>
+<p><strong>Decide:</strong> Executing the data-collection step is the next action.</p>
+<p><strong>Act:</strong> The agent begins collecting data from the relevant sources.</p>
+<hr>
+<p><strong>Cycle 3</strong></p>
+<p><strong>Observe:</strong> The collected data indicates that deeper analysis is required.</p>
+<p><strong>Orient:</strong> The agent recognizes that evaluating several analytical strategies would improve the result.</p>
+<p><strong>Decide:</strong> Launching a background search process is appropriate.</p>
+<p><strong>Act:</strong> A micro-expert process is started to perform the analysis.</p>
+<hr>
+<p><strong>Cycle 4</strong></p>
+<p><strong>Observe:</strong> A user asks an unrelated question: “What is the weather in Paris today?”</p>
+<p><strong>Orient:</strong> The agent recognizes that this request is independent of the report task.</p>
+<p><strong>Decide:</strong> Answering the user becomes the highest-priority action.</p>
+<p><strong>Act:</strong> The agent retrieves the weather information and provides the response.</p>
+<hr>
+<p><strong>Cycles 5-34</strong></p>
+<p>During these cycles the OODA loop continues operating. The agent may handle other requests, monitor ongoing commitments, process scheduled events, and continue ordinary activity while the background analysis runs.</p>
+<hr>
+<p><strong>Cycle 35</strong></p>
+<p><strong>Observe:</strong> An event indicates that the background analysis has completed.</p>
+<p><strong>Orient:</strong> The agent integrates the results into its situation model and relates them to the active report plan.</p>
+<p><strong>Decide:</strong> The next report step should proceed using the returned analysis.</p>
+<p><strong>Act:</strong> The analysis results are incorporated into the report.</p>
+<hr>
+<p><strong>Cycle 36</strong></p>
+<p><strong>Observe:</strong> The report plan reaches its final step.</p>
+<p><strong>Orient:</strong> The agent determines that the report can now be completed.</p>
+<p><strong>Decide:</strong> Finalizing the report is the next action.</p>
+<p><strong>Act:</strong> The report is generated and delivered.</p>
+<hr>
+<p>Throughout this sequence the agent moves fluidly between tasks while maintaining a single coherent OODA control loop.</p>
+<hr>
+<h2 id="14-conclusion">14. Conclusion</h2>
+<p>This paper introduced an architectural framework for planning and temporal control within OODA-based agents.</p>
+<p>Key contributions include:</p>
+<ul>
+<li>planning as an agentic action</li>
+<li>plans as persistent mental states</li>
+<li>explicit calendar and temporal sensors</li>
+<li>asynchronous micro-expert processes</li>
+<li>hybrid planning strategies</li>
+<li>natural interruption handling</li>
+<li>explainability by construction</li>
+</ul>
+<p>Together these mechanisms extend the internal architecture of OODA-based agents from simple reactive loops to systems capable of sustained activity and temporal coordination. The result is a constructive realization of the relationship between intention and action analyzed by Bratman [5]: plan stability and context-sensitive reconsideration emerge as structural properties of the control loop rather than norms imposed on a rational agent.</p>
+<p>Although many processes may run simultaneously - including asynchronous micro-experts and scheduled temporal events - all commitments and final decisions remain under the authority of a single OODA loop. Background micro-experts extend the system’s capabilities but do not constitute independent agents. The architecture described here focuses on a single agent; cooperation between multiple OODA-based agents, in which messages from other agents appear as additional observations within each agent’s loop, is deferred to subsequent work.</p>
+<hr>
+<h1 id="references">References</h1>
+<p>[1] J. R. Boyd. <em>The Essence of Winning and Losing.</em> Unpublished briefing slides and lectures, 1987-1996.</p>
+<p>[2] W. R. Ashby. <em>An Introduction to Cybernetics.</em> Chapman &amp; Hall, 1956.</p>
+<p>[3] N. Wiener. <em>Cybernetics: Or Control and Communication in the Animal and the Machine.</em> MIT Press, 1948.</p>
+<p>[4] A. Newell and H. A. Simon. <em>Human Problem Solving.</em> Prentice-Hall, 1972.</p>
+<p>[5] M. Bratman. <em>Intention, Plans, and Practical Reason.</em> Harvard University Press, 1987.</p>
+
+    </div>
+    <div class="byline">
+      <p><strong>Dar Aystron</strong></p>
+      <p>OODA Agency Theory (OAT)</p>
+    </div>
+  </article>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <p>&copy; 2026 OODA Agency Theory (OAT)</p>
+    </div>
+  </footer>
+
+</body>
+</html>

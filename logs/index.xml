@@ -2,31 +2,38 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Logs on Aystron Research Program</title>
-    <link>http://localhost:1313/logs/</link>
+    <link>https://aystron.ai/logs/</link>
     <description>Recent content in Logs on Aystron Research Program</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 26 Mar 2026 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/logs/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 28 Mar 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://aystron.ai/logs/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Acting in Time, Watching Itself: Planning and Critics</title>
+      <link>https://aystron.ai/logs/fourth_publication/</link>
+      <pubDate>Sat, 28 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>https://aystron.ai/logs/fourth_publication/</guid>
+      <description>&lt;h1 id=&#34;acting-in-time-watching-itself-planning-and-critics&#34;&gt;Acting in Time, Watching Itself: Planning and Critics&lt;/h1&gt;&#xA;&lt;p&gt;&lt;em&gt;The agent can reason, reflect, and care. Now it must plan across time - and notice when something goes wrong.&lt;/em&gt;&lt;/p&gt;&#xA;&lt;p&gt;Papers 01-07 established what an OODA agent is: a closed control loop with persistent mental states, a propositional layer for reflection, and an attachment-based ethics grounded in the structure of agency itself. But that agent operates one cycle at a time. It has no sustained relationship with the future, and no way to detect its own failures.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>From Architecture to Ethics: Attachment-Based Evaluation</title>
-      <link>http://localhost:1313/logs/third_publication/</link>
+      <link>https://aystron.ai/logs/third_publication/</link>
       <pubDate>Thu, 26 Mar 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/logs/third_publication/</guid>
+      <guid>https://aystron.ai/logs/third_publication/</guid>
       <description>&lt;h1 id=&#34;from-architecture-to-ethics-attachment-based-evaluation&#34;&gt;From Architecture to Ethics: Attachment-Based Evaluation&lt;/h1&gt;&#xA;&lt;p&gt;&lt;em&gt;The agent acts in the world. Now it must care about what happens.&lt;/em&gt;&lt;/p&gt;&#xA;&lt;p&gt;The first six papers built the architecture of agency: closure, control, mental states, action, phenomenology, and the propositional lift. A system that persists, commits, reflects, and acts within a continuous OODA loop becomes a subject with a point of view.&lt;/p&gt;&#xA;&lt;p&gt;Paper 07 asks what happens when that subject shares a world with others.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Lifting the Subject: Phenomenology and the Propositional Lift</title>
-      <link>http://localhost:1313/logs/second_publication/</link>
+      <link>https://aystron.ai/logs/second_publication/</link>
       <pubDate>Mon, 16 Mar 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/logs/second_publication/</guid>
+      <guid>https://aystron.ai/logs/second_publication/</guid>
       <description>&lt;h1 id=&#34;lifting-the-subject-phenomenology-and-the-propositional-lift&#34;&gt;Lifting the Subject: Phenomenology and the Propositional Lift&lt;/h1&gt;&#xA;&lt;p&gt;&lt;em&gt;The subject exists. Now it can see itself.&lt;/em&gt;&lt;/p&gt;&#xA;&lt;p&gt;The first four papers built the architectural foundation: closure, control, mental states, and action realization. A system that persists, commits, and acts within a continuous OODA loop becomes a subject.&lt;/p&gt;&#xA;&lt;p&gt;Papers 05 and 06 ask what happens next.&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;What&amp;rsquo;s in This Release&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Paper 05 - Artificial Phenomenology and Experiential Structures&lt;/strong&gt; establishes that phenomenology is an architectural property, not a metaphysical mystery. When an agentically closed system maintains internal states that are causally generated through interaction with the world, persist over time, and participate in the agent&amp;rsquo;s control loop, those states constitute a genuine internal point of view. The organized patterns of such states - experiential structures - guide perception, evaluation, and action whether or not the agent can explicitly represent them.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Building the Subject: Foundations of OODA Agency Theory</title>
-      <link>http://localhost:1313/logs/first_publication/</link>
+      <link>https://aystron.ai/logs/first_publication/</link>
       <pubDate>Sat, 07 Mar 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/logs/first_publication/</guid>
+      <guid>https://aystron.ai/logs/first_publication/</guid>
       <description>&lt;h1 id=&#34;building-the-subject-first-papers-in-the-ooda-agency-theory-series&#34;&gt;Building the Subject: First Papers in the OODA Agency Theory Series&lt;/h1&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;Consciousness requires a subject.&lt;br&gt;&#xA;Agency creates the subject.&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;I started this work by trying to understand consciousness. I read the theories, studied the frameworks. What I found was abstract - far from anything I could model or build.&lt;/p&gt;&#xA;&lt;p&gt;The turning point was a shift in question. Instead of asking &lt;em&gt;what is consciousness?&lt;/em&gt; I asked: &lt;strong&gt;what would it take to build a system that has a subject?&lt;/strong&gt; Something that persists over time, maintains commitments, and remains itself while learning and changing.&lt;/p&gt;</description>
     </item>
   </channel>
