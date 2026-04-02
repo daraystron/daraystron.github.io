@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Aystron Research Program</title>
+    <title>OODA Agency Theory (OAT) - Aystron Research Program</title>
     <link>https://aystron.ai/</link>
-    <description>Recent content on Aystron Research Program</description>
+    <description>Recent content on OODA Agency Theory (OAT) - Aystron Research Program</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 28 Mar 2026 00:00:00 +0000</lastBuildDate>
@@ -16,18 +16,18 @@
       <description>&lt;h1 id=&#34;acting-in-time-watching-itself-planning-and-critics&#34;&gt;Acting in Time, Watching Itself: Planning and Critics&lt;/h1&gt;&#xA;&lt;p&gt;&lt;em&gt;The agent can reason, reflect, and care. Now it must plan across time - and notice when something goes wrong.&lt;/em&gt;&lt;/p&gt;&#xA;&lt;p&gt;Papers 01-07 established what an OODA agent is: a closed control loop with persistent mental states, a propositional layer for reflection, and an attachment-based ethics grounded in the structure of agency itself. But that agent operates one cycle at a time. It has no sustained relationship with the future, and no way to detect its own failures.&lt;/p&gt;</description>
     </item>
     <item>
-      <title>Paper 08 - Planning and Temporal Control in OODA-Based Agents</title>
-      <link>https://aystron.ai/papers/paper08/</link>
-      <pubDate>Sat, 28 Mar 2026 00:00:00 +0000</pubDate>
-      <guid>https://aystron.ai/papers/paper08/</guid>
-      <description>&lt;h1 id=&#34;paper-08-----planning-and-temporal-control-in-ooda-based-agents&#34;&gt;Paper 08  -  Planning and Temporal Control in OODA-Based Agents&lt;/h1&gt;&#xA;&lt;p&gt;&lt;strong&gt;Dar Aystron&lt;/strong&gt;&#xA;&lt;em&gt;Independent Researcher&lt;/em&gt;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;abstract&#34;&gt;Abstract&lt;/h1&gt;&#xA;&lt;p&gt;Many contemporary AI agent frameworks rely on prompt-driven reasoning loops in which plans are generated and immediately executed. Such approaches typically lack persistent internal structure, explicit temporal reasoning, and robust mechanisms for interruption or asynchronous deliberation.&lt;/p&gt;&#xA;&lt;p&gt;This paper introduces a design for planning and temporal control within agents built according to &lt;strong&gt;OODA Agency Theory (OAT)&lt;/strong&gt;. In this architecture, planning is treated as an &lt;strong&gt;agentic action&lt;/strong&gt;, and plans are represented as &lt;strong&gt;persistent mental states&lt;/strong&gt; that guide behavior across OODA cycles. Calendar and scheduling structures extend the agent’s sensor field into time, while computational capabilities may be invoked either synchronously as delegated skills within the OODA loop or asynchronously as background &lt;strong&gt;micro-experts&lt;/strong&gt;. These micro-experts perform specialized tasks in the background and report results to a &lt;strong&gt;single central OODA loop&lt;/strong&gt;, preserving unified agency while enabling distributed capability.&lt;/p&gt;</description>
-    </item>
-    <item>
       <title>Paper 09 - Critics: Monitoring Mechanisms for Learning and Adaptation in OODA-Based Agents</title>
       <link>https://aystron.ai/papers/paper09/</link>
       <pubDate>Sat, 28 Mar 2026 00:00:00 +0000</pubDate>
       <guid>https://aystron.ai/papers/paper09/</guid>
-      <description>&lt;h1 id=&#34;critics-monitoring-mechanisms-for-learning-and-adaptation-in-ooda-based-agents&#34;&gt;Critics: Monitoring Mechanisms for Learning and Adaptation in OODA-Based Agents&lt;/h1&gt;&#xA;&lt;h2 id=&#34;abstract&#34;&gt;Abstract&lt;/h2&gt;&#xA;&lt;p&gt;Adaptive agents must detect when their behavior, knowledge, or internal reasoning becomes inadequate. Traditional artificial intelligence systems often rely on external evaluation or offline retraining to address such deficiencies. Autonomous agents, however, require internal mechanisms capable of continuously monitoring their own operation.&lt;/p&gt;&#xA;&lt;p&gt;This paper introduces &lt;strong&gt;critics&lt;/strong&gt; as monitoring mechanisms within the OODA-based architecture of OODA Agency Theory (OAT). Critics observe the internal activity of an agent and generate diagnostic observations about anomalies, inconsistencies, and performance failures. These observations become part of the agent&amp;rsquo;s perception stream and influence subsequent orientation and decision processes.&lt;/p&gt;</description>
+      <description>&lt;h1 id=&#34;critics-monitoring-mechanisms-for-learning-and-adaptation-in-ooda-based-agents&#34;&gt;Critics: Monitoring Mechanisms for Learning and Adaptation in OODA-Based Agents&lt;/h1&gt;&#xA;&lt;p&gt;&lt;strong&gt;Dar Aystron&lt;/strong&gt;&#xA;&lt;em&gt;Independent Researcher&lt;/em&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;abstract&#34;&gt;Abstract&lt;/h2&gt;&#xA;&lt;p&gt;Adaptive agents must detect when their behavior, knowledge, or internal reasoning becomes inadequate. Traditional artificial intelligence systems often rely on external evaluation or offline retraining to address such deficiencies. Autonomous agents, however, require internal mechanisms capable of continuously monitoring their own operation.&lt;/p&gt;&#xA;&lt;p&gt;This paper introduces &lt;strong&gt;critics&lt;/strong&gt; as monitoring mechanisms within the OODA-based architecture of OODA Agency Theory (OAT). Critics observe the internal activity of an agent and generate diagnostic observations about anomalies, inconsistencies, and performance failures. These observations become part of the agent&amp;rsquo;s perception stream and influence subsequent orientation and decision processes.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Paper 08 - Planning and Temporal Control in OODA-Based Agents</title>
+      <link>https://aystron.ai/papers/paper08/</link>
+      <pubDate>Fri, 27 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>https://aystron.ai/papers/paper08/</guid>
+      <description>&lt;h1 id=&#34;planning-and-temporal-control-in-ooda-based-agents&#34;&gt;Planning and Temporal Control in OODA-Based Agents&lt;/h1&gt;&#xA;&lt;p&gt;&lt;strong&gt;Dar Aystron&lt;/strong&gt;&#xA;&lt;em&gt;Independent Researcher&lt;/em&gt;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;abstract&#34;&gt;Abstract&lt;/h1&gt;&#xA;&lt;p&gt;Many contemporary AI agent frameworks rely on prompt-driven reasoning loops in which plans are generated and immediately executed. Such approaches typically lack persistent internal structure, explicit temporal reasoning, and robust mechanisms for interruption or asynchronous deliberation.&lt;/p&gt;&#xA;&lt;p&gt;This paper introduces a design for planning and temporal control within agents built according to &lt;strong&gt;OODA Agency Theory (OAT)&lt;/strong&gt;. In this architecture, planning is treated as an &lt;strong&gt;agentic action&lt;/strong&gt;, and plans are represented as &lt;strong&gt;persistent mental states&lt;/strong&gt; that guide behavior across OODA cycles. Calendar and scheduling structures extend the agent’s sensor field into time, while computational capabilities may be invoked either synchronously as delegated skills within the OODA loop or asynchronously as background &lt;strong&gt;micro-experts&lt;/strong&gt;. These micro-experts perform specialized tasks in the background and report results to a &lt;strong&gt;single central OODA loop&lt;/strong&gt;, preserving unified agency while enabling distributed capability.&lt;/p&gt;</description>
     </item>
     <item>
       <title>From Architecture to Ethics: Attachment-Based Evaluation</title>
