@@ -2,13 +2,22 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://aystron.ai/logs/fourth_publication/</loc>
-    <lastmod>2026-03-28T00:00:00+00:00</lastmod>
+    <loc>https://aystron.ai/artifacts/</loc>
+    <lastmod>2026-04-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://aystron.ai/logs/convergence_and_self_reflection/</loc>
+    <lastmod>2026-04-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://aystron.ai/artifacts/oat_self_analysis/</loc>
+    <lastmod>2026-04-02T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://aystron.ai/logs/</loc>
-    <lastmod>2026-03-28T00:00:00+00:00</lastmod>
+    <lastmod>2026-04-02T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://aystron.ai/</loc>
+    <lastmod>2026-04-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://aystron.ai/logs/fourth_publication/</loc>
     <lastmod>2026-03-28T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://aystron.ai/papers/paper09/</loc>
@@ -34,9 +43,6 @@
   </url><url>
     <loc>https://aystron.ai/papers/paper06/</loc>
     <lastmod>2026-03-16T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://aystron.ai/artifacts/</loc>
-    <lastmod>2026-03-07T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://aystron.ai/logs/first_publication/</loc>
     <lastmod>2026-03-07T00:00:00+00:00</lastmod>
