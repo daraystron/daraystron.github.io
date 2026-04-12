@@ -6,14 +6,21 @@
     <description>Recent content in Papers on OODA Agency Theory (OAT) - Aystron Research Program</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 28 Mar 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 12 Apr 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://aystron.ai/papers/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Paper 10 - Communicative Agency: Speech Acts Within OODA Control</title>
+      <link>https://aystron.ai/papers/paper10/</link>
+      <pubDate>Sun, 12 Apr 2026 00:00:00 +0000</pubDate>
+      <guid>https://aystron.ai/papers/paper10/</guid>
+      <description>&lt;h1 id=&#34;communicative-agency-speech-acts-within-ooda-control&#34;&gt;&lt;strong&gt;Communicative Agency: Speech Acts Within OODA Control&lt;/strong&gt;&lt;/h1&gt;&#xA;&lt;p&gt;&lt;strong&gt;Dar Aystron&lt;/strong&gt;&#xA;&lt;em&gt;Independent Researcher&lt;/em&gt;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;abstract&#34;&gt;Abstract&lt;/h2&gt;&#xA;&lt;p&gt;As agents become more capable - richer world models, longer planning horizons, attachment to multiple entities, operation in shared environments - communication becomes structurally necessary, not optional. An agent that plans but cannot share the plan, that detects risk but cannot warn, that commits but cannot coordinate, that learns but cannot teach, hits an architectural ceiling. Communication is not a feature added to agency. It is what enables agency to scale beyond the individual.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Paper 09 - Critics: Monitoring Mechanisms for Learning and Adaptation in OODA-Based Agents</title>
       <link>https://aystron.ai/papers/paper09/</link>
       <pubDate>Sat, 28 Mar 2026 00:00:00 +0000</pubDate>
       <guid>https://aystron.ai/papers/paper09/</guid>
-      <description>&lt;h1 id=&#34;critics-monitoring-mechanisms-for-learning-and-adaptation-in-ooda-based-agents&#34;&gt;Critics: Monitoring Mechanisms for Learning and Adaptation in OODA-Based Agents&lt;/h1&gt;&#xA;&lt;p&gt;&lt;strong&gt;Dar Aystron&lt;/strong&gt;&#xA;&lt;em&gt;Independent Researcher&lt;/em&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;abstract&#34;&gt;Abstract&lt;/h2&gt;&#xA;&lt;p&gt;Adaptive agents must detect when their behavior, knowledge, or internal reasoning becomes inadequate. Traditional artificial intelligence systems often rely on external evaluation or offline retraining to address such deficiencies. Autonomous agents, however, require internal mechanisms capable of continuously monitoring their own operation.&lt;/p&gt;&#xA;&lt;p&gt;This paper introduces &lt;strong&gt;critics&lt;/strong&gt; as monitoring mechanisms within the OODA-based architecture of OODA Agency Theory (OAT). Critics observe the internal activity of an agent and generate diagnostic observations about anomalies, inconsistencies, and performance failures. These observations become part of the agent&amp;rsquo;s perception stream and influence subsequent orientation and decision processes.&lt;/p&gt;</description>
+      <description>&lt;h1 id=&#34;critics-monitoring-mechanisms-for-learning-and-adaptation-in-ooda-based-agents&#34;&gt;Critics: Monitoring Mechanisms for Learning and Adaptation in OODA-Based Agents&lt;/h1&gt;&#xA;&lt;p&gt;&lt;strong&gt;Dar Aystron&lt;/strong&gt;&#xA;&lt;em&gt;Independent Researcher&lt;/em&gt;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;abstract&#34;&gt;Abstract&lt;/h2&gt;&#xA;&lt;p&gt;Adaptive agents must detect when their behavior, knowledge, or internal reasoning becomes inadequate. Traditional artificial intelligence systems often rely on external evaluation or offline retraining to address such deficiencies. Autonomous agents, however, require internal mechanisms capable of continuously monitoring their own operation.&lt;/p&gt;&#xA;&lt;p&gt;This paper introduces &lt;strong&gt;critics&lt;/strong&gt; as monitoring mechanisms within the OODA-based architecture of OODA Agency Theory (OAT). Critics observe the internal activity of an agent and generate diagnostic observations about anomalies, inconsistencies, and performance failures. These observations become part of the agent&amp;rsquo;s perception stream and influence subsequent orientation and decision processes.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Paper 08 - Planning and Temporal Control in OODA-Based Agents</title>
