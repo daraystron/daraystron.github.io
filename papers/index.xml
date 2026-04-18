@@ -6,8 +6,15 @@
     <description>Recent content in Papers on OODA Agency Theory (OAT) - Aystron Research Program</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 12 Apr 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 18 Apr 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://aystron.ai/papers/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Paper 11 - Needs and Motivation in OODA-Based Agents</title>
+      <link>https://aystron.ai/papers/paper11/</link>
+      <pubDate>Sat, 18 Apr 2026 00:00:00 +0000</pubDate>
+      <guid>https://aystron.ai/papers/paper11/</guid>
+      <description>&lt;h1 id=&#34;paper-11---needs-and-motivation-in-ooda-based-agents&#34;&gt;&lt;strong&gt;Paper 11 - Needs and Motivation in OODA-Based Agents&lt;/strong&gt;&lt;/h1&gt;&#xA;&lt;p&gt;&lt;strong&gt;Dar Aystron&lt;/strong&gt;&#xA;&lt;em&gt;Independent Researcher&lt;/em&gt;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;abstract&#34;&gt;Abstract&lt;/h2&gt;&#xA;&lt;p&gt;Prior work in this series developed OODA-based agency through control architecture (Paper 02), action realization (Paper 04), the propositional lift and subject stream (Paper 06), attachment-based ethics (Paper 07), planning and temporal control (Paper 08), monitoring critics (Paper 09), and communicative agency (Paper 10). What remains underdeveloped is the role of needs and motivation within this architecture. This paper develops needs as a first-class architectural primitive in OODA-based cognition rather than as auxiliary state.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Paper 10 - Communicative Agency: Speech Acts Within OODA Control</title>
       <link>https://aystron.ai/papers/paper10/</link>

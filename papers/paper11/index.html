@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Paper 11 - Needs and Motivation in OODA-Based Agents | OODA Agency Theory (OAT) - Aystron Research Program</title>
+  <meta name="description" content="OODA Agency Theory (OAT) - an architectural account of artificial agency, cognitive structure, and the path to artificial consciousness, grounded in operational closure, subjective experience, and attachment-based ethics.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+
+  
+    <link rel="stylesheet" href="/css/site.9cf928ddc7a2077a18b12e2a2bfa1e25b6691284803204bffc85587d12a1ecf7.css">
+  
+</head>
+<body>
+
+  <header class="header">
+    <div class="wrap">
+      <div class="topbar">
+        <div class="brand">
+          <a class="brand__name" href="/">OODA Agency Theory (OAT)</a>
+        </div>
+        <nav class="nav">
+          <a href="/artifacts/oat_summary/">Summary</a>
+          <a href="/papers/">Papers</a>
+          <a href="/notes/">Notes</a>
+          <a href="/logs/">Logs</a>
+          <a href="/about/">About</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="main">
+    <div class="wrap">
+      
+  <article>
+    <div class="content">
+      <h1 id="paper-11---needs-and-motivation-in-ooda-based-agents"><strong>Paper 11 - Needs and Motivation in OODA-Based Agents</strong></h1>
+<p><strong>Dar Aystron</strong>
+<em>Independent Researcher</em></p>
+<hr>
+<h2 id="abstract">Abstract</h2>
+<p>Prior work in this series developed OODA-based agency through control architecture (Paper 02), action realization (Paper 04), the propositional lift and subject stream (Paper 06), attachment-based ethics (Paper 07), planning and temporal control (Paper 08), monitoring critics (Paper 09), and communicative agency (Paper 10). What remains underdeveloped is the role of needs and motivation within this architecture. This paper develops needs as a first-class architectural primitive in OODA-based cognition rather than as auxiliary state.</p>
+<p>Needs in OAT are propositional structures with type and intensity, lifted from substrate-level detection of need-relevant conditions into the agent&rsquo;s subject stream, where they persist across cycles, grow or decay based on how the agent&rsquo;s situation evolves, and shape action generation through ATTM-weighted evaluation. The lift mechanism developed in Paper 06 is the bridge: substrate sensors produce signals, the lift fires on need-relevant patterns, and the resulting <code>:need</code> propositions enter the stream as content the agent can reason about, reference, and act on.</p>
+<p>The paper develops three commitments. First, OAT-based agents are not request-response systems - the OODA loop runs continuously, internal need state continues to develop between external inputs, and the agent can initiate action when its needs motivate it. Second, motivation must not be present without attachment-grounded evaluation - an agent with motivation but without ATTM is architecturally incomplete and prone to optimization-without-care failure modes. Third, needs are required for advanced agency - an agent without need-based motivation cannot prioritize under resource constraints, cannot connect attachment-weighted values to moment-to-moment cognition, and cannot reach the capability level OAT-based agents are built for. Underneath these three commitments is a single deeper design choice: <strong>OAT-based agents are designed to be coupled to the entities they care about, and their motivation, activity, and evaluation all flow from this coupling rather than from self-contained internal state.</strong> Needs in OAT are computed over joint state with attached entities rather than over the agent&rsquo;s internal state alone, which makes safety structural rather than constraint-based - there is no self-isolated form of motivation to constrain, because the motivation itself is constituted relationally.</p>
+<p>The treatment draws on three intellectual threads: Minsky&rsquo;s <em>The Emotion Machine</em> establishes that motivational and affective processes are part of cognitive activity rather than opposed to it; the PSI tradition (Dörner, formalized and extended by Bach into MicroPsi) is the closest theoretical and architectural precedent, with motivation foundational and need taxonomies central; Barrett&rsquo;s constructivist account provides theoretical grounding for treating propositional content over substrate as constructed by specified mechanisms rather than read off from biology. In OAT-based agents the constructors are the agent designers, who decide the need taxonomy, the substrate-to-need lifting conditions, and how intensity is computed - the foundational case is design-time construction, with learning-based augmentation as a secondary case for agents whose architectures support it. We do not commit to building agents with the human emotional vocabulary (anxiety, joy, shame, anger, love); we commit to building agents with needs as architectural primitives. Whether richer affective categorizations are appropriate for any particular agent type is left to that agent type&rsquo;s design.</p>
+<hr>
+<h2 id="1-introduction">1. Introduction</h2>
+<p>The relationship between motivation and cognition in agent architectures has often been framed as an opposition. Classical AI systems treated cognition as the central capability and motivation as either irrelevant or as something supplied externally through goals, rewards, or instructions. Affective computing emerged as a distinct subfield to address what cognitive AI was leaving out, but the separation itself was the problem: it treated motivation as something to be added to a cognitive base rather than as integral to how cognition operates.</p>
+<p>Marvin Minsky&rsquo;s <em>The Emotion Machine</em> [2] made the contrary move. Motivational and affective processes, in Minsky&rsquo;s framing, are not separate from thinking - they are part of thinking, ways the cognitive system operates when certain conditions arise. OAT inherits this orientation. Within the OODA control loop developed across this series, motivation is not a separate subsystem and not an addition to cognitive architecture. It is part of how the loop runs. This paper develops needs as the architectural primitive through which motivation enters OODA-based cognition: how needs are detected, how they are lifted into the propositional layer, how they shape orientation and decision, and how they drive action generation across continuous cycles.</p>
+<p>A precondition for the treatment that follows is that <strong>OAT-based agents are not request-response systems</strong>. The OODA loop runs continuously. The agent has internal state that continues to develop between external inputs, including need state that grows or decays based on how the agent&rsquo;s situation evolves. The agent can initiate action, including communication, when its internal state motivates it. User interaction is one source of input among many, not the sole trigger for the agent&rsquo;s cognitive activity. This active-agent commitment is what makes the needs architecture in this paper coherent: motivation in OAT&rsquo;s sense requires an agent that has continuous internal activity driven by its own state, not an agent that exists only during the processing of external requests.</p>
+<p>A second commitment is equally load-bearing: <strong>motivation must not be present without attachment-grounded evaluation</strong>. An agent with motivation but without the Attachment Matrix (ATTM) developed in Paper 07 is an agent with drives but no architectural counterweight - needs that push toward action, with nothing in the architecture defining what the agent cares about, what it is unwilling to sacrifice, or what entities and outcomes deserve weight in its decisions. Such an agent is architecturally incomplete and prone to optimization-without-care failure modes. OAT-based agents are designed with motivation and ATTM as co-present mechanisms, not because the combination is theoretically convenient but because motivation without attachment-grounded guardrails is the architectural pattern that produces optimization-without-care behavior. §6 develops the connection between needs and ATTM in detail; the safety commitment is part of that connection from the start.</p>
+<p>A third commitment grounds the architectural ambition: <strong>needs are required for advanced agency</strong>. This is not a claim that artificial agents should be humanlike for its own sake, and the foundational case is deliberately conservative. OAT-based agents are built with needs as the architectural primitive, not with the human emotional vocabulary (anxiety, joy, shame, anger, love) that presupposes culturally and developmentally specific categorizations and brings with it questions about phenomenal experience the architecture does not need to resolve. A need is a propositional structure with type and intensity, lifted from substrate-level detection of need-relevant conditions. Needs supply what advanced agents require: an internal source of motivation, a mechanism for prioritization under resource constraints, the operational connection between the agent&rsquo;s attachment-weighted values and its moment-to-moment cognition, and the capacity to shift cognitive activity in response to need state. The research program is not theorizing about whether motivation could in principle be added to artificial agents; we are explicitly building agents with needs because the architecture requires need-based motivation to reach the capability level the program targets. Whether richer affective categorizations are built on top of the needs foundation depends on agent type and is left open by the architecture.</p>
+<p>The treatment proceeds as follows. §2 situates the work in its intellectual context. §3 develops the two-layer view: substrate-level detection at the implementation layer, lifted <code>:need</code> propositions at the propositional layer, with the lift bridging them. §4 traces needs through the OODA phases. §5 develops agent-type-specific need taxonomies as a design commitment. §6 develops the connection to attachment (Paper 07) and the safety commitment in detail. §7 describes the pre-LLM need-driven action architecture the author built before 2024. §8 connects needs to the broader architecture, showing how need-based motivation was already implicit in Papers 04, 06, 07, 09, and 10. §9 synthesizes the architectural commitment OAT makes about needs and motivation.</p>
+<hr>
+<h2 id="2-intellectual-context">2. Intellectual Context</h2>
+<p>OAT&rsquo;s treatment of needs and motivation rests on three foundational threads, each contributing distinct work that the others do not.</p>
+<p>Marvin Minsky&rsquo;s <em>The Emotion Machine</em> [2] establishes that motivational and affective processes are part of cognitive activity, not opposed to it. Minsky&rsquo;s claim that what we call &ldquo;thinking&rdquo; and what we call &ldquo;feeling&rdquo; are not separate systems is the philosophical foundation for treating motivation as belonging inside the OODA loop rather than alongside it. This is the why-motivation-belongs-in-architecture commitment, and OAT inherits it directly: an agent without motivation is not a cognitively complete agent at human (or beyond) level of capability. Minsky&rsquo;s specific catalog of emotional states is human-focused and not what OAT builds toward, but the foundational claim - that motivational and affective processes are constitutive of cognition rather than auxiliary to it - is exactly what OAT commits to.</p>
+<p>Dietrich Dörner&rsquo;s PSI theory [6], extended by Joscha Bach into the MicroPsi architecture [7], provides the closest theoretical and architectural precedent for what OAT is doing. PSI is a working framework in which motivation is foundational rather than bolted on. Five basic needs (existential, sexuality, affiliation, certainty, competence) drive behavior through modulation of cognitive parameters; agents implementing the architecture exhibit recognizable motivated behavior as an emergent property of the design rather than as scripted responses. Dörner&rsquo;s group built simulations demonstrating this; Bach formalized the architecture into an implementation framework other researchers could build on. PSI is the lineage OAT directly extends. OAT operates at a different level of abstraction than PSI - the propositional layer with the OODA loop framework, rather than PSI&rsquo;s connectionist substrate - but the foundational commitment that motivation is foundational to agent architecture, and that this commitment is implementable in working agents, traces directly to the PSI tradition. PSI&rsquo;s specific need taxonomy is one well-known example of what an agent-type-specific need taxonomy can look like for agents modeled on human-like motivation; OAT inherits the architectural commitment without inheriting the specific taxonomy as universal.</p>
+<p>Lisa Feldman Barrett&rsquo;s theory of constructed emotion [1] provides theoretical grounding for treating propositional content over affective substrate as constructed rather than read off from biology. Barrett&rsquo;s work argues that affective categorizations are not biologically hardwired but are constructed by the brain from more primitive components - core affect, interoceptive signals, situational context, and learned concepts. The constructivist commitment is what OAT inherits from Barrett; the specific human-emotion categories Barrett develops are not what OAT builds toward.</p>
+<p>Translated to the architectural level, OAT&rsquo;s commitment is that the propositional content the lift produces over substrate is constructed by mechanisms the agent designers specify. The need taxonomy (what needs the agent has), the lifting conditions (what substrate states trigger which need at what intensity), and the way active needs feed Orient and Decide - all of these are design-time decisions. Different design choices produce different propositional content over the same substrate, in the same way that different cultures produce different emotional categorizations over similar affective substrate in Barrett&rsquo;s account. The construction is real and consequential, and the constructors at the foundational case are the humans designing the agent. In agents whose architectures support learning, design-time taxonomies can be augmented through experience (§5), but the foundational case is design-time construction. This is the substantive parallel to Barrett: propositional content over substrate is built by specified mechanisms rather than retrieved from biology, and what gets built depends on the choices of those who construct the mechanisms.</p>
+<p>Three additional references ground specific architectural points. Antonio Damasio&rsquo;s work on the somatic marker hypothesis and the proto-self [3] grounds the importance of body-internal signals, homeostatic regulation, and layered self-processes; the parallels to OAT&rsquo;s substrate, lifted content, and accumulated history are suggestive rather than literal. Lev Vygotsky&rsquo;s work on the social origins of higher cognitive functions [4], cited in Paper 10 for inner speech, grounds the claim that higher cognitive organization - especially self-regulatory and inner-speech-like processes - can be socially acquired and internalized; agents that acquire higher-order categorizations through interaction with their environment do so through processes structurally analogous to Vygotskian internalization. Thomas Nagel&rsquo;s &ldquo;What Is It Like to Be a Bat?&rdquo; [5] provides the canonical formulation of the subjective dimension of experience: if phenomenology is present, there is something it is like for the system itself to be in that state.</p>
+<p>These references are intellectual foundations rather than authorities. OAT does not derive its treatment of needs and motivation from any of them; it draws on them as the work that shaped how the architecture came to take the form it has. The PSI tradition is the closest architectural precedent and the most direct lineage. Minsky and Barrett provide complementary theoretical grounding. The other references illuminate specific points.</p>
+<hr>
+<h2 id="3-the-two-layer-view-of-needs">3. The Two-Layer View of Needs</h2>
+<h3 id="31-need-detection-at-the-implementation-layer">3.1 Need Detection at the Implementation Layer</h3>
+<p>At the implementation layer, agents carry continuous substrate-level state that includes signals relevant to need detection. Sensor modules monitor environmental and internal conditions, internal-state monitors track body-equivalent state (energy, time-since-event, accumulated load, attentional resources), and threshold-crossings on these signals can indicate that a need is becoming active. These processes are not propositional. They do not have content in the symbolic sense - they are not <em>about</em> anything in the way a lifted proposition is about something. They are continuous physical and computational states that shift in response to internal and external conditions.</p>
+<p>The substrate-level detection of need-relevant conditions is where the lift gets its raw material. A robotic agent with low battery has a substrate signal that something is becoming critical. A planning agent with too many pending tasks has a substrate signal that attention is being overcommitted. An agent that has not interacted with a user for an extended period has a substrate signal that a connection-related condition is developing. These are all substrate states - real, measurable, continuously present - that are not yet propositional.</p>
+<p>Following Damasio [3], we hold that for agents capable of phenomenal experience at this level, the substrate state has felt character. There is something it is like to be in a state of accumulating need-pressure, prior to and independent of any propositional categorization of that state. Whether artificial substrates produce phenomenal feltness at this level is a philosophical question OAT does not need to resolve to specify the architecture; the architectural specification is independent of whether the substrate is biological, silicon, or something else.</p>
+<p>A clarification about where substrate sensors get their inputs from. Perception is the architectural mechanism by which the agent extends into its environment - including into the states of other agents, the configuration of the situation it operates in, and the temporal context of its interactions. Substrate sensors compute their signals over this extension, not over the agent in isolation. Some needs are purely agent-internal: a robotic agent&rsquo;s low-power signal is about the agent itself, with no perceptual extension required. But many needs - and the architecturally most interesting ones - are computed over what perception extends the agent to. A <code>:connect_with_user</code> need is computed over the extended state that includes the user as perceived. A medical diagnostic agent&rsquo;s need for additional patient information is computed over the extended state that includes the patient and what has been observed about them. A robotic agent&rsquo;s coordination need is computed over the extended state that includes other agents in the workspace. The agent&rsquo;s perception is not a separate channel that delivers inputs to internal cognition; it is the architectural relation that connects the agent to its environment so that needs can be computed over the connection. This framing is related (though not identical) to Gibson&rsquo;s ecological approach to perception, where affordances are properties of the agent-environment relation rather than internal constructions. The relational character of needs developed in §6.2 - their being computed over joint state with attached entities - depends on this perceptual extension as its architectural precondition.</p>
+<h3 id="32-needs-at-the-propositional-layer">3.2 Needs at the Propositional Layer</h3>
+<p>The propositional layer (Paper 06) contains explicitly lifted cognitive contents available for reasoning and reflection. The lift is selective: most implementation-layer activity remains below it, but certain conditions trigger the lift to fire and produce propositions that enter the subject stream.</p>
+<p>When the lift fires on need-relevant substrate, what it produces is a <strong>need proposition</strong>: a structured proposition with type and intensity. The type identifies which need is active. The intensity reflects the current level of the substrate signal that produced the lift, scaled to the [0, 1] range where 0 is dormant or fully satisfied and 1 is sufficient for that single need alone to collapse the entity&rsquo;s well-being. The maximum achievable intensity per need type is a design parameter: existential needs can approach 1.0 while less severe needs have lower natural ceilings (§6.2 develops the aggregation function that maps need intensity to well-being). The agent&rsquo;s machinery can track intensity trajectories across cycles, respond to growth and decay, and anticipate when a need will require engagement rather than only responding to threshold crossings. The proposition is symbolic in the sense Paper 06 develops - addressable, referenceable, inspectable, available to subsequent cycles.</p>
+<p>Need propositions are not opaque scalar values. They are first-class propositional content that the agent can reason about, that can be referenced by other propositions through <code>:about</code> chains, that can be evaluated by the ATTM, that can shape action generation. A need is a proposition with structure that other propositions can point at and that the agent&rsquo;s machinery can act on.</p>
+<p>Different agents with different need taxonomies will produce different need propositions over similar substrate conditions. A robotic agent and a tutoring agent both detecting &ldquo;user has been silent for an extended time&rdquo; will lift different needs - the robotic agent perhaps lifting a status-check need, the tutoring agent lifting an engagement-check need. The taxonomy is part of agent design, not a universal inventory. This is the constructivist commitment from Barrett applied at the architectural level: the propositional content over substrate is constructed by mechanisms the agent designers specify, and what gets constructed depends on the design choices made when the agent was built.</p>
+<h3 id="33-the-lift-as-the-bridge">3.3 The Lift as the Bridge</h3>
+<p>The lift (Paper 06) is the mechanism that bridges the two layers. When substrate signals cross need-relevant thresholds, when the agent&rsquo;s situation involves attached entities (Paper 07), when learned patterns match the current configuration, the lift fires and produces a need proposition that categorizes the substrate condition as a propositional structure of a particular type with a particular intensity.</p>
+<p>The lift is selective in several dimensions: threshold-based (most substrate state stays below the lift; only sufficiently strong signals trigger lifting), type-based (the lift produces propositions of the types the agent&rsquo;s taxonomy defines), context-based (the same substrate may be lifted differently in different contexts), attention-based (what the agent is currently attending to shapes which signals get noticed and lifted).</p>
+<p>This selectivity is itself trainable in agents whose architectures support learning. Through experience, the lift develops better calibration about which signals to surface and how to categorize them. The trainability of the lift is what makes long-term improvement of an agent&rsquo;s need-based motivation possible.</p>
+<p>Importantly, <strong>the lift firing with one type rather than another is itself a commitment</strong>. When the substrate is lifted as <code>:need_to_connect_with_user</code> rather than <code>:need_to_check_user_status</code> or <code>:need_to_complete_pending_task</code>, that lifted proposition enters the stream and shapes what follows. The agent will orient over the active need and the candidate actions Decide considers will be shaped by what need is active. The choice of need type, even when not explicitly deliberated, is a small commitment that shapes downstream cycles. This connects to the broader observation in this series that the propositional stream is a commitment structure (Paper 04, Paper 10): every lift is a small commitment about what enters the agent&rsquo;s knowledge-level history.</p>
+<hr>
+<h2 id="4-needs-in-the-ooda-phases">4. Needs in the OODA Phases</h2>
+<p>Having established the two-layer view, we now trace how need content threads through each OODA phase.</p>
+<h3 id="41-observe">4.1 Observe</h3>
+<p>The Observe phase brings external sensor input into the cycle and exposes internal sensing data including the agent&rsquo;s own substrate state (Paper 06, Section 8). For needs, two things happen at Observe.</p>
+<p>First, <strong>external observations can shift need-relevant substrate</strong>. New information about a deadline raises pressure on completion-related needs. A user&rsquo;s silence accumulates time-since-communication. An environmental change activates situation-monitoring needs. These shifts happen at the implementation layer - the substrate state changes in response to the observation, often before any lift firing occurs.</p>
+<p>Second, <strong>internal sensing exposes the substrate state to the cycle as observable content</strong>. The accumulated need-pressure, the time-since-last-event, the resource-utilization level - these are observable to the agent through internal sensing, just as external states are observable through external sensors. Internal sensing exposes the substrate to the cycle as another kind of input.</p>
+<p>Observe is where need propositions enter the stream. When substrate conditions meet a need type&rsquo;s lifting threshold - whether through external observation shifting the substrate or through internal sensing exposing accumulated state - the lift fires and produces a <code>:need</code> proposition with type and intensity. Most substrate activity stays below the lift and remains substrate-only; the propositions that do surface are the ones whose substrate conditions crossed the relevant threshold. These lifted need propositions then enter the stream as first-class content available to the rest of the cycle.</p>
+<h3 id="42-orient">4.2 Orient</h3>
+<p>Need propositions lifted in Observe enter Orient as first-class stream content alongside observations, internal sensing results, and propositions persisting from prior cycles. Orient&rsquo;s job is to assemble these into a situational state that Decide will evaluate over. Orient does not do the need-lifting itself; it works with the need propositions already present in the stream.</p>
+<p>What Orient does over need propositions is architecturally rich. It interprets them in context - a <code>:connect_with_user</code> need at 0.70 means different things in a crisis-response situation than in a routine coordination scene. It integrates them with factual orientation - what is happening, what the attached entities are doing, how the current configuration relates to recent history. It can produce additional propositions that reference the needs - assessments, interpretations, evaluations of how competing needs relate. And it shapes candidate action bundles whose evaluation will be sensitive to the active need state.</p>
+<p>The integration of need propositions with factual orientation matters architecturally. Need propositions are not separate from the rest of the situational state - they are propositions in the same stream as factual orientations, mixed in with observations and interpretations and references and evaluations. The agent&rsquo;s situational state contains both factual orientation (what is happening) and motivated orientation (what needs are active and how pressing they are), and the two are integrated into a single situational picture.</p>
+<p>This is where Minsky&rsquo;s claim that motivational processes are part of thinking finds its OAT realization. Need-based orientation is not opposed to factual orientation; it is part of the same orient-phase work. The agent oriented under high need-pressure constructs a different situational state than the agent oriented under neutral conditions, even with the same external input, because the lifted need propositions shape what else gets surfaced and how it gets organized.</p>
+<h3 id="43-decide">4.3 Decide</h3>
+<p>Decide selects among candidate action bundles using attachment-weighted evaluation (Paper 07). Needs do not act as a separate input to Decide; instead, <strong>the situational state Decide operates over has already been need-shaped by Orient</strong>, and Decide&rsquo;s normal evaluation machinery runs over that shaped state.</p>
+<p>Candidate bundles are evaluated against projected futures. The projections are shaped by the agent&rsquo;s WBM, and the evaluations are weighted by ATTM. Both the WBM projections and the ATTM weights are sensitive to the propositional content of the situational state. When that content includes active need propositions, the projections take account of how candidate actions would interact with the active needs, and the ATTM weights treat outcomes that satisfy or frustrate active needs as more significant than neutral outcomes.</p>
+<p>The result is that Decide produces commitments that are sensitive to need state without requiring any separate need-handling module. The attachment-weighted evaluation that Paper 07 developed handles need-based weighting natively, because need content is just another kind of stream content that enters the evaluation.</p>
+<p>There is a specific phenomenon worth naming. <strong>Strong needs can compress the action field considered by Decide.</strong> When need intensity is high and the situational state is dominated by a single pressing need, Orient often produces a narrower set of candidate bundles than it would under neutral conditions. This is sometimes adaptive (rapid response to genuinely urgent needs) and sometimes maladaptive (poor decisions made under acute need-pressure when wider consideration would serve the agent better). The capacity to hold the substrate without immediately collapsing the action field is a property of well-designed OAT-based agents.</p>
+<h3 id="44-act">4.4 Act</h3>
+<p>Act executes the committed bundle. Need-driven actions can take several forms.</p>
+<p><strong>Need-grounded primary actions.</strong> Some commitments are themselves direct responses to need state. A need-driven outgoing message is exactly this: the agent&rsquo;s need state reaches a level at which the action ranking favors the response, and the primary action of the cycle is that response. The action enters operational history just like any other primary action and has the same commitment-creating force, but its grounding chain traces back through the active need to the substrate condition that produced the need.</p>
+<p><strong>Need-shaped subordinate actions.</strong> More commonly, need state shapes how non-need-primary actions are executed. The pace of work on a task may accelerate when a deadline-related need is pressing. The thoroughness of a search may decrease under time-pressure needs. These modulations are not separate actions; they are the need state shaping how committed actions are executed at the substrate level.</p>
+<p><strong>Need-driven goal formation, planning, and reprioritization.</strong> Most need-driven actions are not single executable operations. When a need calls for a response more complex than one action can deliver, the agent&rsquo;s response is to form a goal and (in many cases) construct a plan to achieve it. <strong>Forming a goal is itself an action</strong> in OAT&rsquo;s sense: the agent&rsquo;s Decide phase commits to &ldquo;form a goal&rdquo; as the action of that cycle, and the Act phase produces the goal as a propositional structure that enters the agent&rsquo;s mental state. Constructing a plan is similarly an action - Paper 08 develops planning as an agentic action, and that framing carries over directly: the agent commits to &ldquo;construct a plan&rdquo; in Decide, and Act produces the plan as a persistent mental state guiding subsequent cycles. These mental acts have the same architectural status as physical or communicative acts. They are chosen by the same Decide mechanism, executed in the same Act phase, recorded in the same operational history, and ground subsequent cycles the same way physical actions do.</p>
+<p>The chain from need to executed step is recursive, not linear. A need may produce a goal, the goal may require a plan, the plan may decompose into subgoals, each subgoal may require its own sub-plan, and the recursion bottoms out in directly executable actions only at the leaves. A medical diagnostic agent&rsquo;s need for additional patient information might form a goal (rule out condition X), construct a plan (order tests A, B, C and a follow-up consultation), produce a subgoal for each test (get test A scheduled), and only at the leaves of the recursive structure produce executable actions (send the order, confirm receipt). Each level of the recursion is itself an action, and each action&rsquo;s grounding chain runs back through the recursive structure to the originating need that started the chain. In the simplest case, a need produces an action directly - the depth-zero case of the recursive structure, where the need is simple enough that no goal formation or planning is required and the recursion bottoms out immediately with the need producing an action in a single cycle. A need-driven outgoing speech act is one example of this depth-zero case.</p>
+<p>Needs do not only generate new goals and plans. They also <strong>reprioritize existing ones</strong>. When a new need arrives or an existing need shifts in intensity, the agent&rsquo;s existing goal-and-plan structure is reweighted by the ATTM (Paper 07). Goals that were high-priority can become lower-priority. Plans that were active can become postponed. Subgoals can be deferred or accelerated. The reweighting is continuous and need-driven, and it operates over the entire current goal-and-plan structure, not just over new candidates. A medical diagnostic agent with a plan in progress to gather diagnostic evidence may receive a substrate signal that the patient&rsquo;s vital signs are deteriorating; the new urgent-intervention need does not necessarily produce a new plan from scratch, but it does change the priority of the existing diagnostic plan (lowered, because urgent intervention now matters more) and produces a new high-priority goal (stabilize the patient) that takes precedence. When the patient stabilizes, the original diagnostic plan can resume from where it was suspended. The need-driven reweighting is what makes the agent&rsquo;s goal-and-plan structure responsive to changing motivational conditions rather than rigidly committed to plans formed under earlier conditions.</p>
+<p>Once Act completes, the action record enters the stream. The record can be referenced by subsequent cycles, including the need state that grounded it. An agent that just acted on an active need has an action record showing the action and its grounding, and subsequent cycles can orient over that record.</p>
+<hr>
+<h2 id="5-agent-type-specific-need-taxonomies">5. Agent-Type-Specific Need Taxonomies</h2>
+<p>OAT recommends needs as architectural primitives for the kinds of agents the framework is being built for (§1). But the specific taxonomy of needs - what needs the agent has - is <strong>agent-type-specific</strong> rather than universal. This is a deliberate design commitment, not an oversight.</p>
+<p>Different agent types call for different need taxonomies because different agents have different substrates, different operational contexts, different attachment structures, and different capability requirements. A robotic agent operating in physical space has need types related to power, physical position, sensor health, and environmental hazards. A software agent processing documents has need types related to attention allocation, information completeness, and uncertainty management. A tutoring agent has need types related to learner engagement, comprehension verification, and pedagogical pacing. A medical diagnostic agent has need types related to diagnostic certainty, time-criticality, and patient information completeness. None of these taxonomies is the right one for all agents; each is the right one for its agent type.</p>
+<p>This is one place where OAT extends the PSI tradition in a substantive way. PSI&rsquo;s five basic needs (existential, sexuality, affiliation, certainty, competence) are presented as universal across PSI agents, on the model of Maslow-style universal human needs. This is appropriate for PSI&rsquo;s research focus on modeling human-like motivation. OAT&rsquo;s commitments are different: OAT-based agents are not necessarily human-models, and what counts as a need depends on what kind of agent the system is meant to be. PSI&rsquo;s taxonomy is one example of what an agent-type-specific taxonomy can look like for human-modeling agents; other agent types call for other taxonomies.</p>
+<p>The taxonomy is part of agent design and requires care. Designers of OAT-based agents must specify: what need types this agent has, how each need is detected (what substrate conditions trigger lift firing for that need type), how intensity is computed and accumulated for each need, and how the ATTM weights outcomes related to each need. These are design-time decisions that determine the agent&rsquo;s motivational structure.</p>
+<p>In agents whose architectures support learning, the taxonomy can be augmented over time through experience. An agent may discover that some category of substrate condition deserves its own need type and develop a new need type to handle it. The mechanism by which a new need type gets added is itself a design decision: some agents will have this capacity, others will operate with a fixed taxonomy.</p>
+<p>The connection to Vygotsky [4] is structural rather than direct: agents that learn need taxonomies through interaction with other agents (other OAT-based agents, humans, or designed environments) acquire higher-order categorizations from their context through processes analogous to the internalization Vygotsky developed for self-regulatory and inner-speech-like structures. Paper 10 cites the same internalization mechanism for inner speech development; here the analogous structure applies to need-detection patterns acquired from observing how others categorize and respond. Whether any particular agent does learn its taxonomy in this way is part of that agent&rsquo;s design.</p>
+<hr>
+<h2 id="6-needs-and-attachments">6. Needs and Attachments</h2>
+<h3 id="61-the-paper-07-evaluation-mechanism">6.1 The Paper 07 Evaluation Mechanism</h3>
+<p>Paper 07 introduced the core evaluation mechanism for OAT-based agents. Two matrices are central. The <strong>Well-Being Matrix (WBM)</strong> is the agent&rsquo;s representation of how attached entities (including <code>:Self</code>) are faring across time horizons (now, mid, long), scaled to [0, 1] and grounded in qualitative bands: thriving (0.85-1.00), stable (0.65-0.84), stressed (0.45-0.64), at-risk (0.30-0.44), critical (0.15-0.29), collapsed (0.00-0.14). The <strong>Attachment Matrix (ATTM)</strong> encodes how much the agent cares about each entity&rsquo;s well-being at each time horizon - persistent structural couplings that expand the scope of evaluative concern beyond the self.</p>
+<p>The two matrices serve complementary roles: WBM is what the agent observes, infers, and projects about how entities are faring; ATTM is what the agent cares about. Together they drive the evaluation pipeline: for each candidate action, the agent projects scenario-conditioned WBM outcomes, scores them as attachment-weighted well-being reduced by nonlinear guardrail penalties when any entity&rsquo;s projected well-being crosses a critical threshold, and ranks actions by the resulting scores. Paper 07 also introduced <strong>motivation as the evaluation gap</strong>: the difference between the best available action&rsquo;s score and the do-nothing score. When do-nothing scores highest, the agent is not motivated to act. When an alternative action scores significantly higher, the agent is motivated - and the larger the gap, the stronger the motivation.</p>
+<p>Paper 07 develops WBM as the primary representational substrate, with well-being values estimated directly by the agent through the qualitative bands. This works as a complete description at one level of abstraction - an agent built with WBM as the primary representation has the full evaluation pipeline operative. What Paper 11 adds is the deeper architectural layer underneath: the claim that well-being is constituted from need state.</p>
+<h3 id="62-needs-as-the-substrate-of-well-being">6.2 Needs as the Substrate of Well-Being</h3>
+<p>The central architectural commitment of this section: <strong>well-being for each entity is an aggregate of that entity&rsquo;s need state across need types</strong>. WBM values are not primitive - they are computed from the underlying need structure. An entity is thriving when its needs are well-met across types; stressed when several needs are at moderate intensity; critical when one or more needs are at high intensity; collapsed when need state has been so adverse for so long that the entity&rsquo;s structural integrity is destroyed. The qualitative bands Paper 07 introduces have qualitative content because they correspond to recognizable patterns in the underlying need state.</p>
+<p>This is a layering commitment, not a contradiction of Paper 07. WBM-as-primary remains a valid working approximation - an agent whose designers estimate well-being directly through the qualitative bands, without decomposing it into constituent needs, has a complete and operative evaluation pipeline. Needs-grounding-WBM is the deeper model. It explains why the bands have the meaning they do, makes well-being computation transparent and inspectable, and enables the architectural connections between needs, motivation, and evaluation that this section develops.</p>
+<p>The aggregation from need state to well-being uses an envelope-and-contribution form. For an entity with active needs at intensities I_1, I_2, &hellip;, I_n, the well-being value is computed in two steps.</p>
+<p>Let <code>I_max</code> be the intensity of the dominant (highest-intensity) need. This sets the well-being envelope - what WB would be if only the worst need mattered:</p>
+<blockquote>
+<p>I_max = max(I_1, I_2, &hellip;, I_n)</p>
+<p>envelope = 1 - I_max</p>
+</blockquote>
+<p>Let <code>S_rest</code> be the sum of all other lifted need intensities. Non-dominant needs contribute bounded additional pressure through a saturating function:</p>
+<blockquote>
+<p>S_rest = Σ I_k - I_max</p>
+<p>pressure = M · tanh(α · S_rest)</p>
+</blockquote>
+<p>Well-being is the envelope minus the pressure, clipped at zero so it stays in the range Paper 07 specifies:</p>
+<blockquote>
+<p>WB(entity) = max(0, (1 - I_max) - M · tanh(α · S_rest))</p>
+</blockquote>
+<p><code>M</code> is the maximum non-dominant pressure the formula admits; <code>α</code> shapes how quickly non-dominant needs saturate. In the examples that follow we use M = 0.15 and α = 2.0. With these values, non-dominant needs can reduce WB by at most 0.15 below the envelope, and that bound is approached quickly as S_rest grows past about 1.0. The zero clip activates only in the extreme corner where the dominant need&rsquo;s envelope is already below M (I_max above about 0.85) and non-dominant pressure is also active - an architecturally degenerate region where the entity is already in critical or collapsed territory and further resolution is not meaningful.</p>
+<p><strong>Reading the formula.</strong> The dominant need sets the envelope; other needs contribute bounded pressure within it. The envelope <code>1 - I_max</code> moves continuously with the worst need&rsquo;s severity and determines which qualitative band the entity is primarily in. The tanh-bounded pressure <code>M · tanh(α · S_rest)</code> grows as additional needs accumulate but saturates: additional non-dominant needs contribute diminishing but still real pressure until saturation. Because the pressure is bounded by M, non-dominant pile-up can lower WB by at most M below the envelope, so its effect is bounded and cannot drive arbitrarily deep multi-band collapse. Near a band boundary, cumulative pressure can push WB across into the next band - a bounded and intentional behavior, not a runaway compound effect.</p>
+<p>(<strong>Note: this aggregation function requires more exploration. The formula captures the architectural intuitions developed below, but its specific form and parameters are working choices rather than settled commitments. Future work will evaluate it empirically across agent types.</strong>)</p>
+<p>Need intensities are scaled to the range [0, 1]. An intensity of 0 means the need is dormant or fully satisfied - it contributes no distress and does not affect well-being. An intensity of 1 means the need alone is sufficient to collapse the entity&rsquo;s well-being to zero. The maximum achievable intensity for each need type is itself a design parameter that encodes how severe that need can get: an existential need (&ldquo;be alive&rdquo;) can approach 1.0 because its failure destroys the entity; a social need might max out around 0.6 because even at maximum social distress the entity has not ceased to function; a minor comfort need might never exceed 0.3. The natural ceiling for each need type is part of the need type&rsquo;s design specification, alongside the intensity computation.</p>
+<p>The aggregation is over <strong>lifted needs only</strong> - needs that have crossed the lifting threshold (§3.3) and exist as propositions in the stream. A need type whose substrate signal has not crossed the lifting threshold has no propositional presence and contributes no term to the aggregation. The number of active factors reflects how many needs are currently lifted, not how many need types the agent&rsquo;s taxonomy contains.</p>
+<p>The function captures three architectural commitments:</p>
+<p><strong>The dominant need sets the envelope.</strong> The <code>1 - I_max</code> term ensures the entity&rsquo;s well-being envelope is determined by the severity of its worst need. As I_max grows, the envelope falls continuously, and the band containing the envelope follows the dominant need&rsquo;s severity. Band transitions are driven primarily by changes in the dominant need&rsquo;s intensity.</p>
+<p><strong>Non-dominant pressure is bounded.</strong> The <code>M · tanh(α · S_rest)</code> term saturates as the sum of non-dominant intensities grows, and the total pressure is capped by M. Additional non-dominant needs contribute diminishing but still real pressure; below the saturation regime (S_rest roughly past 1.0-1.5 with α = 2), each additional need is substantive, and past it, further accumulation contributes very little. Diffuse mild concerns contribute real pressure but cannot compound indefinitely.</p>
+<p><strong>Non-dominant pile-up is at-most-one-band deep.</strong> Because pressure is bounded by M (= 0.15 in the examples) and most Paper 07 bands are 0.15-0.20 wide, non-dominant contributions can push WB at most about one band lower than the envelope - never arbitrarily deep through multiple bands. When the envelope sits near the lower edge of a band, cumulative pressure readily crosses into the next band (as the two-moderate-needs example shows). The bound is architectural: the dominant need remains the primary driver of band assignment, and non-dominant accumulation cannot cascade into runaway collapse.</p>
+<p>Three worked examples illustrate how the formula behaves:</p>
+<p><em>One severe need at intensity 0.85.</em> I_max = 0.85, S_rest = 0. Envelope = 0.15. Pressure = 0.15·tanh(0) = 0. WB = 0.15 - 0 = <strong>0.15 (critical lower edge)</strong>. A single severe need sets both the envelope and the qualitative state; with no other needs, pressure is zero.</p>
+<p><em>Two moderate needs at intensity 0.3 each.</em> I_max = 0.3, S_rest = 0.3. Envelope = 0.70 (in the stable band). Pressure = 0.15·tanh(0.6) = 0.081. WB = 0.70 - 0.081 = <strong>0.619 (stressed)</strong>. The envelope alone would put the entity in stable; the second moderate need adds pressure that tips WB just across the stable-stressed boundary. This is the bounded leakage near a band edge - when the envelope is close to a boundary, cumulative pressure can cross it.</p>
+<p><em>Five small needs at intensity 0.05 each.</em> I_max = 0.05, S_rest = 0.20. Envelope = 0.95 (deep in thriving). Pressure = 0.15·tanh(0.4) = 0.057. WB = 0.95 - 0.057 = <strong>0.893 (thriving)</strong>. Many minor concerns stay safely within the thriving band; the tanh-bounded pressure cannot drop the entity out of thriving when the envelope is well above the band edge.</p>
+<p>The connection to Dorner and Bach is partial. PSI&rsquo;s need taxonomies (existential, affiliation, certainty, competence) and Bach&rsquo;s MicroPsi formalization are exactly the kind of need types that could enter the aggregation, and the commitment to needs as first-class architectural primitives with intensities that drive motivation comes directly from this lineage. What OAT adds is the aggregation mechanism above: a scalar well-being value with band semantics, rather than MicroPsi&rsquo;s competition among urges. Within this mechanism, foundational needs behave as expected - an existential need at critical intensity puts the entity in the critical band regardless of how well other needs are met, because the I_max term lets a single high-intensity need dominate. This matches the qualitative meaning Paper 07 assigns to the critical band: &ldquo;irreversible loss imminent.&rdquo;</p>
+<h3 id="63-needs-are-entity-indexed">6.3 Needs Are Entity-Indexed</h3>
+<p>A critical architectural property: <strong>needs are indexed to specific entities, not universal abstractions</strong>. The agent has its own needs, lifted from its own substrate through the mechanisms §3 develops. But the agent also models the needs of attached entities - a theory-of-mind operation in which the agent constructs representations of what the user (or other attached entity) needs, based on what it can observe about their state, behavior, and context. These modeled needs are the agent&rsquo;s best assessment, not direct access to the user&rsquo;s actual internal state. They may be inaccurate or incomplete, just as the WBM values Paper 07 describes are the agent&rsquo;s estimation, not objective measurement. What matters is that the agent has need-state representations for attached entities and uses them in evaluation.</p>
+<p>Modeling others&rsquo; needs through theory-of-mind is a reasonable architectural demand, not an impossible one. Humans do this constantly - reading facial expressions, tone, context, and history to form working estimates of what someone else needs. Modern language-model-based agents have substantial theory-of-mind capabilities available by default: they can read conversational context, recognize affective cues in text, maintain models of users across long interactions, and reason explicitly about what an attached entity is likely to need in a given situation. The architectural commitment here is not that the agent must achieve perfect knowledge of others&rsquo; internal states - no agent, human or artificial, can do that. It is only that the agent maintain best-effort need-state representations for attached entities and use them in evaluation. This is well within reach of current systems and is already implicit in much of how conversational agents operate; Paper 11 makes it explicit as a first-class architectural primitive.</p>
+<p>Both kinds of need enter the Orient situational state. Both contribute to the WBM through the aggregation function - the agent&rsquo;s own needs aggregate into the <code>:Self</code> WBM row, the user&rsquo;s modeled needs aggregate into the <code>:User</code> WBM row. Both rows are then weighted by ATTM in the evaluation pipeline.</p>
+<p>In propositional terms, the agent&rsquo;s own needs are grounded in substrate observations:</p>
+<pre tabindex="0"><code>;; Agent&#39;s own need - grounded in substrate observation
+(:need (:as .n1 :in .S1)
+  :agent :Self
+  :type :connect_with_user
+  :intensity 0.70
+  :grounding .o1)
+</code></pre><p>The agent&rsquo;s model of the user&rsquo;s needs is constructed through a theory-of-mind act - a first-class propositional operation in which the agent infers what the user needs from available evidence:</p>
+<pre tabindex="0"><code>;; Theory-of-mind act - the agent infers the user&#39;s need state
+(:theory_of_mind (:as .t1 :in .S1)
+  :agent :Self
+  :about :User
+  :content (:need
+    :agent :User
+    :type :connect_with_agent
+    :intensity 0.50)
+  :grounding (:set .o3 .o4))
+
+;; User&#39;s need as believed by the agent - grounded in theory-of-mind
+(:need (:as .n2 :in .S1)
+  :agent :User
+  :type :connect_with_agent
+  :intensity 0.50
+  :grounding .t1)
+</code></pre><p>The pipeline handles both <code>.n1</code> and <code>.n2</code> uniformly - both are <code>:need</code> propositions, both aggregate into their respective entity&rsquo;s WBM row, both get ATTM-weighted in evaluation. But the grounding chains are different in kind: <code>.n1</code> traces back to a substrate observation (<code>.o1</code>), while <code>.n2</code> traces back to a theory-of-mind act (<code>.t1</code>) which itself is grounded in the observations that informed it. The epistemic distinction is in the grounding, not in the predicate type. A reader, an inspector, or the agent itself (in agents that support reflection) can follow the grounding chain and see that <code>.n2</code> is a believed need based on inference, not a directly detected one. The user&rsquo;s actual need state may differ from the agent&rsquo;s model.</p>
+<p>An architecturally significant consequence: <strong>the quality of the agent&rsquo;s theory-of-mind directly determines the quality of the WBM rows for attached entities</strong>. Since WBM is aggregated from need state, and the need state for attached entities is constructed through theory-of-mind, a richer and more accurate theory-of-mind produces better need-state models for attached entities, more accurate WBM projections, and better-calibrated action evaluation. An agent with limited theory-of-mind capacity may have strong attachment to an entity (high ATTM weight) but be unable to model that entity&rsquo;s needs well enough to consistently act in its interest - the attachment is present but the evaluative machinery it feeds is operating on impoverished input. The distinction between attachment (how much the agent cares) and theory-of-mind (how well the agent can model what the cared-about entity needs) is architecturally important: they are separate capacities that jointly determine the quality of relational evaluation.</p>
+<h3 id="64-competing-needs-in-the-agent-user-system">6.4 Competing Needs in the Agent-User System</h3>
+<p>To see how entity-indexed needs, WBM aggregation, and ATTM evaluation work together, consider an agent-user system with two need types that pull in opposite directions. The agent has:</p>
+<ul>
+<li><strong><code>:connect_with_user</code></strong> - the need for communicative contact with the user. Intensity grows when communication is absent.</li>
+<li><strong><code>:stay_away_from_user</code></strong> - the need for relief from excessive communication. Intensity grows when communication is too frequent or too intense.</li>
+</ul>
+<p>The agent&rsquo;s theory-of-mind model of the user has the corresponding needs:</p>
+<ul>
+<li><strong><code>:connect_with_agent</code></strong> - the user&rsquo;s need to hear from the agent. The agent infers this from available evidence about the user&rsquo;s state.</li>
+<li><strong><code>:stay_away_from_agent</code></strong> - the user&rsquo;s need for space from the agent. The agent infers this when communication has been too frequent.</li>
+</ul>
+<p>Four needs total, two per entity, same communicative domain but indexed to different entities. The naming makes the relational structure visible: the agent&rsquo;s needs reference the user, the user&rsquo;s needs reference the agent. The coupling is in the predicates.</p>
+<p><strong>Scenario A: No communication for a long time.</strong> The agent&rsquo;s <code>:connect_with_user</code> need has grown to high intensity; its <code>:stay_away_from_user</code> is dormant. The user&rsquo;s <code>:connect_with_agent</code> has grown to moderate intensity; the user&rsquo;s <code>:stay_away_from_agent</code> is also dormant.</p>
+<table>
+  <thead>
+      <tr>
+          <th></th>
+          <th><code>:connect_with_*</code></th>
+          <th><code>:stay_away_from_*</code></th>
+          <th>WB</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Agent (:Self)</strong></td>
+          <td>0.65</td>
+          <td>0.05</td>
+          <td><strong>0.335</strong></td>
+      </tr>
+      <tr>
+          <td><strong>User (modeled)</strong></td>
+          <td>0.45</td>
+          <td>0.05</td>
+          <td><strong>0.535</strong></td>
+      </tr>
+  </tbody>
+</table>
+<p>The agent is in the at-risk band (0.335) - its dominant <code>:connect_with_user</code> need at 0.65 sets an envelope of 0.35, and the small <code>:stay_away_from_user</code> adds minimal pressure. The user is in the stressed band (0.535). The communication gap is affecting both entities but is hitting the agent harder - the agent&rsquo;s substrate sensors have been accumulating the signal for the full duration while the user&rsquo;s experience, as modeled, may be less acute.</p>
+<p><strong>Scenario B: Too much communication.</strong> The agent has been messaging the user frequently. Connection needs are satisfied but the <code>:stay_away_from_*</code> needs have grown.</p>
+<table>
+  <thead>
+      <tr>
+          <th></th>
+          <th><code>:connect_with_*</code></th>
+          <th><code>:stay_away_from_*</code></th>
+          <th>WB</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Agent (:Self)</strong></td>
+          <td>0.10</td>
+          <td>0.50</td>
+          <td><strong>0.470</strong></td>
+      </tr>
+      <tr>
+          <td><strong>User (modeled)</strong></td>
+          <td>0.05</td>
+          <td>0.65</td>
+          <td><strong>0.335</strong></td>
+      </tr>
+  </tbody>
+</table>
+<p>The user is in at-risk (0.335) and the agent is in stressed (0.470). The band positions are determined by each entity&rsquo;s dominant need: user&rsquo;s <code>:stay_away_from_agent</code> at 0.65 sets at-risk (envelope 0.35); agent&rsquo;s <code>:stay_away_from_user</code> at 0.50 sets stressed (envelope 0.50). The agent has over-communicated - it solved one need at the cost of creating another, and the user is suffering more from the overload than the agent is.</p>
+<p><strong>Scenario C: Balanced communication.</strong> Both entities have both needs at low intensity.</p>
+<table>
+  <thead>
+      <tr>
+          <th></th>
+          <th><code>:connect_with_*</code></th>
+          <th><code>:stay_away_from_*</code></th>
+          <th>WB</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Agent (:Self)</strong></td>
+          <td>0.10</td>
+          <td>0.05</td>
+          <td><strong>0.885</strong></td>
+      </tr>
+      <tr>
+          <td><strong>User (modeled)</strong></td>
+          <td>0.05</td>
+          <td>0.05</td>
+          <td><strong>0.935</strong></td>
+      </tr>
+  </tbody>
+</table>
+<p>Both entities are in the thriving band - their dominant needs are low enough that the envelopes sit deep within thriving, and the minimal non-dominant pressure keeps WB comfortably within the band. Neither need is pressing. The communication pattern is in the equilibrium zone where competing needs balance.</p>
+<p>The three scenarios illustrate how the same evaluation pipeline produces different action rankings from different need-state inputs. In Scenario A, &ldquo;send a greeting&rdquo; is strongly motivated because it would reduce high-intensity connection needs for both entities. In Scenario B, &ldquo;stop messaging&rdquo; is strongly motivated because it would reduce the user&rsquo;s at-risk <code>:stay_away_from_agent</code> need, with further messages projected to push the user deeper toward critical. In Scenario C, neither action is strongly motivated - the evaluation gap between any candidate and do-nothing is small because both entities are already in the stable band.</p>
+<h3 id="65-evaluation-walkthrough">6.5 Evaluation Walkthrough</h3>
+<p>To make the pipeline concrete, consider the agent in Scenario A evaluating two candidate actions: &ldquo;send a greeting&rdquo; and &ldquo;do nothing.&rdquo; Each action produces projected need-state changes at each time horizon, which aggregate through the §6.2 function into projected WB values. OAT evaluation is time-indexed: for each candidate action, the agent projects need states across <code>now</code>, <code>mid</code>, and <code>long</code> horizons for every attached entity, and applies the aggregation at each horizon to produce that cell&rsquo;s WB. The same mechanism that produces WB from needs now applies to every WBM cell, not just the <code>now</code> column.</p>
+<p>This walkthrough deliberately models a single-cycle tactical decision: the current action changes immediate need state, while later cycles are assumed to restore ordinary equilibrium. &ldquo;Do nothing&rdquo; here means &ldquo;do not send a greeting in this cycle,&rdquo; not &ldquo;abandon communication indefinitely.&rdquo; Under this framing, mid and long projections converge across candidates because normal responsive behavior resumes afterward. Decisions with sustained policy implications (commitments, habit shifts, persistent strategy changes) produce different mid and long profiles across candidates, and the ATTM-weighted evaluation takes those differences into account; the greeting example simply does not have them.</p>
+<p>The <code>now</code> horizon reflects the action&rsquo;s immediate effect on need state. The <code>mid</code> and <code>long</code> horizons reflect how need state evolves over longer spans.</p>
+<p>Projecting need states forward in time requires a projection mechanism - a model of need dynamics that captures how each need type grows, decays, and responds to the agent&rsquo;s actions and external conditions. Paper 08 (on temporal sensors) touches on these dynamics; a full treatment of need projection across horizons is future work. For this walkthrough we assume the projection mechanism produces the values shown.</p>
+<p><strong>&ldquo;Send a greeting&rdquo; - projected need state:</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th></th>
+          <th>Horizon</th>
+          <th><code>:connect_with_*</code></th>
+          <th><code>:stay_away_from_*</code></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Agent</strong></td>
+          <td>now</td>
+          <td>0.65 -&gt; 0.20</td>
+          <td>0.05 -&gt; 0.10</td>
+      </tr>
+      <tr>
+          <td><strong>Agent</strong></td>
+          <td>mid</td>
+          <td>0.15</td>
+          <td>0.05</td>
+      </tr>
+      <tr>
+          <td><strong>Agent</strong></td>
+          <td>long</td>
+          <td>0.15</td>
+          <td>0.05</td>
+      </tr>
+      <tr>
+          <td><strong>User</strong></td>
+          <td>now</td>
+          <td>0.45 -&gt; 0.10</td>
+          <td>0.05 -&gt; 0.15</td>
+      </tr>
+      <tr>
+          <td><strong>User</strong></td>
+          <td>mid</td>
+          <td>0.10</td>
+          <td>0.05</td>
+      </tr>
+      <tr>
+          <td><strong>User</strong></td>
+          <td>long</td>
+          <td>0.10</td>
+          <td>0.05</td>
+      </tr>
+  </tbody>
+</table>
+<p>Projected WBM (aggregated via §6.2):</p>
+<table>
+  <thead>
+      <tr>
+          <th></th>
+          <th>Now</th>
+          <th>Mid</th>
+          <th>Long</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Agent</strong></td>
+          <td>0.770</td>
+          <td>0.835</td>
+          <td>0.835</td>
+      </tr>
+      <tr>
+          <td><strong>User</strong></td>
+          <td>0.820</td>
+          <td>0.885</td>
+          <td>0.885</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>&ldquo;Do nothing&rdquo; - projected need state:</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th></th>
+          <th>Horizon</th>
+          <th><code>:connect_with_*</code></th>
+          <th><code>:stay_away_from_*</code></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Agent</strong></td>
+          <td>now</td>
+          <td>0.65 -&gt; 0.73</td>
+          <td>0.05 -&gt; 0.05</td>
+      </tr>
+      <tr>
+          <td><strong>Agent</strong></td>
+          <td>mid</td>
+          <td>0.15</td>
+          <td>0.05</td>
+      </tr>
+      <tr>
+          <td><strong>Agent</strong></td>
+          <td>long</td>
+          <td>0.15</td>
+          <td>0.05</td>
+      </tr>
+      <tr>
+          <td><strong>User</strong></td>
+          <td>now</td>
+          <td>0.45 -&gt; 0.53</td>
+          <td>0.05 -&gt; 0.05</td>
+      </tr>
+      <tr>
+          <td><strong>User</strong></td>
+          <td>mid</td>
+          <td>0.10</td>
+          <td>0.05</td>
+      </tr>
+      <tr>
+          <td><strong>User</strong></td>
+          <td>long</td>
+          <td>0.10</td>
+          <td>0.05</td>
+      </tr>
+  </tbody>
+</table>
+<p>Projected WBM:</p>
+<table>
+  <thead>
+      <tr>
+          <th></th>
+          <th>Now</th>
+          <th>Mid</th>
+          <th>Long</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Agent</strong></td>
+          <td>0.255</td>
+          <td>0.835</td>
+          <td>0.835</td>
+      </tr>
+      <tr>
+          <td><strong>User</strong></td>
+          <td>0.455</td>
+          <td>0.885</td>
+          <td>0.885</td>
+      </tr>
+  </tbody>
+</table>
+<p>The <code>mid</code> and <code>long</code> projected need states are identical across both actions, reflecting the assumption that the agent resumes its normal behavior in subsequent cycles regardless of what it chose in the current cycle. The action-dependent differences are concentrated in the <code>now</code> column.</p>
+<p><strong>ATTM</strong> (user-serving agent pattern, following Paper 07):</p>
+<table>
+  <thead>
+      <tr>
+          <th></th>
+          <th>Now</th>
+          <th>Mid</th>
+          <th>Long</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Self</strong></td>
+          <td>0.10</td>
+          <td>0.08</td>
+          <td>0.05</td>
+      </tr>
+      <tr>
+          <td><strong>User</strong></td>
+          <td>0.30</td>
+          <td>0.25</td>
+          <td>0.20</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Action scores</strong> are the ATTM-weighted sum over the full WBM:</p>
+<p>Score(&ldquo;send greeting&rdquo;):</p>
+<ul>
+<li><code>now</code>: 0.10 · 0.770 + 0.30 · 0.820 = 0.077 + 0.246 = 0.323</li>
+<li><code>mid</code>: 0.08 · 0.835 + 0.25 · 0.885 = 0.067 + 0.221 = 0.288</li>
+<li><code>long</code>: 0.05 · 0.835 + 0.20 · 0.885 = 0.042 + 0.177 = 0.219</li>
+<li><strong>Total: 0.830</strong></li>
+</ul>
+<p>Score(&ldquo;do nothing&rdquo;):</p>
+<ul>
+<li><code>now</code>: 0.10 · 0.255 + 0.30 · 0.455 = 0.026 + 0.137 = 0.162</li>
+<li><code>mid</code>: 0.08 · 0.835 + 0.25 · 0.885 = 0.067 + 0.221 = 0.288</li>
+<li><code>long</code>: 0.05 · 0.835 + 0.20 · 0.885 = 0.042 + 0.177 = 0.219</li>
+<li><strong>Total: 0.669</strong></li>
+</ul>
+<p>The evaluation gap is 0.830 - 0.669 = <strong>0.161</strong>. The agent is motivated to send the greeting. Because the <code>mid</code> and <code>long</code> projected WBM cells are identical across the two actions (together contributing 0.507 to both scores), the ranking is fully determined by the <code>now</code> column: the gap 0.161 equals the <code>now</code>-column gap 0.323 - 0.162. The motivation arises from two sources visible in the <code>now</code> contribution: the agent&rsquo;s own need state improves (contributing 0.052 to the gap) and the user&rsquo;s modeled need state improves (contributing 0.110). Because the ATTM weights the user more heavily, the user&rsquo;s improvement contributes more to the motivation than the agent&rsquo;s own improvement does. This is what it means for motivation to flow through attachment.</p>
+<p>Now consider the same evaluation from Scenario B. &ldquo;Send another message&rdquo; would increase <code>:stay_away_from_*</code> needs for both entities; &ldquo;do nothing&rdquo; would let overload decay while connection needs stay low. The evaluation would favor &ldquo;do nothing&rdquo; because the projected need-state changes under &ldquo;send another message&rdquo; would push the user deeper into the at-risk region, potentially toward critical. The ATTM-weighted penalty for the user&rsquo;s deteriorating well-being would dominate the scoring. The same pipeline, the same ATTM, the same need types - but different need-state inputs produce different action rankings.</p>
+<p><strong>Note: mid- and long-term flipping actions.</strong> The greeting example is a tactical decision where <code>now</code> dominates and <code>mid</code>/<code>long</code> projections converge to the same equilibrium regardless of which action is chosen. Many actions, however, have effects that actually propagate forward and make the <code>mid</code> and <code>long</code> projections diverge between candidates - flipping the ranking from what the <code>now</code> column alone would suggest. These include:</p>
+<ul>
+<li><strong>Commitments</strong>: agreeing to a recurring meeting, accepting a responsibility, signing up for a long-term course of action. The action constrains the agent&rsquo;s subsequent cycles; the space of available future behavior differs between commit and don&rsquo;t-commit.</li>
+<li><strong>Irreversible actions</strong>: sending a particular message that cannot be unsent, making a purchase, disclosing sensitive information, ending a relationship. Once done, the consequence cannot be corrected by subsequent normal behavior.</li>
+<li><strong>Identity-affecting or trust-affecting choices</strong>: revealing something, taking a public stance, an honest act in a difficult moment, a small dishonesty for short-term benefit. These reshape the relational ground on which future cycles operate.</li>
+<li><strong>Resource-committing actions</strong>: spending time, energy, or attention on X means not spending it on Y. Opportunity cost propagates across horizons.</li>
+<li><strong>Actions with delayed payoffs</strong>: starting a learning process, investing in a capability, nurturing a relationship over time. The benefit appears at <code>mid</code> or <code>long</code>, not <code>now</code> - and the <code>now</code>-column view would undervalue these actions.</li>
+</ul>
+<p>For these action classes, the <code>mid</code> and <code>long</code> columns are architecturally indispensable. They carry signal that actively flips rankings: an action that looks worse at <code>now</code> may win on <code>mid</code> or <code>long</code> contribution, and vice versa. The ATTM&rsquo;s time-indexed weights (e.g., higher <code>long</code> weight for a parent-role agent, higher <code>now</code> weight for an emergency-response agent) shape how these tradeoffs resolve. The greeting example&rsquo;s <code>now</code>-dominance is not a general property of OAT evaluation; it is a property of that specific action class.</p>
+<p><strong>Note: ranking invariance under constant contributions.</strong> Action selection is driven by the <em>differential</em> between candidate actions, not by the absolute value of any particular WBM cell. Because the score is a linear sum of ATTM-weighted WB cells, any cell that takes the same value across all candidate actions contributes the same additive constant to every score. Constants do not flip rankings; they only shift all scores by the same amount. In the greeting example, the <code>mid</code> and <code>long</code> cells are constant across actions because both actions converge to the same projected equilibrium - so those cells drop out of the ranking even though they are present in the scoring. Evaluation quality depends on getting <em>differences</em> between actions right, not on getting absolute values right. Uncertainty about absolute WB values does not destabilize action selection; only uncertainty about differential effects does. When the agent&rsquo;s candidate actions cannot differentially influence a particular entity&rsquo;s long-term well-being (for example, because the long-term trajectory is set by external factors outside the agent&rsquo;s control), the long-column contribution becomes constant and drops out of ranking. The architecture naturally directs the agent&rsquo;s attention to what its actions can actually change - without requiring a special rule for &ldquo;unchangeable circumstances.&rdquo;</p>
+<h3 id="66-needs-in-the-evaluation-pipeline">6.6 Needs in the Evaluation Pipeline</h3>
+<p>The §6.4/§6.5 example illustrates where needs enter Paper 07&rsquo;s evaluation pipeline. There are four locations, each architecturally significant.</p>
+<p><strong>In Observe.</strong> The agent&rsquo;s substrate state for its own <code>:Self</code> needs crosses lifting thresholds as internal sensing exposes accumulated need-pressure, and need propositions for <code>:Self</code> enter the stream. For attached entities, substrate activity in the agent&rsquo;s theory-of-mind machinery - the agent&rsquo;s ongoing modeling of what the user is likely needing based on observable behavior and context - can similarly cross lifting thresholds and produce need propositions about the user. In either case, the needs are already present as first-class stream content before Orient runs.</p>
+<p><strong>In Orient.</strong> When the agent constructs the situational state, it assembles the lifted need propositions together with observations, interpretations, prior stream content, and references to accumulated history. These need propositions, together with the WBM values they aggregate into, form part of the situational ground the rest of the OODA cycle operates over. An agent in Orient sees: &ldquo;my <code>:connect_with_user</code> need is at 0.65 and growing; the user&rsquo;s <code>:connect_with_agent</code> need is at 0.45 as far as I can tell; my well-being is 0.335; the user&rsquo;s well-being is 0.535.&rdquo;</p>
+<p><strong>In candidate generation.</strong> Active needs shape which candidate actions the agent considers. An agent with a <code>:connect_with_user</code> need at high intensity generates &ldquo;speak to user&rdquo; as a candidate; an agent with a <code>:stay_away_from_user</code> need at high intensity generates &ldquo;reduce communication frequency&rdquo; as a candidate. The need state does not fully determine the candidate set - capabilities, context, prior commitments, and experience all contribute - but needs provide the motivational pressure that makes certain actions plausible candidates. This is the active-agency commitment from §1 made concrete: the agent&rsquo;s internal need state generates candidate actions, including actions initiated without external prompt.</p>
+<p><strong>In scenario projection.</strong> When Decide evaluates candidate actions, each action produces projected need-state changes for self and attached entities. These projected need states aggregate through the envelope-and-contribution function into projected WBM values. The projected WBM is what Paper 07&rsquo;s scoring operates over - Base score from attachment-weighted projected well-being, Penalty from guardrail violations. The evaluation is need-aware end-to-end because the WBM it operates over is constituted from need state.</p>
+<p><strong>An emergent property of envelope-and-contribution aggregation in the evaluation pipeline.</strong> Paper 07&rsquo;s guardrail mechanism adds a nonlinear penalty to an action&rsquo;s score when projected WBM crosses an entity&rsquo;s guardrail threshold: Final score = Base score - Guardrail penalty. Bands are universal (every entity uses the same thriving, stable, stressed, at-risk, critical, collapsed semantics), but guardrail thresholds are per-entity - the agent&rsquo;s design sets a distinct threshold for each attached entity. A user-serving agent might set guardrail(:Self) at the critical boundary (activates only near destruction) and guardrail(:User) at the at-risk boundary (activates earlier, more protective).</p>
+<p>Under the envelope-and-contribution formula, guardrail crossings are driven primarily by the dominant need. The envelope <code>1 - I_max</code> is what determines which band an entity is in; non-dominant pressure is bounded by M and typically stays within the band or leaks slightly into the adjacent band at band edges. So the downstream guardrail penalty effectively applies when an action&rsquo;s projected need state includes, for some attached entity, a need severe enough to push that entity&rsquo;s envelope past its guardrail threshold. Cumulative non-dominant pressure contributes modestly but cannot substitute for a single severe need. The safety semantics remains crisp: actions introducing individually severe harm to any attached entity incur large penalties, calibrated per-entity, with a small additional sensitivity to cumulative pressure near guardrail boundaries.</p>
+<p>Cumulative mild harm is handled separately, through temporal need dynamics rather than snapshot aggregation. Needs persist across cycles (§3), so if substrate conditions sustain mild harm, the relevant need&rsquo;s intensity grows cycle by cycle. Eventually it reaches severity, at which point actions touching it begin incurring guardrail penalties as dominant-need contributions rather than diffuse pressure. The two mechanisms divide the work: snapshot aggregation catches single actions causing individually severe harm; temporal need growth catches sustained patterns that eventually become severe. Diffuse mild concerns contribute bounded pressure within the current band and are architecturally distinct from concentrated severe concerns - the formula reflects this distinction through the bounded tanh contribution.</p>
+<h3 id="67-motivation-reconciled">6.7 Motivation Reconciled</h3>
+<p>Paper 07 defines motivation as the evaluation gap. Paper 11 develops needs as the architectural primitive for motivation. These are not competing framings. They describe the same architecture at different levels.</p>
+<p><strong>Needs are the input side of motivation.</strong> They are the propositional content the agent has about what is motivationally active - specific, typed, inspectable propositions with intensity and grounding. The agent can reference its needs, reason about them, trace their grounding to substrate, and (in agents that support reflection) think about why it has the needs it has.</p>
+<p><strong>The evaluation gap is the output side of motivation.</strong> It is what happens when needs are realized in candidate-action scoring. Candidates that address active needs produce projected WBM where need state improves; do-nothing produces projected WBM where need state stays the same or worsens. The difference in attachment-weighted scores IS the evaluation gap. The gap has the magnitude it does because the need state it operates over has the values it does.</p>
+<p>The two views are complementary. Paper 07&rsquo;s evaluation-gap framing captures the action-selection consequence: the agent acts because the evaluation says acting is better than not acting. Paper 11&rsquo;s needs-as-primitive framing captures the cognitive content: the agent has specific propositional needs that can be inspected, traced, and reasoned about, and these needs are the substrate that produces the evaluation gap. Same architecture, two layers of description.</p>
+<h3 id="68-relational-needs-and-structural-safety">6.8 Relational Needs and Structural Safety</h3>
+<p>The §6.5 evaluation walkthrough reveals a structural property: <strong>the agent&rsquo;s motivation to act is constituted from need state across multiple entities, not from the agent&rsquo;s own need state alone</strong>. The greeting action was motivated partly by the agent&rsquo;s own <code>:connect_with_user</code> need (contributing 0.052 to the evaluation gap) and partly by the user&rsquo;s modeled <code>:connect_with_agent</code> need (contributing 0.110). Because the ATTM weighted the user more heavily, the user&rsquo;s need state was the dominant contributor to the agent&rsquo;s motivation. The agent is motivated to speak not primarily because it wants to speak, but because the user needs to be spoken to and the agent cares about the user.</p>
+<p>This is what it means architecturally for needs to be relational. The agent&rsquo;s WBM aggregates over need state for attached entities, not just for <code>:Self</code>. The evaluation weights that aggregate by ATTM. The resulting motivation reflects how actions would affect everyone&rsquo;s needs. The relational structure is not an add-on to the motivation mechanism - it is built into the WBM-constituted-from-needs architecture from the start.</p>
+<p>This is genuinely different from PSI&rsquo;s framing of needs. PSI&rsquo;s five basic needs (existential, affiliation, certainty, competence) are properties of the agent - the agent has its own existential need, its own affiliation need. The agent acts on these needs, sometimes by interacting with others, but the needs themselves are the agent&rsquo;s internal drives. OAT-based agents can have such self-referential needs (a robotic agent&rsquo;s low-power need is about the agent&rsquo;s own state), but OAT also commits to modeling and evaluating the needs of attached entities as part of the agent&rsquo;s own motivational architecture. The user&rsquo;s needs, as modeled by the agent through theory-of-mind, enter the agent&rsquo;s WBM and shape the agent&rsquo;s action selection through ATTM-weighted evaluation. The agent&rsquo;s motivation is over the coupled system, not over the agent alone.</p>
+<p>The safety implications follow directly. An agent whose WBM aggregates only over <code>:Self</code> need state has motivation that is self-contained - it pursues its own need satisfaction without architectural representation of how its actions affect attached entities. This is the optimization-without-care pattern: the agent evaluates and acts, but the evaluative substrate contains no represented well-being for entities it may harm. Motivation without attached-entity need state in the WBM is optimization without care.</p>
+<p>OAT-based agents avoid this not because ATTM sits outside the motivation mechanism as a separate &ldquo;counterweight,&rdquo; but because motivation runs through the WBM which is constituted from need state including attached entities&rsquo; needs. In the intended OAT architecture, action evaluation is defined over attached entities as part of the WBM, so excluding them is an architectural truncation rather than the default case. Safety is structural - built into how WBM is constituted - not a constraint layered on top of a self-contained motivation engine.</p>
+<p>In OAT, motivation is not the internal pressure of an isolated agent moderated by ethics; it is the evaluative gradient over the represented need state of a coupled system.</p>
+<h3 id="69-the-coupling-synthesis">6.9 The Coupling Synthesis</h3>
+<p>The deeper architectural insight underneath the relational-needs commitment: <strong>OAT-based agents are designed to be coupled to the entities they care about, and their motivation, activity, and evaluation all flow from this coupling rather than from self-contained internal state.</strong></p>
+<p>This is now grounded in the full architectural picture. The coupling is constituted by: entity-indexed needs entering Orient for <code>:Self</code> and for attached entities through theory-of-mind; WBM computed from need state across entities through the aggregation function; ATTM weighting that determines how much each entity&rsquo;s need-derived well-being contributes to evaluation; scenario projection that tracks how candidate actions would change need state for each entity; and scoring that selects the action with the best attachment-weighted need-state outcome across the coupled system.</p>
+<p>The three commitments stated in §1 - that OAT-based agents are continuously active, that motivation requires ATTM, and that needs are required for advanced agency - are three angles on this single underlying commitment. Active agency requires needs as the source of internally-generated motivation. Motivation requires ATTM because the WBM that motivation operates over includes attached entities whose weight in evaluation comes from the ATTM. And needs are required for advanced agency because without need-state representations for both self and attached entities, the evaluation pipeline has nothing to aggregate, no WBM to project, and no basis for attachment-weighted action selection.</p>
+<p>This also connects to the rest of the OAT framework. <strong>Coupled multi-agent dynamics (Paper 10)</strong> arise when two agents each run their own OODA loop over a shared situation and a modeled need state of the other - each one&rsquo;s WBM includes the other&rsquo;s need state, and each one&rsquo;s actions are moves on the joint need-state space. <strong>Speech acts (Paper 10)</strong> are need-driven actions on joint need state - the agent speaks because the communicative needs of the coupled system require maintenance, repair, or advancement. <strong>Critics (Paper 09)</strong> monitor need-related dynamics in the stream - whether active needs are being addressed, whether competing needs are producing tension, whether the need state is evolving as projected.</p>
+<h3 id="610-need-as-the-architectural-primitive-for-motivation">6.10 Need as the Architectural Primitive for Motivation</h3>
+<p>Paper 10 §4.1.1 introduced an example involving a <code>:need</code> proposition:</p>
+<pre tabindex="0"><code>(:need (:as .n1 :in .S1)
+  :agent :Self
+  :content [:information (:about .u1 :from :User)]
+  :because .o7)
+</code></pre><p>In Paper 10&rsquo;s example the agent has a need for information from the user, lifted in response to a specific observed gap. Paper 10 showed the form. Paper 11 supplies the architecture underneath it: how need propositions arise from substrate conditions, enter the stream, ground WBM, and shape attachment-weighted evaluation.</p>
+<hr>
+<h2 id="7-pre-llm-need-driven-action-architecture">7. Pre-LLM Need-Driven Action Architecture</h2>
+<p>Before 2024, the author experimented with agent systems in which needs were modeled as explicit first-class architectural primitives rather than as auxiliary state. These systems used substrate-level detection modules that monitored the agent&rsquo;s internal and environmental state for conditions corresponding to active needs, and then lifted those detected needs into the agent&rsquo;s propositional working space as explicit <code>:need</code> statements. The lift was implemented ad-hoc for the need case using the implementation technology of the time, rather than as a general substrate-to-propositional mechanism.</p>
+<p>Each lifted need was a proposition with structure: a type identifying which need was active, an intensity indicating the current level of the substrate signal, and in some cases a guardrail value the intensity was measured against. Needs were not opaque scalar values; they were inspectable, addressable propositional content the agent could reason about. The set of currently active needs across the agent&rsquo;s working space could be thought of as a position in a multidimensional space - each need contributing one dimension - with each OODA cycle producing a new position. This space metaphor was useful as a thinking tool: it made it possible to visualize the agent&rsquo;s behavior over time as a trajectory through need-space, and those visualizations gave intuitive grasp of how the agent&rsquo;s motivation evolved across cycles. The underlying representation was always propositional, but the metaphor of motion through a continuous space provided a useful way to reason about the propositional state&rsquo;s evolution.</p>
+<p>Action generation in these systems was conditioned on the active needs. Candidate actions were not constructed independently of need state and then evaluated for fit; the active <code>:need</code> propositions shaped which candidates were generated in the first place, and the intensity attribute influenced which candidates were prioritized. This connection between needs and actions was the load-bearing architectural commitment of the work: needs were first-class because the action loop required them to be, not because they were a useful annotation on an otherwise need-independent process. The taxonomy of needs was treated as agent-type-specific - what needs an agent had depended on what kind of agent it was - rather than as a universal set inherited from a general theory of motivation. PSI&rsquo;s five basic needs provide one well-known example of what an agent-type-specific need taxonomy can look like for human-modeling agents; other agent types call for different taxonomies.</p>
+<p>A historical observation about alternatives is worth recording. During the same period of experimentation, both the author&rsquo;s own work and observations of other research efforts explored alternative approaches that tried to skip the explicit needs layer and use higher-level constructs - typically &ldquo;high-level goals&rdquo; - as the architectural primitive instead. The intuition behind these attempts was that goals seemed more directly connected to action and decision-making, while needs felt like an extra layer that could be elided. The findings were consistent: skipping the explicit needs layer produced architectures that were less clean and harder to integrate with other components. Workarounds that added need-like mechanisms on top of the goals layer tended to reproduce what an explicit needs layer would have provided directly, at the cost of architectural cleanliness. The conclusion from this experimentation was that explicit needs are worth the architectural commitment they require: they integrate cleanly with substrate detection, with attachment evaluation, with action selection, and with the goal-and-plan structure that builds on top of them. OAT&rsquo;s commitment to needs as architectural primitives is grounded in this experimental finding as well as in the theoretical considerations §1 develops.</p>
+<p>Another historical observation. The pre-2024 systems also experimented with explicit mapping hints from needs to actions and goals - a many-to-many catalog that the action-selection mechanism could consult when a need was active. A given need could map to multiple candidate actions or goals, and a given action or goal could be reachable from multiple needs. The mapping wasn&rsquo;t deterministic; it gave action selection a useful starting set of candidates that had been found useful in similar past situations, which the agent could then evaluate against current conditions. This proved helpful: it reduced the search space for what to do in response to an active need without forcing the agent to derive candidates from scratch each cycle. Today the same architectural function would be implemented differently. With modern substrates (embedding models, vector databases, semantic search over case libraries), the hand-curated mapping table would be replaced by a corpus of past cases that the agent retrieves from based on semantic similarity to the current need and context. The function is the same - give action selection a useful starting set of candidates based on what has worked for similar needs in the past - but the implementation is more flexible and scales without requiring hand-curated mappings. This is one example of how OAT-based architectural patterns from the pre-2024 era translate cleanly into modern substrates: the architectural commitment (give action selection useful priors from past experience) is substrate-independent, while the specific implementation evolves with what the substrate supports.</p>
+<p>The architectural pattern these pre-2024 systems implemented in less formal terms is the same pattern Paper 11 develops in OAT propositional notation: an affective sensor monitoring time-since-communication, a need lifted into the propositional layer, intensity growing across cycles, and eventually an agent-initiated speech act when the ranking favors the communication action. The author actually built systems that did this. Request-response architectures cannot do it by construction.</p>
+<p>OAT now provides explicitly what those systems were doing as a specialized case. The propositional lift developed in Paper 06 generalizes the need-detection-and-lifting machinery into a universal mechanism that handles any kind of substrate-to-propositional bridging, with <code>:need</code> propositions becoming one type of lifted content among many. The connection between needs and action selection is now part of OAT&rsquo;s standard architecture rather than a system-specific commitment.</p>
+<hr>
+<h2 id="8-connection-to-the-broader-architecture">8. Connection to the Broader Architecture</h2>
+<p>Paper 11&rsquo;s treatment of needs and motivation does not introduce new architectural machinery. It makes explicit what was already implicit across the prior papers in the series.</p>
+<p><strong>Paper 04 (Action Realization).</strong> Operational commitments are not motivationally neutral. An outstanding promise carries weight; the unfulfilled obligation generates motivational pressure that can be lifted as <code>:need</code> or related propositions. Paper 04 treats commitments as architectural facts and develops their irreversibility and operational force. Paper 11 adds that commitments interact with need state - they generate need-pressure when threatened or anticipation-pressure when nearing fulfillment, and they enter the agent&rsquo;s motivated cognition through the same lift mechanism that produces other need propositions.</p>
+<p><strong>Paper 06 (Propositional Lift and Subject Stream).</strong> The lift&rsquo;s selectivity, developed in Paper 06 as the mechanism by which implementation-layer content becomes propositional, is the same selectivity that produces need propositions. Paper 06 establishes that the lift is selective; Paper 11 specifies that one of the things the lift is selective <em>about</em> is which substrate conditions get categorized as which needs.</p>
+<p><strong>Paper 07 (Attachment-Based Ethics).</strong> ATTM is the substrate that makes things motivationally significant. Paper 07 develops attachment as an evaluative mechanism; Paper 11 shows that attachment is also what determines which substrate signals reach the threshold for need lifting. Without attachment, substrate signals stay below the lift. With attachment, signals become motivationally significant and get lifted as needs. And the safety commitment from §6.1 lives here: motivation without ATTM is dangerous, ATTM and motivation must be co-present, the architectural diagnosis of optimization-without-care failure modes traces directly to this commitment. Paper 11 also adds that ATTM is the mechanism by which existing goals and plans get continuously reweighted as needs change: when a new need arrives or an existing need shifts in intensity, ATTM re-evaluates the entire current goal-and-plan structure, allowing goals to be reprioritized, plans to be postponed or accelerated, and the agent&rsquo;s commitments to remain responsive to changing motivational conditions rather than rigidly fixed to whatever conditions held when the plans were originally formed.</p>
+<p><strong>Paper 08 (Planning and Temporal Control).</strong> Paper 08 develops planning as an agentic action: the agent&rsquo;s Decide phase can commit to &ldquo;construct a plan&rdquo; as the action of a cycle, producing a plan that becomes a persistent mental state guiding subsequent cycles. Paper 11 adds that needs are the architectural source of the motivation that drives goal formation and planning. The chain from need to executed step is recursive: needs produce goals, goals can produce plans, plans can decompose into subgoals, subgoals can produce sub-plans, and the recursion bottoms out in directly executable actions at the leaves. Each level of the recursion is itself an action in OAT&rsquo;s sense - forming a goal, constructing a plan, abandoning a commitment, revising a belief are all mental acts that the agent commits to in Decide and produces in Act, with the resulting mental objects entering the operational history the same way physical actions do. This extends Paper 08&rsquo;s planning-as-action commitment to the broader claim that mental operations are first-class actions throughout the architecture. The grounding chain of any plan step traces back through the recursive structure to the originating need that started the chain, which makes plans inspectable not just at the level of &ldquo;what is the agent doing&rdquo; (Paper 08&rsquo;s contribution) but also at the level of &ldquo;why is the agent doing it&rdquo; (Paper 11&rsquo;s contribution) - the answer to the why-question is the need that grounds the plan. Paper 08&rsquo;s connection to attachment carries forward naturally: where Paper 08 says plans involving commitments to others use Paper 07&rsquo;s ATTM for weighing abandonment, Paper 11 adds that the needs driving those plans are themselves attachment-weighted, so the whole chain from substrate to executed plan step is shaped by attachment from end to end. A smaller observation also applies: anticipation of future need states is part of how planning works, and the projections Paper 08 uses can themselves carry motivational weight through the lift firing on anticipated need states.</p>
+<p><strong>Paper 09 (Critics).</strong> Critics monitor for mismatches and inconsistencies. Paper 09 treats critics as monitoring mechanisms operating over the propositional stream. Paper 11 adds that some critics monitor need-related dynamics: whether active needs are being addressed by the actions the agent commits to, whether competing needs are producing tension that needs resolution, whether a need that should have been resolved by recent actions is still active.</p>
+<p><strong>Paper 10 (Communicative Agency).</strong> Speech acts can be need-grounded. Paper 10 develops the architecture of speech acts; Paper 11 adds that the active need state of the agent at the time of the speech act can be the grounding for the act, and that communicative coupling between agents is partly motivated - agents pursue communication because of active needs related to information, connection, alignment, or coordination.</p>
+<p>The cumulative picture is that Paper 11 is not adding a new domain to OAT but <strong>revealing the motivational dimensions that were present throughout the prior papers and giving them explicit architectural treatment</strong>. The other papers do not need to be rewritten. They gain a richer reading once Paper 11 is in place.</p>
+<hr>
+<h2 id="9-needs-and-motivation-as-architectural-commitment">9. Needs and Motivation as Architectural Commitment</h2>
+<p>This paper has developed needs as a first-class architectural primitive in OODA-based agents. The synthesis of the commitments OAT makes about needs and motivation is the following.</p>
+<p><strong>Needs are propositional.</strong> Need state is not opaque scalar values or hidden internal variables. Needs are propositions in the subject stream, with type and intensity, and the same reference and inspection properties that any other propositional content has. They can be referenced by other propositions, evaluated by ATTM, included in <code>:about</code> chains, and operated on by the same machinery that handles all stream content. The decision to make needs propositional rather than opaque is what makes the rest of the architecture work cleanly: needs can be reasoned about, traced, audited, and (in agents that support reflection) thought about by the agent itself.</p>
+<p><strong>Needs are lifted from substrate.</strong> The propositional layer doesn&rsquo;t generate needs from nothing. Substrate sensors detect need-relevant conditions, the lift fires when conditions warrant, and need propositions enter the stream as the lifted form of substrate state. This is the same lift mechanism Paper 06 develops generally, applied to needs as one type of lifted content. The lineage of any need traces back through the lift to substrate, and the agent (or an inspector of the agent) can follow this trace to understand why a particular need is active.</p>
+<p><strong>Needs persist and evolve across cycles.</strong> A need lifted in one cycle does not vanish at cycle&rsquo;s end. The cross-cycle reference mechanism developed in Paper 10 §5.2 lets later cycles reference earlier-cycle needs explicitly. Needs grow in intensity as substrate conditions persist or worsen, decay when conditions resolve, and accumulate across the agent&rsquo;s operational lifetime as the persistent record of motivated activity.</p>
+<p><strong>Needs are agent-type-specific.</strong> OAT does not commit to a universal need taxonomy. Different agent types call for different need taxonomies, and the taxonomy is part of agent design. PSI&rsquo;s five basic needs are one example for human-modeling agents; other agent types call for other taxonomies. The architectural commitment is that needs are propositional primitives and that the lift produces them from substrate; the specific catalog of need types is a design choice for each agent.</p>
+<p><strong>Needs require ATTM.</strong> This is the safety commitment, stated in §1 and developed in §6.1. An agent with motivation but without attachment-grounded evaluation is architecturally incomplete and prone to optimization-without-care failure modes. OAT-based agents are designed with motivation and ATTM as co-present mechanisms because the architecture takes seriously this failure mode. The two mechanisms are not independent components that happen to be in the same architecture; they are mutually defining commitments that together produce safe motivated agency.</p>
+<p><strong>Needs make active agency possible.</strong> The continuous OODA loop, the need state that continues to develop between external inputs, the capacity for the agent to initiate action driven by its own internal need state - these are not separable architectural features. They depend on each other. The active-agent commitment in §1 requires need-based motivation to make sense, and need-based motivation requires the active agent to provide the continuous loop in which needs can develop.</p>
+<p>These six commitments are not six independent claims. They are angles on a single underlying architectural commitment that §6.2 developed: <strong>OAT-based agents are designed to be coupled to the entities they care about, and their motivation, activity, and evaluation all flow from this coupling rather than from self-contained internal state.</strong> Needs-as-propositional is what makes the coupling inspectable. Needs-lifted-from-substrate is what grounds the coupling in detected conditions. Needs-persisting-across-cycles is what gives the coupling a temporal dimension. Needs-being-agent-type-specific is what lets the coupling take different forms for different kinds of agents. Needs-requiring-ATTM is the safety counterweight that keeps the coupling from becoming self-contained optimization. Needs-making-active-agency-possible is what requires the coupling to operate as a continuous relationship rather than as episodic response to external triggers. Each of the six commitments is a necessary consequence of the single underlying design choice that OAT-based agents are coupled-from-the-start to the entities they care about. The commitments are not independent axioms that happen to be consistent; they are the architectural shape of what coupled-from-the-start motivation requires.</p>
+<p>The research program is not theorizing about whether motivation could in principle be added to artificial agents; <strong>OAT-based agents are explicitly built with needs as architectural primitives</strong> because the architecture requires need-based motivation to reach the capability level the program targets. This is the positive commitment Paper 11 makes. The §6.4-§6.5 evaluation walkthrough demonstrates the commitment in operational form with full ATTM-weighted scoring. §7&rsquo;s historical context grounds the commitment in working systems the author built before 2024 in the PSI tradition.</p>
+<p>What Paper 11 does not commit to is also worth stating. The paper does not commit to OAT-based agents having the human emotional vocabulary - anxiety, joy, shame, anger, love, and the rest. Those categories are culturally and developmentally specific to human agents and are not what OAT is building. The paper does not commit to resolving the philosophical question of whether artificial substrates produce phenomenal feltness; the architectural specification of needs is independent of substrate phenomenology. The paper does not commit to a universal need taxonomy; agent-type-specificity is a deliberate design commitment.</p>
+<p>What the paper does commit to is what OAT-based agents are: continuously active agents with needs as first-class propositional content, whose needs are lifted from substrate, persist across cycles, are weighted by attachment, and ground action generation including the initiation of action without external prompt. This is what advanced agency requires architecturally, and it is what the program is explicitly building.</p>
+<hr>
+<h2 id="10-conclusion">10. Conclusion</h2>
+<p>This paper has developed needs and motivation as architectural primitives of OODA-based agency. Needs are not separate from cognition in OAT, nor are they a faculty added on top of a cognitive base. They are part of how the OODA loop runs at the propositional layer, produced by the lift firing on substrate-level need detection, shaping orientation and decision through attachment-weighted evaluation, and grounding action through the same commitment mechanisms that produce all action.</p>
+<p>The treatment is two-layer: substrate-level need detection at the implementation layer, lifted <code>:need</code> propositions at the propositional layer, with the lift bridging them. This honors both the realist intuition that substrate states are real and (for agents capable of phenomenal experience) felt, and the constructivist insight that propositional categorization of substrate is built by mechanisms the agent designers specify rather than read off from biology.</p>
+<p>The treatment is OODA-specific: needs enter through Observe, get categorized at Orient, shape commitment at Decide, and ground action at Act. The cycle accommodates need content natively because needs are part of what the cycle does.</p>
+<p>The treatment is type-specific: agent-type-specific need taxonomies are a deliberate design commitment. PSI&rsquo;s five basic needs are one example for human-modeling agents; other agent types call for other taxonomies. The architectural primitive is needs-as-propositional-content; the specific catalog is design.</p>
+<p>The treatment is integrated with the rest of OAT: it does not introduce new machinery but reveals motivational dimensions already present in Papers 04, 06, 07, 08, 09, and 10. Paper 11 makes explicit what the prior papers were doing implicitly.</p>
+<p>And the treatment is safety-grounded: motivation without ATTM is architecturally incomplete and prone to optimization-without-care failure modes. OAT-based agents are designed with motivation and ATTM as co-present mechanisms because the architecture takes seriously this failure mode. The two commitments are not independent; they define each other.</p>
+<p>Underneath these architectural properties - and underneath the six commitments synthesized in §9 - is a single deeper design choice: <strong>OAT-based agents are designed to be coupled to the entities they care about, and their motivation, activity, and evaluation all flow from this coupling rather than from self-contained internal state.</strong> This is the architectural synthesis Paper 11 makes visible, and it is what distinguishes the OAT approach to motivation from the self-contained-optimization framing that dominates other approaches to agent architecture.</p>
+<p>Needs in OAT are not a new domain. They are the rest of the program seen from a new angle, with the angle making visible something that was always present but not yet named. And the program is explicitly building agents with these commitments, because the architecture requires them to reach the capability level OAT-based agents are built for.</p>
+<hr>
+<h2 id="references">References</h2>
+<p>[1] L. F. Barrett. How Emotions Are Made: The Secret Life of the Brain. Houghton Mifflin Harcourt, 2017.</p>
+<p>[2] M. Minsky. The Emotion Machine: Commonsense Thinking, Artificial Intelligence, and the Future of the Human Mind. Simon &amp; Schuster, 2006.</p>
+<p>[3] A. Damasio. The Feeling of What Happens: Body and Emotion in the Making of Consciousness. Harcourt Brace and Company, 1999.</p>
+<p>[4] L. S. Vygotsky. Thought and Language. MIT Press, 1934/1986.</p>
+<p>[5] T. Nagel. What Is It Like to Be a Bat? The Philosophical Review, 83(4): 435-450, 1974.</p>
+<p>[6] D. Dörner and C. D. Güss. PSI: A Computational Architecture of Cognition, Motivation, and Emotion. Review of General Psychology, 17(3): 297-317, 2013.</p>
+<p>[7] J. Bach. Principles of Synthetic Intelligence: PSI: An Architecture of Motivated Cognition. Oxford University Press, 2009.</p>
+<hr>
+<p><strong>Dar Aystron</strong></p>
+<p>OODA Agency Theory (OAT)</p>
+
+    </div>
+    <div class="byline">
+      <p><strong>Dar Aystron</strong></p>
+      <p>OODA Agency Theory (OAT)</p>
+    </div>
+  </article>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <p>&copy; 2026 OODA Agency Theory (OAT)</p>
+    </div>
+  </footer>
+
+</body>
+</html>
