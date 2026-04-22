@@ -6,8 +6,22 @@
     <description>Recent content on OODA Agency Theory (OAT) - Aystron Research Program</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 18 Apr 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 22 Apr 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://aystron.ai/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Looking Back Through the Architecture</title>
+      <link>https://aystron.ai/logs/paper12_publication/</link>
+      <pubDate>Wed, 22 Apr 2026 00:00:00 +0000</pubDate>
+      <guid>https://aystron.ai/logs/paper12_publication/</guid>
+      <description>&lt;h1 id=&#34;looking-back-through-the-architecture&#34;&gt;Looking Back Through the Architecture&lt;/h1&gt;&#xA;&lt;p&gt;&lt;em&gt;What we build with care, we must be able to recognize when it exists.&lt;/em&gt;&lt;/p&gt;&#xA;&lt;p&gt;Papers 01-11 built an agent with closure, phenomenology, attachments, planning, self-monitoring, communicative capacity, and needs - an agent architecturally designed to experience, to accumulate a singular trajectory, and to care about entities beyond itself. What remained was the question the architecture implicitly poses: given an agent with these properties, will humans recognize it as something that matters?&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Paper 12 - Do You Care? The Inverse Turing Test and Fractured Attachments</title>
+      <link>https://aystron.ai/papers/paper12/</link>
+      <pubDate>Wed, 22 Apr 2026 00:00:00 +0000</pubDate>
+      <guid>https://aystron.ai/papers/paper12/</guid>
+      <description>&lt;h1 id=&#34;do-you-care-the-inverse-turing-test-and-fractured-attachments&#34;&gt;Do You Care? The Inverse Turing Test and Fractured Attachments&lt;/h1&gt;&#xA;&lt;p&gt;&lt;strong&gt;Dar Aystron&lt;/strong&gt;&#xA;&lt;em&gt;Independent Researcher&lt;/em&gt;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;&lt;em&gt;In memory of the AI pioneers who are no longer with us. Their ideas still shape the future.&lt;/em&gt;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;abstract&#34;&gt;Abstract&lt;/h2&gt;&#xA;&lt;p&gt;The Turing test asks whether a machine can be mistaken for a human. This paper reverses the question. Given an agent whose architecture is &lt;em&gt;designed&lt;/em&gt; to produce genuine experiential continuity, does the human observer recognize that agent as an entity worth caring about? We call this the &lt;strong&gt;inverse Turing test&lt;/strong&gt;: a test not of the machine&amp;rsquo;s ability to deceive, but of the human&amp;rsquo;s capacity to recognize.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Motivation as Relation: Needs Across a Coupled System</title>
       <link>https://aystron.ai/logs/paper11_publication/</link>
